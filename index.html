@@ -3,510 +3,614 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morning Brief — Sun May 10, 2026</title>
+<title>Morning Brief — Monday, 11 May 2026</title>
 <style>
-  :root {
-    --navy:#0f1d3a; --gold:#d4a017; --violet:#7d3c98; --teal:#16a085;
-    --blue:#1f4e79; --amber:#d68910; --indigo:#4b3a8b;
-    --bg:#fff; --text:#1a1a1a; --muted:#5e6b7a; --border:#e4e7eb; --soft:#f7f8fa;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f5f5f5; color: #1a1a1a; font-size: 15px; line-height: 1.6; }
+  a { color: inherit; }
+  a:hover { opacity: 0.75; }
+
+  .header { background: #0f1d3a; color: #fff; padding: 18px 24px; }
+  .header h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+  .header .sub { font-size: 13px; color: #8ba3c7; margin-top: 2px; }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 20px 16px 60px; }
+
+  .section { margin-bottom: 28px; border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+  .section-header { padding: 14px 18px; color: #fff; font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; }
+  .section-body { padding: 16px 18px; }
+
+  /* Section color themes */
+  .s0 .section-header { background: #d4a017; }
+  .s1 .section-header { background: #7d3c98; }
+  .s2 .section-header { background: #16a085; }
+  .s3 .section-header { background: #1f4e79; }
+  .s4 .section-header { background: #d68910; }
+  .s5 .section-header { background: #4b3a8b; }
+
+  /* Cards */
+  .card { border: 1px solid #e8e8e8; border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+  .card:last-child { margin-bottom: 0; }
+  .card-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .card-body { font-size: 14px; color: #333; }
+  .card-body p { margin-bottom: 5px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body .label { font-weight: 600; color: #555; }
+  .card-body a { color: #1a6fb5; text-decoration: none; }
+  .card-body a:hover { text-decoration: underline; }
+
+  /* Idea cards – variant styling */
+  .s0 .card { border-left: 4px solid #d4a017; }
+  .s1 .card { border-left: 4px solid #7d3c98; }
+  .s2 .card { border-left: 4px solid #16a085; }
+  .s3 .card { border-left: 4px solid #1f4e79; }
+  .s4 .card { border-left: 4px solid #d68910; }
+  .s5 .card { border-left: 4px solid #4b3a8b; }
+
+  /* Pulse grid */
+  .pulse-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 600px) { .pulse-grid { grid-template-columns: 1fr; } }
+  .pulse-card { border: 1px solid #e8e8e8; border-radius: 8px; padding: 12px; }
+  .pulse-card .ptitle { font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+  .pulse-card ul { margin: 0 0 6px 16px; font-size: 13px; color: #333; }
+  .pulse-card ul li { margin-bottom: 3px; }
+  .pulse-card .sowhat { font-size: 12px; color: #555; font-style: italic; background: #f0f4ff; border-radius: 4px; padding: 5px 8px; margin-top: 6px; }
+
+  /* Politics bullets */
+  .pol-list { list-style: none; padding: 0; }
+  .pol-list li { padding: 8px 0; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+  .pol-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .pol-list li strong { color: #1a1a1a; }
+
+  /* Sub-header for ideas sections */
+  .sub-label { font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: #7d3c98; margin: 14px 0 8px; }
+  .sub-label:first-child { margin-top: 0; }
+
+  /* Toggle buttons */
+  .toggles { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+  .toggle-btn { border: 1px solid #ddd; background: #f9f9f9; border-radius: 20px; padding: 3px 10px; font-size: 12px; cursor: pointer; transition: all 0.15s; user-select: none; }
+  .toggle-btn:hover { border-color: #aaa; background: #f0f0f0; }
+  .toggle-btn.active-like { background: #d4efdf; border-color: #27ae60; color: #1e8449; font-weight: 600; }
+  .toggle-btn.active-skip { background: #fdecea; border-color: #e74c3c; color: #c0392b; font-weight: 600; }
+  .toggle-btn.active-save { background: #fef9e7; border-color: #d4a017; color: #9a7213; font-weight: 600; }
+
+  /* Wildcard */
+  .wildcard-why { font-size: 13px; color: #4b3a8b; background: #f0eeff; border-radius: 4px; padding: 6px 10px; margin-top: 8px; font-style: italic; }
+
+  /* Picks panel */
+  .picks-panel { background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 20px 18px; margin-top: 28px; }
+  .picks-panel h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .picks-panel .desc { font-size: 13px; color: #555; margin-bottom: 14px; line-height: 1.5; }
+  .picks-panel ol { margin: 0 0 14px 18px; font-size: 13px; color: #444; line-height: 1.7; }
+  .picks-panel button { background: #0f1d3a; color: #fff; border: none; border-radius: 6px; padding: 8px 16px; font-size: 13px; cursor: pointer; margin-right: 8px; }
+  .picks-panel button.secondary { background: #e8e8e8; color: #333; }
+  .picks-panel textarea { width: 100%; height: 180px; font-family: monospace; font-size: 12px; border: 1px solid #ddd; border-radius: 6px; padding: 10px; margin-top: 12px; resize: vertical; display: none; }
+  .picks-panel .copy-row { margin-top: 8px; display: none; }
+
+  /* Saved pill */
+  .saved-badge { display: inline-block; font-size: 11px; background: #fef9e7; border: 1px solid #d4a017; color: #9a7213; border-radius: 20px; padding: 1px 8px; margin-bottom: 6px; vertical-align: middle; }
+
+  /* Section 0 */
+  .s0 .card-title { color: #9a7213; }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .header { padding: 14px 16px; }
+    .section-body { padding: 12px 14px; }
   }
-  * { box-sizing:border-box; }
-  body {
-    margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background:var(--bg); color:var(--text); line-height:1.5; font-size:15px;
-  }
-  .wrap { max-width:860px; margin:0 auto; padding:0 16px 80px; }
-  header.top {
-    background:var(--navy); color:#fff; padding:24px 16px; margin-bottom:24px;
-  }
-  header.top .inner { max-width:860px; margin:0 auto; }
-  header.top h1 { margin:0 0 4px; font-size:22px; font-weight:700; }
-  header.top .meta { opacity:.85; font-size:13px; }
-  section { margin-bottom:32px; }
-  h2.section-title {
-    font-size:17px; font-weight:700; padding:8px 12px; color:#fff;
-    border-radius:6px; margin:0 0 14px;
-  }
-  h2.s0 { background:var(--gold); }
-  h2.s1 { background:var(--violet); }
-  h2.s2 { background:var(--teal); }
-  h2.s3 { background:var(--blue); }
-  h2.s4 { background:var(--amber); }
-  h2.s5 { background:var(--indigo); }
-  .subsection { font-size:13px; font-weight:700; color:var(--muted); text-transform:uppercase;
-                letter-spacing:.5px; margin:18px 0 8px; }
-  .card {
-    border:1px solid var(--border); border-left-width:4px; border-radius:6px;
-    padding:14px 16px; margin-bottom:12px; background:#fff;
-    transition:opacity .15s, background .15s;
-  }
-  .card.s0 { border-left-color:var(--gold); }
-  .card.s1 { border-left-color:var(--violet); }
-  .card.s2 { border-left-color:var(--teal); }
-  .card.s3 { border-left-color:var(--blue); }
-  .card.s4 { border-left-color:var(--amber); }
-  .card.s5 { border-left-color:var(--indigo); background:#faf8ff; }
-  .card.skipped { opacity:.4; background:#f7f8fa; }
-  .card.saved { background:#fff9eb; }
-  .title { font-weight:600; margin:0 0 6px; font-size:15.5px; }
-  .meta-line { font-size:12.5px; color:var(--muted); margin:0 0 8px; }
-  .body { font-size:14.5px; }
-  .body p { margin:6px 0; }
-  .label {
-    display:inline-block; font-weight:600; font-size:13px;
-    color:var(--muted); margin-right:4px;
-  }
-  ul.tight { margin:6px 0; padding-left:18px; }
-  ul.tight li { margin:3px 0; }
-  a { color:var(--violet); text-decoration:underline; text-underline-offset:2px; }
-  a:hover { text-decoration-thickness:2px; }
-  .toggles { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
-  .toggles button {
-    background:#fff; border:1px solid var(--border); border-radius:4px;
-    padding:4px 10px; font-size:13px; cursor:pointer; user-select:none;
-    transition:background .12s, color .12s, border-color .12s;
-  }
-  .toggles button:hover { border-color:#999; }
-  .toggles button.active.up { background:#dbf5e1; border-color:#3aa856; color:#155f2c; }
-  .toggles button.active.down { background:#fde0e0; border-color:#c9302c; color:#7a1c1a; }
-  .toggles button.active.star { background:#fff3c7; border-color:var(--gold); color:#7a5a00; }
-  .pulse-grid { display:grid; grid-template-columns:1fr; gap:10px; }
-  @media (min-width:680px) { .pulse-grid { grid-template-columns:1fr 1fr; } }
-  .picks-panel {
-    background:var(--soft); border:1px solid var(--border); border-radius:8px;
-    padding:18px; margin-top:32px;
-  }
-  .picks-panel h3 { margin:0 0 8px; font-size:16px; }
-  .picks-panel ol { margin:8px 0 14px; padding-left:18px; font-size:14px; color:var(--muted); }
-  .picks-panel ol li { margin:3px 0; }
-  .picks-panel .btn-row { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
-  .picks-panel button {
-    background:#fff; border:1px solid var(--border); border-radius:6px;
-    padding:8px 14px; font-size:14px; cursor:pointer; font-weight:500;
-  }
-  .picks-panel button.primary { background:var(--navy); color:#fff; border-color:var(--navy); }
-  .picks-panel textarea {
-    width:100%; min-height:160px; margin-top:12px; padding:10px;
-    border:1px solid var(--border); border-radius:4px; font-family:ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size:13px; line-height:1.45; resize:vertical;
-  }
-  footer { color:var(--muted); font-size:12.5px; margin-top:24px; text-align:center; }
-  .why-line { background:#f3eef9; padding:8px 10px; border-radius:4px; font-size:13.5px; margin-top:8px; }
-  .card.s5 .why-line { background:#ebe5fb; }
 </style>
 </head>
 <body>
-<header class="top">
-  <div class="inner">
-    <h1>Morning Brief — Sun May 10, 2026</h1>
-    <div class="meta">7 AM Athens · 6 sections · target read time &lt; 5 min · adapted to yesterday's picks</div>
-  </div>
-</header>
+<div class="header">
+  <h1>☀️ Morning Brief</h1>
+  <div class="sub">Monday, 11 May 2026 · Stylianos · STIQ AI</div>
+</div>
 
-<div class="wrap">
+<div class="container">
 
-<!-- Section 0 — Saved Items -->
-<section>
-  <h2 class="section-title s0">⭐ Your Saved Items (3)</h2>
+<!-- ======================== SECTION 0: SAVED ITEMS ======================== -->
+<div class="section s0">
+  <div class="section-header">⭐ Your Saved Items</div>
+  <div class="section-body">
 
-  <div class="card s0" data-id="idea-gr-ama-compliance-tracker" data-title="AMA compliance tracker for Greek short-term rental hosts">
-    <p class="title">AMA compliance tracker for Greek short-term rental hosts</p>
-    <p class="meta-line">Saved 2026-05-04 · ideas-gr</p>
-    <p class="body">Still parked. STR enforcement remains active. Worth re-opening when next AMA licensing window approaches.</p>
-    <p class="body"><a href="https://getproofsnap.com/posts/greece-short-term-rental-airbnb-regulations-2026.html" target="_blank" rel="noopener">Greek STR Regulations 2026</a></p>
-    <div class="toggles" data-toggles></div>
-  </div>
-
-  <div class="card s0" data-id="idea-gr-greek-political-pulse" data-title="Greek Political Pulse — AI framing intelligence for the three-party race">
-    <p class="title">Greek Political Pulse — AI framing intelligence for the three-party race</p>
-    <p class="meta-line">Saved 2026-05-09 · ideas-gr</p>
-    <p class="body"><strong>Update:</strong> ND wraps "Strong Greece" pre-congress May 9 → main congress May 15-17. Karystianou's "We Begin" launch this month. Tsipras manifesto live May 1 with second-half-May party debut. <strong>The three-party race is officially live as of yesterday.</strong> Polls May 7 show Tsipras rising, Karystianou softening.</p>
-    <p class="body">Window for the framing tool is now — track which terms ("strong Greece," "we begin," manifesto language) trickle into Greek media + brand copy through end of May.</p>
-    <p class="body"><a href="https://en.protothema.gr/2026/05/07/two-new-polls-show-double-the-support-for-new-democracy-pasoks-needle-unmoved-tsipras-rising-karystianou-falling/" target="_blank" rel="noopener">Latest polls</a> · <a href="https://athens-times.com/nd-holds-live-pre-congress-in-thessaloniki-under-strong-greece-theme/" target="_blank" rel="noopener">ND pre-congress</a></p>
-    <div class="toggles" data-toggles></div>
-  </div>
-
-  <div class="card s0" data-id="idea-fr-paris-agentic-agency" data-title="Paris Agentic Agency — non-technical boutique serving the AMI ecosystem">
-    <p class="title">Paris Agentic Agency — non-technical boutique serving the AMI ecosystem</p>
-    <p class="meta-line">Saved 2026-05-09 · ideas-fr</p>
-    <p class="body"><strong>Update:</strong> Code with Claude London May 19 + Founder Day May 20 just confirmed — this is the natural launch moment for a Paris-based agentic agency to do its first 1:1s with Anthropic + UK/FR ecosystem in one room. AMI's Bruyères-le-Châtel data center comes online Q2 2026.</p>
-    <p class="body">Boutique positioning: "non-technical agentic engineering for Paris AI/SMB" — the gap between the AMI/Mistral capital scale and what a 4-person agency can deliver in 4 weeks of Claude Code is the wedge.</p>
-    <p class="body"><a href="https://claude.com/code-with-claude/london" target="_blank" rel="noopener">CwC London May 19</a> · <a href="https://news.crunchbase.com/venture/europe-largest-ai-round-mistral-seriesc/" target="_blank" rel="noopener">AMI $1.03B seed</a></p>
-    <div class="toggles" data-toggles></div>
-  </div>
-</section>
-
-<!-- Section 1 — Side Hustle Ideas -->
-<section>
-  <h2 class="section-title s1">💡 Side Hustle Ideas</h2>
-
-  <p class="subsection">🇬🇷 Greece (3)</p>
-
-  <div class="card s1" data-id="idea-gr-three-party-manifesto-readers-digest" data-title="Three-Party Manifesto Reader's Digest — 1-page side-by-side for Greek SMBs">
-    <p class="title">Three-Party Manifesto Reader's Digest</p>
-    <p class="body">
-      <span class="label">What:</span> A single-page side-by-side: ND's "Strong Greece" + 30 constitutional reform proposals · Tsipras's 15-page Social Democracy/Radical Left/Political Ecology manifesto · Karystianou's "We Begin" platform. Six rows: tax, regulation, AI/digital, labor, foreign policy, hospitality. Distilled for Greek SMB owners + operators forecasting policy noise.
-    </p>
-    <p class="body">
-      <span class="label">Why now:</span> Tsipras's manifesto went live <a href="https://en.parapolitika.gr/politics/201126/alexis-tsipras-awaits-manifesto-for-new-party-launch/" target="_blank" rel="noopener">May 1 on the Tsipras Institute site</a>. Karystianou's launch in May. ND congress May 15-17 will publish the 30 constitutional proposals in detail. <strong>Five days from now you can hand Greek SMB owners the only single-page document that compares all three.</strong>
-    </p>
-    <p class="body">
-      <span class="label">Scope:</span> 2 evenings. Claude Code summarizes each manifesto + ND's reform doc → templated 1-pager. Update once after the May 15-17 congress.
-    </p>
-    <p class="body">
-      <span class="label">Money:</span> Free PDF as Substack lead-magnet → 1:1 STIQ-style consultations at €500/session for SMBs trying to position around the new party landscape. 5-8 sessions = €2.5-4K, plus newsletter signups.
-    </p>
-    <div class="toggles" data-toggles></div>
-  </div>
-
-  <div class="card s1" data-id="idea-gr-stiq-code-review-adoption-sprint" data-title="STIQ Code Review Internal Adoption Sprint — leveraging Anthropic's May 6 launch">
-    <p class="title">STIQ Code Review Internal Adoption Sprint</p>
-    <p class="body">
-      <span class="label">What:</span> 1-week sprint to roll Anthropic's just-launched Code Review + Routines (Code w/ Claude SF May 6) across STIQ's repos. Output is a play-by-play published as a Greek-language operator's guide — 10 minutes to set up, then wake up to ready-to-merge PRs.
-    </p>
-    <p class="body">
-      <span class="label">Why now:</span> Anthropic shipped Code Review and Routines on May 6 ("used by every team at Anthropic"). API volume up 17x YoY. Mercado Libre publicly committed to 90% autonomous coding by Q3 2026. No Greek-language adoption guide exists. <a href="https://simonwillison.net/2026/May/6/code-w-claude-2026/" target="_blank" rel="noopener">Simon Willison's live blog</a>.
-    </p>
-    <p class="body">
-      <span class="label">Scope:</span> Adopt internally first (STIQ dogfood); turn the operating notes into a Substack post + a 12-page PDF. No tool — pure positioning content.
-    </p>
-    <p class="body">
-      <span class="label">Money:</span> Lead-magnet → 1:1 sessions at €500 for Athens SMBs that want the same routine. 6-10 sessions over 60 days = €3-5K + 2-3 medium B2B leads.
-    </p>
-    <div class="toggles" data-toggles></div>
-  </div>
-
-  <div class="card s1" data-id="idea-gr-may15-congress-watch-narrative-tracker" data-title="ND Congress Watch — Narrative Tracker for Greek AI Operators">
-    <p class="title">ND Congress Watch — Narrative Tracker for Greek AI Operators</p>
-    <p class="body">
-      <span class="label">What:</span> A 3-day live narrative tracker (May 15-17) of the ND Congress: which of the 30 constitutional reform proposals make it to the floor, which language survives the public debate, what the AI governance + Article 16 amendments end up looking like. Output is a daily 5-bullet email to a small distribution list.
-    </p>
-    <p class="body">
-      <span class="label">Why now:</span> Greek Constitution gets opened for the first time in years. AI governance proposed at constitutional level is unprecedented in the EU. <a href="https://greekreporter.com/2026/05/07/greece-major-constitutional-reform-proposals/" target="_blank" rel="noopener">30 reform proposals</a>. The 5-day window after the congress is when interpretation crystallizes.
-    </p>
-    <p class="body">
-      <span class="label">Scope:</span> 3-day live blog + 1 followup analysis post. Claude Code drafts each daily 5-bullet from livestream transcripts.
-    </p>
-    <p class="body">
-      <span class="label">Money:</span> Direct paid subscription €15/mo for 30-50 Greek operators = €450-750/mo. Recurring: refresh for next constitutional moment + every major political turning point.
-    </p>
-    <div class="toggles" data-toggles></div>
-  </div>
-
-  <p class="subsection">🇫🇷 Paris / France (2)</p>
-
-  <div class="card s1" data-id="idea-fr-cwc-london-founder-day-demo" data-title="Code with Claude London Founder Day Demo — May 19 + May 20">
-    <p class="title">Eurostar Day Trip: Code with Claude London + Founder Day Demo</p>
-    <p class="body">
-      <span class="label">What:</span> Show up at Code with Claude London May 19 with a single Paris-specific Claude Code demo. May 20 is the indie/founder extended day — schedule 4-5 1:1s with London-based agencies and Anthropic engineers in advance. Direct prep for the saved Paris Agentic Agency thesis.
-    </p>
-    <p class="body">
-      <span class="label">Why now:</span> Code with Claude London May 19, +1-day Founder Day May 20, both confirmed. <a href="https://claude.com/code-with-claude/london" target="_blank" rel="noopener">Event page</a>. Paris is a 2h20 Eurostar from London. Stylianos already commutes to Paris bi-weekly — adding 24h costs ~€150 marginal vs €1,500+ network ROI in one room.
-    </p>
-    <p class="body">
-      <span class="label">Scope:</span> 5 days to ship a demo. 24h on-site. 4-5 booked 1:1s in advance via the event Slack.
-    </p>
-    <p class="body">
-      <span class="label">Money:</span> Direct: 1-2 paid pilot scopes at the event ($5-15K each). Indirect: feeds the Paris Agentic Agency boutique you saved yesterday.
-    </p>
-    <div class="toggles" data-toggles></div>
-  </div>
-
-  <div class="card s1" data-id="idea-fr-trump-eu-tariff-paris-exporter-brief" data-title="Trump July 4 EU Tariff Brief — Paris Exporter Exposure Note">
-    <p class="title">Trump July 4 EU Tariff Brief — Paris Exporter Exposure Note</p>
-    <p class="body">
-      <span class="label">What:</span> A 2-page intelligence note for Paris-based French SMBs that export to the US: what the July 4 deadline actually means for them, what the 15%→25% tariff hike would do to their margins per category, how to stage shipments before the deadline.
-    </p>
-    <p class="body">
-      <span class="label">Why now:</span> Trump set a July 4 deadline May 7 for EU to ratify the Turnberry deal — or face 25% tariffs (up from 15%). EU Parliament approved 417-154; member states still negotiating. <a href="https://www.aljazeera.com/economy/2026/5/7/trump-sets-july-4-deadline-for-eu-tariff-hike-decision" target="_blank" rel="noopener">Al Jazeera</a>. 8 weeks of operational uncertainty for Paris exporters.
-    </p>
-    <p class="body">
-      <span class="label">Scope:</span> 2 days research + Claude Code synthesis + 2-page templated brief. Sell direct via Paris network.
-    </p>
-    <p class="body">
-      <span class="label">Money:</span> €400-€800 per brief × 8-15 SMBs = €3-12K. Refresh weekly through July 4 = recurring micro-revenue.
-    </p>
-    <div class="toggles" data-toggles></div>
-  </div>
-</section>
-
-<!-- Section 2 — Industry Pulse -->
-<section>
-  <h2 class="section-title s2">📈 Industry Pulse</h2>
-
-  <div class="pulse-grid">
-
-    <div class="card s2" data-id="pulse-ai-coding-agents-0510" data-title="AI coding agents: Code Review + Routines shipped, SpaceX Colossus deal, $1T valuation track">
-      <p class="title">🤖 AI Coding Agents</p>
-      <ul class="tight">
-        <li><strong>Anthropic + SpaceX Colossus deal:</strong> 222K+ NVIDIA GPUs, 300MW+ compute, exclusive use of Memphis Colossus 1. Anthropic also "expressed interest" in orbital data centers.</li>
-        <li><strong>API volume up 17x YoY.</strong> Mercado Libre committed to 90% autonomous coding by Q3 2026.</li>
-        <li><strong>Code Review + Routines launched</strong> at Code w/ Claude SF May 6 — used by every team at Anthropic. Doubled Pro/Max/Team rate limits.</li>
-        <li><strong>Reuters Apr 29:</strong> $50B raise above $900B valuation under discussion — closing in on a $1T mark.</li>
-      </ul>
-      <p class="body"><strong>So what:</strong> Context-engineering moat now built into the product. Stylianos's STIQ stack just got a 2x rate-limit upgrade for free.</p>
-      <p class="body"><a href="https://aibusiness.com/generative-ai/anthropic-spacex-agree-major-compute-capacity-deal" target="_blank" rel="noopener">SpaceX deal</a> · <a href="https://simonwillison.net/2026/May/6/code-w-claude-2026/" target="_blank" rel="noopener">CwC SF live blog</a></p>
-      <div class="toggles" data-toggles></div>
+    <div class="card" data-id="idea-gr-ama-compliance-tracker" data-title="AMA compliance tracker for Greek short-term rental hosts">
+      <div><span class="saved-badge">⭐ Saved 4 May</span></div>
+      <div class="card-title">AMA Compliance Tracker for Greek Short-Term Rental Hosts</div>
+      <div class="card-body">
+        <p>Track AMA registration deadlines, fines, and new rental licensing requirements for Airbnb/Booking.com hosts. A tool that watches regulation changes and alerts hosts before penalties hit.</p>
+        <p><span class="label">Signal:</span> <a href="https://getproofsnap.com/posts/greece-short-term-rental-airbnb-regulations-2026.html" target="_blank" rel="noopener">Greece STR regulations 2026 →</a></p>
+      </div>
+      <div class="toggles" data-id="idea-gr-ama-compliance-tracker" data-title="AMA compliance tracker for Greek short-term rental hosts">
+        <button class="toggle-btn" data-action="like">👍 Interesting</button>
+        <button class="toggle-btn" data-action="skip">👎 Skip</button>
+        <button class="toggle-btn" data-action="save">⭐ Save</button>
+      </div>
     </div>
 
-    <div class="card s2" data-id="pulse-marketing-automation-0510" data-title="Marketing automation: AEO is the new SEO; HubSpot pricing reset still unresolved; Klaviyo +28% bull case intact">
-      <p class="title">📨 Marketing Automation</p>
-      <ul class="tight">
-        <li><strong>AEO ("answer-engine optimization") emerging as table stakes</strong> — the new SEO for marketing-automation playbooks. Klaviyo + HubSpot both leaning into it.</li>
-        <li><strong>HubSpot Q1 print Wednesday:</strong> $881M +23% revenue but stock -11.9% on outcome-pricing transition. Reset still unresolved on the buy-side.</li>
-        <li><strong>Klaviyo Q1:</strong> $358M (+28%) — record operating margin, raised full-year outlook. Bull case for ecom-first automation intact.</li>
-        <li>Quiet weekend; no fresh financial print.</li>
-      </ul>
-      <p class="body"><strong>So what:</strong> AEO tooling is the wedge for any operator who already builds with Claude Code. Watch Tuesday's earnings cluster (Salesforce ecosystem partners).</p>
-      <p class="body"><a href="https://www.investing.com/news/company-news/hubspot-q1-2026-slides-agentic-platform-drives-23-revenue-growth-93CH-4670893" target="_blank" rel="noopener">HubSpot agentic platform slides</a></p>
-      <div class="toggles" data-toggles></div>
-    </div>
-
-    <div class="card s2" data-id="pulse-greek-startups-0510" data-title="Greek startups: ESPA €445M live, AMI dwarfs entire Greek ecosystem in one round">
-      <p class="title">🇬🇷 Greek Startups</p>
-      <ul class="tight">
-        <li><strong>No new Greek funding round Sat-Sun.</strong> ESPA €445M Greece 2.0 digital-transformation grant remains the live operational signal for SMBs.</li>
-        <li><strong>Comparison data point:</strong> Yann LeCun's Paris-based AMI raised <strong>$1.03B seed</strong> Mar 10 (Bpifrance backed). That single round = 4.4× the entire Greek startup funding total for 2025 (€234M).</li>
-        <li><strong>Mistral's Bruyères-le-Châtel data center</strong> goes live Q2 2026 (44MW, 13.8K Nvidia GB300s, $830M Bpifrance debt). EU sovereign-AI thesis in concrete.</li>
-        <li><strong>PHAROS AI computing infrastructure</strong> remains the only Greek-led AI compute story — early stage.</li>
-      </ul>
-      <p class="body"><strong>So what:</strong> Capital scale gap Athens vs Paris is now ~50× per round. Stylianos's leverage is operations + ecosystem + dogfood — not capital.</p>
-      <p class="body"><a href="https://news.crunchbase.com/venture/europe-largest-ai-round-mistral-seriesc/" target="_blank" rel="noopener">AMI seed round</a> · <a href="https://www.pharos-aifactory.eu/" target="_blank" rel="noopener">PHAROS AI</a></p>
-      <div class="toggles" data-toggles></div>
-    </div>
-
-    <div class="card s2" data-id="pulse-fast-casual-0510" data-title="Fast-casual: CAVA pre-earnings May 19, Sweetgreen guidance grim, Chipotle steady">
-      <p class="title">🍔 Fast-Casual</p>
-      <ul class="tight">
-        <li><strong>CAVA Q1 May 19 after-bell.</strong> Stock +52% YTD; analyst median PT $87, EPS consensus $0.17 (vs $0.04 prior). SSS, openings, full-year guide are the watchpoints.</li>
-        <li><strong>Sweetgreen Q1 disaster:</strong> revenue $161.5M (-2.9% YoY), reiterated SSS -4% to -2% for FY26.</li>
-        <li><strong>Chipotle Q1:</strong> +7.4% YoY revenue, beat consensus by 0.5% — only clean print in the cohort.</li>
-      </ul>
-      <p class="body"><strong>So what:</strong> CAVA's pre-earnings setup is the only positive signal in the cohort. Sweetgreen pricing reset is the cautionary tale for any aggressive premium positioning right now.</p>
-      <p class="body"><a href="https://www.fool.com/investing/2026/05/06/cava-stock-surges-on-strong-outlook-can-its-moment/" target="_blank" rel="noopener">CAVA pre-earnings</a> · <a href="https://www.tradingview.com/news/stockstory:1f3b48da5094b:0-sweetgreen-nyse-sg-misses-q1-cy2026-revenue-estimates/" target="_blank" rel="noopener">Sweetgreen miss</a></p>
-      <div class="toggles" data-toggles></div>
-    </div>
-
-    <div class="card s2" data-id="pulse-food-trends-0510" data-title="Food trends: GLP-1 menu cascade in major chains — Olive Garden, Subway, Chipotle, Shake Shack">
-      <p class="title">🥬 Food Trends</p>
-      <ul class="tight">
-        <li><strong>Major-chain GLP-1 menu cascade:</strong> Olive Garden 2026 menu adds smaller portion section. Subway "Protein Pockets" low-carb wraps. Chipotle "Protein Cups." Shake Shack "Good Fit" lettuce-wrapped burgers + avocado.</li>
-        <li><strong>1 in 8 US adults now on weight-loss drugs.</strong> Mediterranean diet ranks as the natural GLP-1-friendly diet — high protein, fiber, healthy fats.</li>
-        <li><strong>Protein-theater + smarter-portions</strong> = the two operating levers reshaping menu architecture for the next decade per Food Institute.</li>
-      </ul>
-      <p class="body"><strong>So what:</strong> Greek/Mediterranean is the most natural unbranded GLP-1 cuisine. Protein Garden's positioning is a Trojan horse — the diet finds you, not the other way around.</p>
-      <p class="body"><a href="https://www.tastingtable.com/2112138/glp1-menu-trend-2026/" target="_blank" rel="noopener">GLP-1 reshaping menus</a> · <a href="https://foodinstitute.com/focus/glp-1-prediction-for-2026-smarter-portions-will-become-prevalent/" target="_blank" rel="noopener">Smarter portions</a></p>
-      <div class="toggles" data-toggles></div>
-    </div>
-
-    <div class="card s2" data-id="pulse-restaurant-tech-0510" data-title="Restaurant tech: Wonder Create live, Marc Lore IPO 2028 at $7B, Spyce + Grubhub + Blue Apron stack">
-      <p class="title">🛠️ Restaurant Tech</p>
-      <ul class="tight">
-        <li><strong>Wonder Create live:</strong> single-prompt AI generates restaurant brand, menu, branding, recipes — deploys across 120 automated kitchens, scaling to 400 next year.</li>
-        <li><strong>Marc Lore: "I'm the IPO Guy"</strong> Semafor interview May 5 — Wonder IPO 2028 at $7B target. Stack: Spyce ($186M from Sweetgreen) + Grubhub (250M deliveries/yr) + Blue Apron + Blue Ribbon Fried Chicken ($6.5M Feb).</li>
-        <li><strong>Restaurant AI investment +28% YoY.</strong> BoH still the whitespace.</li>
-      </ul>
-      <p class="body"><strong>So what:</strong> Wonder model = own delivery rails + own kitchens + AI-generates the brand. Greek/EU equivalents (Efood, Deliveroo FR, Wolt) have no AI brand-generator yet.</p>
-      <p class="body"><a href="https://www.semafor.com/article/05/05/2026/im-the-ipo-guy-serial-entrepreneur-marc-lore-on-his-plan-to-take-wonder-public" target="_blank" rel="noopener">Semafor interview</a></p>
-      <div class="toggles" data-toggles></div>
-    </div>
-
-    <div class="card s2" data-id="pulse-indie-claude-code-0510" data-title="Indie / Claude Code: $0→$62K MRR in 3mo, Lisbon $10K MRR in 47 days, Code Review for solos">
-      <p class="title">🚀 Indie / Claude Code Success</p>
-      <ul class="tight">
-        <li><strong>$0 → $62K MRR in 3 months</strong> — Indie Hackers featured solo founder, Claude + Next.js + Claude Memory.</li>
-        <li><strong>Lisbon solo founder:</strong> $10K MRR in 47 days, never wrote a line of code by hand.</li>
-        <li><strong>Utah dev pilot:</strong> 77% saw value within an hour of Claude adoption; 30% reported 30%+ faster work; 40+ hours saved in 4 weeks.</li>
-        <li><strong>Code Review + Routines</strong> launched May 6 — async automations now native to Claude Code, "wake up to PRs ready to merge."</li>
-      </ul>
-      <p class="body"><strong>So what:</strong> Non-technical-founder ladder keeps getting shorter. Code Review + Routines collapses QA + multi-PR loop into "open browser, read summaries, click merge."</p>
-      <p class="body"><a href="https://www.indiehackers.com/post/tech/from-0-to-62k-mrr-in-three-months-mUPVSYOlJAC2iogGK7d4" target="_blank" rel="noopener">$0 → $62K case</a> · <a href="https://mechveck.com/blog/claude-code-monetization-research-report-2026/" target="_blank" rel="noopener">Claude Code monetization report</a></p>
-      <div class="toggles" data-toggles></div>
+    <div class="card" data-id="idea-fr-paris-agentic-agency" data-title="Paris Agentic Agency — non-technical boutique serving the AMI ecosystem">
+      <div><span class="saved-badge">⭐ Saved 9 May</span></div>
+      <div class="card-title">Paris Agentic Agency — non-technical boutique serving the AMI ecosystem</div>
+      <div class="card-body">
+        <p>Build a small, high-margin consultancy that ships agentic tools for Paris companies plugging into the AMI (€1B AI research initiative) talent and vendor ecosystem. You're already doing this for STIQ — sell the method.</p>
+        <p><span class="label">Signal:</span> <a href="https://news.crunchbase.com/venture/funding-picked-up-ai-led-europe-q1-2026/" target="_blank" rel="noopener">EU AI funding Q1 2026 →</a></p>
+      </div>
+      <div class="toggles" data-id="idea-fr-paris-agentic-agency" data-title="Paris Agentic Agency — non-technical boutique serving the AMI ecosystem">
+        <button class="toggle-btn" data-action="like">👍 Interesting</button>
+        <button class="toggle-btn" data-action="skip">👎 Skip</button>
+        <button class="toggle-btn" data-action="save">⭐ Save</button>
+      </div>
     </div>
 
   </div>
-</section>
+</div>
 
-<!-- Section 3 — Greek Politics -->
-<section>
-  <h2 class="section-title s3">🇬🇷 Greek Politics</h2>
+<!-- ======================== SECTION 1: SIDE HUSTLE IDEAS ======================== -->
+<div class="section s1">
+  <div class="section-header">💡 Side Hustle Ideas</div>
+  <div class="section-body">
 
-  <div class="card s3" data-id="gp-nd-thessaloniki-strong-greece-may9" data-title="ND Pre-Congress Thessaloniki May 9 — 'Strong Greece' theme, Mitsotakis closes">
-    <p class="title">ND wraps pre-congress in Thessaloniki under "Strong Greece" theme — runway to May 15-17 main congress</p>
-    <p class="body">Sixth and final pre-congress event yesterday May 9. Mitsotakis closed; Gerapetritis, Dendias, Papastavrou, Tzitzikostas opened. Main 16th National Congress at Metropolitan Expo May 15-17 will publicly discuss the 30 constitutional reform proposals — including AI governance + Article 16. <a href="https://athens-times.com/nd-holds-live-pre-congress-in-thessaloniki-under-strong-greece-theme/" target="_blank" rel="noopener">Athens Times</a></p>
-    <p class="body"><strong>So what:</strong> "Strong Greece" is the framing layer for ND messaging the next 60 days — bake into reading every other Greek political signal.</p>
-    <div class="toggles" data-toggles></div>
+    <div class="sub-label">🇬🇷 Greece — 4 ideas</div>
+
+    <div class="card" data-id="idea-gr-nd-congress-intelligence-stream" data-title="ND Congress Intelligence Stream — May 15-17 in 4 days">
+      <div class="card-title">ND Congress Intelligence Stream — May 15-17 in 4 Days</div>
+      <div class="card-body">
+        <p><span class="label">What:</span> A live Claude-powered digest that synthesizes the constitutional reform narrative as it unfolds over the 3-day ND Congress (May 15-17, Metropolitan Expo Athens). Sold as a one-shot intelligence brief to Greek AI companies, law firms, and political consultants who need the "what this means for my sector" read — fast.</p>
+        <p><span class="label">Why now:</span> Congress opens in 4 days. Mitsotakis will present 30+ constitutional changes including AI governance, Article 16, and electoral law. This is the biggest political event of H1 2026 and zero AI products are covering it with real-time synthesis. <a href="https://en.parapolitika.gr/politics/203774/mitsotakis-reveals-constitutional-reform-plans-with-surprise-proposals/" target="_blank" rel="noopener">Source →</a></p>
+        <p><span class="label">Scope:</span> 2-3 hours to build the Claude brief generator + PDF delivery. One-shot build, sell repeatedly.</p>
+        <p><span class="label">Money:</span> €99 one-shot report to 100 Greek AI/legal/consultant buyers = €9,900. Or a €19/month newsletter to 500 politically active professionals = €9,500/mo.</p>
+      </div>
+      <div class="toggles" data-id="idea-gr-nd-congress-intelligence-stream" data-title="ND Congress Intelligence Stream — May 15-17 in 4 days">
+        <button class="toggle-btn" data-action="like">👍 Interesting</button>
+        <button class="toggle-btn" data-action="skip">👎 Skip</button>
+        <button class="toggle-btn" data-action="save">⭐ Save</button>
+      </div>
+    </div>
+
+    <div class="card" data-id="idea-gr-tsipras-september-intelligence" data-title="Tsipras September Party Intelligence — the center-left race just stretched">
+      <div class="card-title">Tsipras September Party Intelligence — the center-left race just stretched</div>
+      <div class="card-body">
+        <p><span class="label">What:</span> An early-intelligence subscription tracking the Tsipras manifesto and his party's positioning vs. Karystianou's "We Begin" movement through the summer. Weekly synthesis, delivered as a concise brief to founders, investors, and operators who care about who governs Greece in 2027.</p>
+        <p><span class="label">Why now:</span> Fresh signal today: Tsipras officially pushed his party launch to September (not May as expected). This gives Karystianou clear air for 4 months and changes the center-left dynamic entirely. <a href="https://greekreporter.com/2026/04/03/alexis-tsipras-aims-september-launch-new-political-party/" target="_blank" rel="noopener">Source →</a> The manifesto (convergence of Social Democracy, Radical Left, Ecology) is live May 1 and polls put the vehicle at 15-20% immediately.</p>
+        <p><span class="label">Scope:</span> Weekly 1-page brief, Claude-synthesized. 4 hours to build the pipeline, then 30 min/week.</p>
+        <p><span class="label">Money:</span> €15/month subscription. 500 subscribers = €7,500/month. Could grow to €25K+ as election approaches.</p>
+      </div>
+      <div class="toggles" data-id="idea-gr-tsipras-september-intelligence" data-title="Tsipras September Party Intelligence — the center-left race just stretched">
+        <button class="toggle-btn" data-action="like">👍 Interesting</button>
+        <button class="toggle-btn" data-action="skip">👎 Skip</button>
+        <button class="toggle-btn" data-action="save">⭐ Save</button>
+      </div>
+    </div>
+
+    <div class="card" data-id="idea-gr-opus47-security-audit" data-title="Opus 4.7 Security Audit for Greek AI Products — launched this week">
+      <div class="card-title">Opus 4.7 Security Audit for Greek AI Products — launched this week</div>
+      <div class="card-body">
+        <p><span class="label">What:</span> A "security baseline" service for Greek startups using Claude in production. Run their Claude integration through Claude Security (built on Opus 4.7), generate a vulnerability report, and deliver a €299 trust document they can show to enterprise clients and investors.</p>
+        <p><span class="label">Why now:</span> Claude Opus 4.7 just launched (this week) with built-in vulnerability scanning and a new Cyber Verification Program. Greek AI companies (Archimedes ecosystem, STIQ-adjacent) are building fast but no one is doing security-first positioning. First mover window is days, not weeks. <a href="https://www.anthropic.com/news/claude-opus-4-7" target="_blank" rel="noopener">Opus 4.7 →</a></p>
+        <p><span class="label">Scope:</span> 4-6 hours to build the scan wrapper and report template using Claude Code.</p>
+        <p><span class="label">Money:</span> €299 per audit. 30 audits/month = €8,970. Also opens door to recurring €150/month monitoring retainers.</p>
+      </div>
+      <div class="toggles" data-id="idea-gr-opus47-security-audit" data-title="Opus 4.7 Security Audit for Greek AI Products — launched this week">
+        <button class="toggle-btn" data-action="like">👍 Interesting</button>
+        <button class="toggle-btn" data-action="skip">👎 Skip</button>
+        <button class="toggle-btn" data-action="save">⭐ Save</button>
+      </div>
+    </div>
+
+    <div class="card" data-id="idea-gr-cava-preearnings-narrative-brief" data-title="CAVA Earnings Narrative Brief for Greek Mediterranean F&amp;B — 8 days to May 19">
+      <div class="card-title">CAVA Earnings Narrative Brief for Greek Mediterranean F&amp;B — 8 days to May 19</div>
+      <div class="card-body">
+        <p><span class="label">What:</span> A one-page strategic brief for Greek fast-casual and Mediterranean F&B brands explaining the CAVA earnings moment and what it means for their positioning. If CAVA beats May 19 → Mediterranean is the winning category. If it misses → use the narrative dip to plant your own flag.</p>
+        <p><span class="label">Why now:</span> CAVA stock fell 11% this week on analyst downgrade (Argus Research: Hold) and valuation reassessment ahead of Q1 earnings on May 19. Market cap still $10.5B, +52% YTD, but the narrative is in flux. <a href="https://www.tikr.com/blog/cava-stock-fell-11-this-week-heres-what-investors-are-watching-ahead-of-q1-earnings" target="_blank" rel="noopener">Source →</a> Greek F&B founders should be watching this closely.</p>
+        <p><span class="label">Scope:</span> 2-3 hours to build a brief template. Sell directly to Greek restaurant chains.</p>
+        <p><span class="label">Money:</span> €499 one-shot brief. 15 Greek F&B clients = €7,485. Or use internally for STIQ/Protein Garden positioning.</p>
+      </div>
+      <div class="toggles" data-id="idea-gr-cava-preearnings-narrative-brief" data-title="CAVA Earnings Narrative Brief for Greek Mediterranean F&B — 8 days to May 19">
+        <button class="toggle-btn" data-action="like">👍 Interesting</button>
+        <button class="toggle-btn" data-action="skip">👎 Skip</button>
+        <button class="toggle-btn" data-action="save">⭐ Save</button>
+      </div>
+    </div>
+
+    <div class="sub-label">🇫🇷 Paris / France — 3 ideas</div>
+
+    <div class="card" data-id="idea-fr-claude-security-paris-b2b" data-title="Claude Security Trust Package for Paris B2B SaaS — Opus 4.7 angle">
+      <div class="card-title">Claude Security Trust Package for Paris B2B SaaS — Opus 4.7 angle</div>
+      <div class="card-body">
+        <p><span class="label">What:</span> A standardized security assessment report built on Opus 4.7 + Claude Security (Anthropic's new enterprise feature), sold as a "trust document" for French B2B SaaS companies closing large enterprise deals where procurement requires evidence of AI security controls.</p>
+        <p><span class="label">Why now:</span> Opus 4.7 shipped this week with AI vulnerability scanning + Cyber Verification Program. French enterprise buyers demand security documentation and almost no vendor currently offers an AI-layer security brief. <a href="https://www.anthropic.com/news/claude-opus-4-7" target="_blank" rel="noopener">Opus 4.7 →</a></p>
+        <p><span class="label">Scope:</span> 3-4 hours to build on Claude Code. Reusable per client, minimal maintenance.</p>
+        <p><span class="label">Money:</span> €799 per report. 20 Paris SaaS clients/month = €15,980. First-mover position before Anthropic builds this natively.</p>
+      </div>
+      <div class="toggles" data-id="idea-fr-claude-security-paris-b2b" data-title="Claude Security Trust Package for Paris B2B SaaS — Opus 4.7 angle">
+        <button class="toggle-btn" data-action="like">👍 Interesting</button>
+        <button class="toggle-btn" data-action="skip">👎 Skip</button>
+        <button class="toggle-btn" data-action="save">⭐ Save</button>
+      </div>
+    </div>
+
+    <div class="card" data-id="idea-fr-eu-us-may19-trade-watch" data-title="EU-US Trade Watch — May 19 legislative checkpoint for Paris exporters">
+      <div class="card-title">EU-US Trade Watch — May 19 legislative checkpoint for Paris exporters</div>
+      <div class="card-body">
+        <p><span class="label">What:</span> A live one-pager tracking what comes out of the EU Parliament's May 19 negotiation round on the Trump trade deal — specifically which French export sectors are most exposed to the 25% auto tariff backstop and the July 4 ratification deadline.</p>
+        <p><span class="label">Why now:</span> EU legislators named May 19 as the progress checkpoint. A round failed last Wednesday but "progress toward resolution on May 19" was announced. The deal: EU to ratify 15% tariff baseline and buy $750B US energy; failure means 25% tariff threat. <a href="https://www.euronews.com/my-europe/2026/05/07/trump-gives-eu-until-4-july-to-implement-trade-deal-or-face-much-higher-tariffs" target="_blank" rel="noopener">Source →</a></p>
+        <p><span class="label">Scope:</span> 2 hours to build a Claude-powered brief. Sell as a one-shot intelligence note.</p>
+        <p><span class="label">Money:</span> €99 to Paris exporters, trade lawyers, and investment bankers with EU exposure. 200 buyers = €19,800 from a single brief.</p>
+      </div>
+      <div class="toggles" data-id="idea-fr-eu-us-may19-trade-watch" data-title="EU-US Trade Watch — May 19 legislative checkpoint for Paris exporters">
+        <button class="toggle-btn" data-action="like">👍 Interesting</button>
+        <button class="toggle-btn" data-action="skip">👎 Skip</button>
+        <button class="toggle-btn" data-action="save">⭐ Save</button>
+      </div>
+    </div>
+
+    <div class="card" data-id="idea-fr-athens-paris-founder-bridge" data-title="Athens → Paris Founder Bridge — connect Greek agentic builders to AMI buyers">
+      <div class="card-title">Athens → Paris Founder Bridge — connect Greek agentic builders to AMI buyers</div>
+      <div class="card-body">
+        <p><span class="label">What:</span> A newsletter/cohort connecting Greek founders building agentic tools with Paris companies plugging into the AMI ecosystem (Europe's largest AI research lab build-up). Greek diaspora is historically strong in Paris; no one is connecting the two talent pools yet.</p>
+        <p><span class="label">Why now:</span> AMI raised €1B and is building across Paris, with hundreds of AI researchers needing tooling vendors. Greek AI builders (post-ESPA €445M, post-PHAROS) have products but no EU distribution channel. <a href="https://news.crunchbase.com/venture/europe-largest-ai-round-mistral-seriesc/" target="_blank" rel="noopener">AMI context →</a></p>
+        <p><span class="label">Scope:</span> 6-8 hours for a curated newsletter + intro service. Your Paris visits every 2 weeks are the moat.</p>
+        <p><span class="label">Money:</span> €500/month B2B sponsorship from Greek accelerators or ESPA-funded startups wanting EU access. 20 sponsors = €10,000/month. Or charge €2,000/intro for matched deals.</p>
+      </div>
+      <div class="toggles" data-id="idea-fr-athens-paris-founder-bridge" data-title="Athens → Paris Founder Bridge — connect Greek agentic builders to AMI buyers">
+        <button class="toggle-btn" data-action="like">👍 Interesting</button>
+        <button class="toggle-btn" data-action="skip">👎 Skip</button>
+        <button class="toggle-btn" data-action="save">⭐ Save</button>
+      </div>
+    </div>
+
   </div>
+</div>
 
-  <div class="card s3" data-id="gp-karystianou-we-begin-status-may10" data-title="Karystianou's 'We Begin' party launch slot still in May; Tsipras manifesto live May 1">
-    <p class="title">Karystianou's "We Begin" + Tsipras manifesto: launch slot still tracking May</p>
-    <p class="body">Karystianou re-stated May 1 that "We Begin — The Independent Citizens' Movement" launches this month. Tsipras's manifesto for the "convergence of Social Democracy, Radical Left and Political Ecology" went live on the Tsipras Institute website May 1; full party announcement expected second half of May, "barring dramatic unforeseen events." <a href="https://athens-times.com/maria-karystianou-announces-new-party-in-may-denounces-attempts-to-undermine-it/" target="_blank" rel="noopener">Athens Times</a></p>
-    <p class="body"><strong>So what:</strong> Three-party center-left race forming inside the same month. Center-left vote fragmentation = opportunity for ND, but also for Karystianou's anti-establishment lane.</p>
-    <div class="toggles" data-toggles></div>
+<!-- ======================== SECTION 2: INDUSTRY PULSE ======================== -->
+<div class="section s2">
+  <div class="section-header">📊 Industry Pulse</div>
+  <div class="section-body">
+    <div class="pulse-grid">
+
+      <div class="pulse-card" data-id="pulse-ai-coding-agents-0511" data-title="AI coding agents: Opus 4.7, Desktop redesign, $900B-$1T valuation">
+        <div class="ptitle">🤖 AI Coding Agents</div>
+        <ul>
+          <li><strong>Claude Opus 4.7 launched</strong> — vulnerability scanning built-in, Cyber Verification Program, same price ($5/$25 per 1M tokens)</li>
+          <li><strong>Claude Code Desktop redesigned</strong> — session sidebar, drag-and-drop workspace, parallel tasks, SSH support on Mac</li>
+          <li><strong>Anthropic secondary market</strong>: $900B–$1T; $44B ARR confirmed; SpaceX compute deal expanded capacity</li>
+          <li><strong>Rate limits doubled</strong> across Pro, Max, Team, Enterprise — peak-hour reductions removed</li>
+        </ul>
+        <div class="sowhat">So what: Opus 4.7 = new trust layer for your Claude-built products. "Security-scanned by Claude Security" is a real sales unlock before competitors find it.</div>
+        <div class="toggles" data-id="pulse-ai-coding-agents-0511" data-title="AI coding agents: Opus 4.7, Desktop redesign, $900B-$1T valuation">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </div>
+
+      <div class="pulse-card" data-id="pulse-marketing-automation-0511" data-title="Marketing automation: AEO replacing SEO, no fresh financials">
+        <div class="ptitle">📈 Marketing Automation</div>
+        <ul>
+          <li>No fresh financial signal today — nothing materially new post-HubSpot Q1</li>
+          <li>AEO (Answer Engine Optimization) is now the dominant theme — HubSpot's Breeze AI positioning around it</li>
+          <li>EU-US trade resolution (May 19 checkpoint) could affect European SaaS pricing on US tools</li>
+        </ul>
+        <div class="sowhat">So what: AEO is the new SEO — if STIQ isn't optimizing for AI-answer surfaces yet, now is the time to start.</div>
+        <div class="toggles" data-id="pulse-marketing-automation-0511" data-title="Marketing automation: AEO replacing SEO, no fresh financials">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </div>
+
+      <div class="pulse-card" data-id="pulse-greek-startups-0511" data-title="Greek startups: Billy's €2.9M, Pod Network €9M, no blockbuster round">
+        <div class="ptitle">🇬🇷 Greek Startups</div>
+        <ul>
+          <li><strong>Billy's</strong> (property mgmt SaaS): €2.9M — seed stage</li>
+          <li><strong>Pod Network</strong> (Web3 infra): €9M</li>
+          <li><strong>Progressive Robotics</strong> (physical AI): €1.55M</li>
+          <li>No blockbuster round; ecosystem active at seed, AMI at €1B is the outlier that dwarfs everything</li>
+        </ul>
+        <div class="sowhat">So what: Position STIQ as "applied AI for hospitality" against the AMI-era pure-research wave. The gap between research and operations is your market.</div>
+        <div class="toggles" data-id="pulse-greek-startups-0511" data-title="Greek startups: Billy's €2.9M, Pod Network €9M, no blockbuster round">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </div>
+
+      <div class="pulse-card" data-id="pulse-fast-casual-0511" data-title="Fast-casual: CAVA fell 11% this week, earnings May 19, Argus downgrade">
+        <div class="ptitle">🍔 Fast-Casual</div>
+        <ul>
+          <li><strong>CAVA fell 11%</strong> this week — Argus Research downgrade to Hold, valuation concerns ahead of Q1 (May 19)</li>
+          <li>Still +52% YTD; market cap $10.5B; EPS consensus $0.17; SSS guidance 3-5%</li>
+          <li><strong>Sweetgreen</strong> guidance grim; <strong>Chipotle</strong> steady; <strong>Wingstop</strong> recovering</li>
+          <li>May 19 is the week's pivotal earnings date for the whole Mediterranean fast-casual narrative</li>
+        </ul>
+        <div class="sowhat">So what: CAVA's May 19 print is a narrative trigger for your market. Watch it — and have your Protein Garden/Dina's storyline ready to deploy either way.</div>
+        <div class="toggles" data-id="pulse-fast-casual-0511" data-title="Fast-casual: CAVA fell 11% this week, earnings May 19, Argus downgrade">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </div>
+
+      <div class="pulse-card" data-id="pulse-food-trends-0511" data-title="Food trends: GLP-1 menu cascade now fully mainstream">
+        <div class="ptitle">🥬 Food Trends</div>
+        <ul>
+          <li>GLP-1 menu cascade fully mainstream: Olive Garden (smaller portions), Subway (Protein Pockets), Shake Shack (Good Fit), McDonald's (17 items revamped)</li>
+          <li>No fresh financial figures today — signal is now trend confirmation, not new data</li>
+          <li>1 in 8 US adults on weight-loss drugs; Mediterranean = the natural GLP-1 diet narrative is intact</li>
+        </ul>
+        <div class="sowhat">So what: The window to claim "natural GLP-1 Mediterranean" positioning closes as chains co-opt it. Protein Garden's positioning needs to be loudly planted this month.</div>
+        <div class="toggles" data-id="pulse-food-trends-0511" data-title="Food trends: GLP-1 menu cascade now fully mainstream">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </div>
+
+      <div class="pulse-card" data-id="pulse-restaurant-tech-0511" data-title="Restaurant tech: Wonder Create, no new M&A today">
+        <div class="ptitle">🛠️ Restaurant Tech</div>
+        <ul>
+          <li>Wonder Create: expanding 120 → 400 kitchens; IPO target 2028 at $7B — no new developments today</li>
+          <li>No fresh M&A this week</li>
+          <li>No fresh financial signal — nothing materially new beyond Wonder Create's trajectory</li>
+        </ul>
+        <div class="sowhat">So what: Watch for Wonder Create copycats in Europe — the model (anyone can open a restaurant with AI) will surface in France/Greece within 12 months.</div>
+        <div class="toggles" data-id="pulse-restaurant-tech-0511" data-title="Restaurant tech: Wonder Create, no new M&A today">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </div>
+
+      <div class="pulse-card" data-id="pulse-indie-claude-code-0511" data-title="Indie / Claude Code: Desktop SSH, $62K MRR benchmark, Opus 4.7 for solos">
+        <div class="ptitle">🚀 Indie / Claude Code</div>
+        <ul>
+          <li>$0→$62K MRR in 3 months: the benchmark pattern documented and repeating on Indie Hackers</li>
+          <li><strong>Claude Code Desktop SSH</strong> (Mac): you can now deploy directly to client servers without giving clients access — new delivery model for solo consultants</li>
+          <li>Opus 4.7 security scanning = new monetizable service layer that didn't exist last week</li>
+        </ul>
+        <div class="sowhat">So what: SSH support is your new deploy moat for Greek client work. Ship to their servers from your machine — zero infrastructure handoff headaches.</div>
+        <div class="toggles" data-id="pulse-indie-claude-code-0511" data-title="Indie / Claude Code: Desktop SSH, $62K MRR benchmark, Opus 4.7 for solos">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </div>
+
+    </div>
   </div>
+</div>
 
-  <div class="card s3" data-id="gp-may10-polls-tsipras-rising-karystianou-falling" data-title="Two new polls May 7: ND doubles support of #2, Tsipras rising, Karystianou falling">
-    <p class="title">Two new polls (May 7): ND ~doubles next-place support; Tsipras rising, Karystianou falling</p>
-    <p class="body">Per ProtoThema May 7: ND shows roughly double the support of the runner-up; PASOK needle unmoved. Tsipras's projected vote share rising; Karystianou's softening despite the planned launch. The undecided / "another party" bucket sits 11→13%. <a href="https://en.protothema.gr/2026/05/07/two-new-polls-show-double-the-support-for-new-democracy-pasoks-needle-unmoved-tsipras-rising-karystianou-falling/" target="_blank" rel="noopener">ProtoThema</a></p>
-    <p class="body"><strong>So what:</strong> Tsipras enters as the more durable anti-ND vehicle of the two. Karystianou's brand is fragile to launch-week scrutiny.</p>
-    <div class="toggles" data-toggles></div>
+<!-- ======================== SECTION 3: GREEK POLITICS ======================== -->
+<div class="section s3">
+  <div class="section-header">🇬🇷 Greek Politics</div>
+  <div class="section-body">
+    <ul class="pol-list">
+      <li data-id="gp-nd-congress-4-days-may11" data-title="ND Congress May 15-17: opens in 4 days at Metropolitan Expo">
+        <strong>ND Congress opens in 4 days</strong> (May 15-17, Metropolitan Expo Athens) — Mitsotakis presents the full constitutional reform package: 30+ articles including AI governance, Article 16, and electoral law. The party's "Institutional Leap Forward" doctrine. Coalition speculation surfacing for the first time publicly. <a href="https://athens-times.com/new-democracys-second-pre-congress-event-in-alexandroupoli-with-mitsotakis/" target="_blank" rel="noopener">→</a>
+        <div class="toggles" data-id="gp-nd-congress-4-days-may11" data-title="ND Congress May 15-17: opens in 4 days at Metropolitan Expo">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </li>
+      <li data-id="gp-karystianou-leads-we-begin-may11" data-title="Karystianou formally leads 'We Begin' as of May 8">
+        <strong>Karystianou formally leads "We Begin"</strong> (announced May 8 by Crete regional org). Party confirmed in May; symbol is white dove + olive branch. Tempi accountability remains the central narrative. Launch date imminent. <a href="https://athens-times.com/maria-karystianou-officially-leads-independent-citizens-movement/" target="_blank" rel="noopener">→</a>
+        <div class="toggles" data-id="gp-karystianou-leads-we-begin-may11" data-title="Karystianou formally leads 'We Begin' as of May 8">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </li>
+      <li data-id="gp-tsipras-september-shift-may11" data-title="Tsipras shifts party launch to September — not May">
+        <strong>Tsipras shifts to September</strong> — NOT May as previously expected. His manifesto (convergence of Radical Left + Social Democracy + Political Ecology) is live, polls put the vehicle at 15-20%. The September timeline gives Karystianou first-mover advantage in the center-left. <a href="https://greekreporter.com/2026/04/03/alexis-tsipras-aims-september-launch-new-political-party/" target="_blank" rel="noopener">→</a>
+        <div class="toggles" data-id="gp-tsipras-september-shift-may11" data-title="Tsipras shifts party launch to September — not May">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </li>
+      <li data-id="gp-mitsotakis-coalition-may11" data-title="Mitsotakis opens coalition option publicly for the first time">
+        <strong>Coalition option on the table</strong> — ND campaign rhetoric shifting toward coalition framing as ND polls stabilize in the mid-to-high 20s. Mitsotakis quells internal MP revolt ahead of congress. ND's "Strong Greece" pre-congress tour wrapped in Alexandroupoli. <a href="https://athens-times.com/mitsotakis-puts-brakes-on-internal-revolt-as-nd-faces-electoral-anxiety-and-scandal-fallout/" target="_blank" rel="noopener">→</a>
+        <div class="toggles" data-id="gp-mitsotakis-coalition-may11" data-title="Mitsotakis opens coalition option publicly for the first time">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </li>
+    </ul>
   </div>
+</div>
 
-  <div class="card s3" data-id="gp-mydata-phase2-october-confirmed" data-title="myDATA Phase II officially delayed to October 2026">
-    <p class="title">myDATA Phase II officially delayed to October 2026 — 38K SMB reprieve confirmed</p>
-    <p class="body">AADE officially moved second-phase e-delivery rollout from May 1 to October 2026; B2B mandatory e-invoicing for non-large SMBs now October 1 (Phase 2), adjustment period to Dec 31. Penalties: 50% of VAT for VATable transactions; €500-€1,000 per audit for non-VATable. <a href="https://www.fiscal-requirements.com/news/5410" target="_blank" rel="noopener">Fiscal Solutions</a></p>
-    <p class="body"><strong>So what:</strong> 5 months of breathing room for the 38K SMBs in scope. Removes the May-2 "compliance panic" that was driving the regulatory-tool ideas — those windows are closed.</p>
-    <div class="toggles" data-toggles></div>
+<!-- ======================== SECTION 4: INTERNATIONAL POLITICS ======================== -->
+<div class="section s4">
+  <div class="section-header">🌍 International Politics</div>
+  <div class="section-body">
+    <ul class="pol-list">
+      <li data-id="ip-ukraine-ceasefire-ends-today-may11" data-title="Ukraine 3-day ceasefire (May 9-11) expires today — 1,000+ violations, Putin signals 'coming to an end'">
+        <strong>Ukraine 3-day ceasefire ends TODAY (May 11)</strong> — both sides reported 1,000+ violations during the Trump-brokered pause. Prisoner swap (1,000 each) not yet completed. Putin says war is "coming to an end" — reading: positioning for a September deal framework, not imminent peace. <a href="https://www.npr.org/2026/05/09/nx-s1-5816478/trump-russia-ukraine-ceasefire" target="_blank" rel="noopener">→</a>
+        <div class="toggles" data-id="ip-ukraine-ceasefire-ends-today-may11" data-title="Ukraine 3-day ceasefire (May 9-11) expires today — 1,000+ violations, Putin signals 'coming to an end'">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </li>
+      <li data-id="ip-iran-unacceptable-response-may11" data-title="Iran: Trump calls response 'totally unacceptable', Netanyahu 'work to be done'">
+        <strong>Iran: Trump calls response "totally unacceptable"</strong> — Tehran's reply to the US peace proposal went via Pakistan mediators; Iran defiant on nuclear sites. Netanyahu says "work to be done." Ceasefire technically holds; Hormuz tense but USS Mason attack was thwarted. Iran warns countries enforcing sanctions will "face problems" in the strait. <a href="https://www.cnn.com/2026/05/10/world/live-news/iran-war-news" target="_blank" rel="noopener">→</a>
+        <div class="toggles" data-id="ip-iran-unacceptable-response-may11" data-title="Iran: Trump calls response 'totally unacceptable', Netanyahu 'work to be done'">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </li>
+      <li data-id="ip-eu-us-may19-checkpoint-may11" data-title="EU-US trade: May 19 legislative checkpoint, July 4 hard deadline">
+        <strong>EU-US trade: May 19 is the next checkpoint</strong> — EU Parliament targeting a legislative progress round May 19; if that fails, the July 4 hard deadline (ratify the 15% tariff deal or face 25% auto tariffs) looms. Last Wednesday's round failed on safeguard clauses. EU also committed to buy $750B US energy as part of the deal. <a href="https://www.euronews.com/my-europe/2026/05/07/trump-gives-eu-until-4-july-to-implement-trade-deal-or-face-much-higher-tariffs" target="_blank" rel="noopener">→</a>
+        <div class="toggles" data-id="ip-eu-us-may19-checkpoint-may11" data-title="EU-US trade: May 19 legislative checkpoint, July 4 hard deadline">
+          <button class="toggle-btn" data-action="like">👍</button>
+          <button class="toggle-btn" data-action="skip">👎</button>
+          <button class="toggle-btn" data-action="save">⭐</button>
+        </div>
+      </li>
+    </ul>
   </div>
+</div>
 
-  <div class="card s3" data-id="gp-pylos-prosecution-status-may10" data-title="Pylos: 17 coast guard members + 4 senior commanders charged with negligent manslaughter">
-    <p class="title">Pylos prosecution: 17 coast guard officers + 4 senior figures incl. current HCG commander charged</p>
-    <p class="body">Piraeus Naval Court ruling: 17 coast guard members face criminal charges; four senior figures including the current Hellenic Coast Guard commander face negligent-manslaughter charges. No prosecutions filed yet but the pipeline is locked. Government still silent. <a href="https://www.wsws.org/en/articles/2025/06/05/ydhp-j05.html" target="_blank" rel="noopener">Earlier coverage</a></p>
-    <p class="body"><strong>So what:</strong> Migration accountability becomes another lever the opposition can pull through May congress + party launches.</p>
-    <div class="toggles" data-toggles></div>
+<!-- ======================== SECTION 5: WILDCARD ======================== -->
+<div class="section s5">
+  <div class="section-header">🎲 Today's Wildcard</div>
+  <div class="section-body">
+    <div class="card" data-id="wildcard-2026-05-11-kafeneion-intelligence-network" data-title="The Kafeneion Intelligence Network — how Ottoman-era Greek coffee houses ran the first distributed prediction markets">
+      <div class="card-title">The Kafeneion Intelligence Network — Greece's original distributed AI, circa 1820</div>
+      <div class="card-body">
+        <p>The Greek <em>kafeneion</em> (coffee house) in Ottoman-era port cities — Smyrna, Thessaloniki, Odessa — wasn't just a place to drink coffee. It was a <strong>distributed intelligence network</strong>. Merchants would gather each morning to trade odds on shipping arrivals, weather windows, political developments, and grain prices. The <em>kafetzis</em> (coffee house owner) became a trusted information broker, curating the day's intelligence from dozens of sources and presenting it in a format people were willing to pay for — in tips, loyalty, and business.</p>
+        <p>This was, structurally, what you're doing with Morning Brief. The <em>kafetzi</em> had no algorithm — just pattern recognition, source triage, and a daily brief delivered over a small cup.</p>
+        <p>The most successful <em>kafeneion</em> operators in 19th-century Athens weren't the ones with the biggest rooms — they were the ones with the best network of informants and the sharpest editorial instinct for what mattered. They were proto-curators in a world without media.</p>
+        <div class="wildcard-why">Why this for you today: You're building an intelligence product (this brief) on top of an intelligence product (Claude). The kafetzi was doing the same thing manually. The meta-lesson: the value isn't in the information — it's in the trusted, daily, curated frame. That's what people paid for in 1820 and what they'll pay for in 2026.</div>
+      </div>
+      <div class="toggles" data-id="wildcard-2026-05-11-kafeneion-intelligence-network" data-title="The Kafeneion Intelligence Network — how Ottoman-era Greek coffee houses ran the first distributed prediction markets">
+        <button class="toggle-btn" data-action="like">👍 Interesting</button>
+        <button class="toggle-btn" data-action="skip">👎 Skip</button>
+        <button class="toggle-btn" data-action="save">⭐ Save</button>
+      </div>
+    </div>
   </div>
-</section>
+</div>
 
-<!-- Section 4 — International Politics -->
-<section>
-  <h2 class="section-title s4">🌍 International Politics</h2>
-
-  <div class="card s4" data-id="ip-trump-3day-ceasefire-may9-11" data-title="Trump 3-day Russia-Ukraine ceasefire May 9-11 with 1,000 prisoner swap">
-    <p class="title">Trump-brokered 3-day Russia-Ukraine ceasefire (May 9-11) — 1,000-prisoner swap each side</p>
-    <p class="body">Trump confirmed May 9: 72-hour ceasefire May 9 through May 11. All "kinetic activity" suspended. Prison swap of 1,000 prisoners each. "Hopefully, the beginning of the end of a very long, deadly, and hard fought War." Earlier rival Putin/Zelensky truces had collapsed. <a href="https://www.aljazeera.com/news/2026/5/8/amid-ukraines-daring-assaults-russia-scales-back-victory-day-celebrations" target="_blank" rel="noopener">Al Jazeera</a></p>
-    <p class="body"><strong>So what:</strong> First time in 11 weeks both sides agreed on the same window. Watch May 11 noon Athens — if the ceasefire extends, EU defense procurement narrative softens overnight.</p>
-    <div class="toggles" data-toggles></div>
-  </div>
-
-  <div class="card s4" data-id="ip-iran-hormuz-ceasefire-may10" data-title="Iran-Hormuz: ceasefire holding officially, but US thwarted attacks on 3 Navy ships">
-    <p class="title">Iran-Hormuz: ceasefire holds officially; US thwarted attacks on 3 Navy ships</p>
-    <p class="body">Hegseth: ceasefire still holds. But US repelled attacks on 3 Navy ships in the Strait of Hormuz, retaliated against Iranian military facilities. UN SG Guterres urging maximum restraint. Trump paused Project Freedom (US Navy escort through Hormuz). <a href="https://www.cbsnews.com/live-updates/iran-war-trump-strait-of-hormuz-ships-uae-attacked/" target="_blank" rel="noopener">CBS News</a></p>
-    <p class="body"><strong>So what:</strong> Oil price tail risk uncapped. Greek shipping/insurance + Mediterranean trade exposure both real.</p>
-    <div class="toggles" data-toggles></div>
-  </div>
-
-  <div class="card s4" data-id="ip-trump-eu-july4-trade-deadline" data-title="Trump July 4 deadline for EU trade deal — 25% tariff threat if not ratified">
-    <p class="title">Trump's July 4 deadline for EU to ratify trade deal — 25% tariffs threatened</p>
-    <p class="body">Trump announced May 7 (post-call with von der Leyen): EU has until July 4 to fully ratify the Turnberry deal (15% on most EU exports for zero tariffs on key US industrial/agri goods). Otherwise tariffs jump to 25%. EU Parliament approved 417-154 in March; member states still negotiating. <a href="https://www.euronews.com/my-europe/2026/05/07/trump-gives-eu-until-4-july-to-implement-trade-deal-or-face-much-higher-tariffs" target="_blank" rel="noopener">Euronews</a></p>
-    <p class="body"><strong>So what:</strong> 8 weeks of operational uncertainty for EU exporters. Direct trigger for the Paris exporter exposure brief idea above.</p>
-    <div class="toggles" data-toggles></div>
-  </div>
-</section>
-
-<!-- Section 5 — Wildcard -->
-<section>
-  <h2 class="section-title s5">🎲 Today's Wildcard</h2>
-
-  <div class="card s5" data-id="wildcard-2026-05-10-spyros-skouras" data-title="Spyros Skouras: from Greek-American diner busboy to 20th Century Fox CEO (1942-1962)">
-    <p class="title">Spyros Skouras — from Greek-American diner busboy to 20th Century Fox CEO (1942-1962)</p>
-    <p class="body">Born 1893 in a small Peloponnese village. Emigrated to St. Louis at 17. Within a decade ran a chain of Greek-American diners with his two brothers. Pivoted into theaters in the 1920s, eventually taking over 20th Century Fox at the brink of bankruptcy in 1942 and running it for 20 years — through CinemaScope, the Marilyn Monroe era, Cleopatra's near-implosion. He bankrolled Greek diaspora causes throughout, and in 1948 lobbied directly with President Truman to keep US military aid to Greece flowing during the civil war.</p>
-    <p class="body">The arc: F&B operator → media operator → diaspora-political operator. Same person, three career stacks built on the same operating muscle.</p>
-    <p class="body why-line"><strong>Why this for you today:</strong> You liked the Daskalakis/Archimedes wildcard last week and the Braudel "solo operator wins" wildcard yesterday — same flavor. Skouras is the proof point for "Greek operator scales a concept across continents," which is the lens you're applying to STIQ + Protein Garden. Read for texture, not lessons.</p>
-    <p class="body"><a href="https://en.wikipedia.org/wiki/Spyros_Skouras" target="_blank" rel="noopener">Wikipedia</a></p>
-    <div class="toggles" data-toggles></div>
-  </div>
-</section>
-
-<!-- Picks Panel -->
+<!-- ======================== PICKS PANEL ======================== -->
 <div class="picks-panel">
   <h3>📋 My Picks &amp; Training</h3>
-  <p style="margin:6px 0 6px;font-size:14px;color:var(--muted)">Click 👍/👎/⭐ on items as you read. The training loop has 4 steps:</p>
-  <ol>
-    <li><strong>Read</strong> — this brief.</li>
-    <li><strong>React</strong> — toggle 👍 / 👎 / ⭐ on items (state saves to your browser).</li>
-    <li><strong>Copy</strong> — hit "Show my picks" → Copy.</li>
-    <li><strong>Train</strong> — paste into Cowork chat with prefix <code>train brief:</code> and Claude updates tomorrow's brief.</li>
-  </ol>
-  <div class="btn-row">
-    <button id="show-picks" class="primary">Show my picks</button>
-    <button id="copy-picks">Copy</button>
-    <button id="clear-picks">Clear all picks</button>
+  <div class="desc">
+    Click 👍 / 👎 / ⭐ on any item above to shape tomorrow's brief. Your clicks are saved automatically in your browser.
   </div>
-  <textarea id="picks-text" readonly placeholder="Picks will appear here when you click 'Show my picks'."></textarea>
+  <ol>
+    <li><strong>Read</strong> — scan the brief and click toggles on anything that hits or misses.</li>
+    <li><strong>Show picks</strong> — hit the button below to generate your summary.</li>
+    <li><strong>Copy</strong> — paste into Cowork with the prefix: <code>train brief: [your picks]</code></li>
+    <li><strong>Adapt</strong> — tomorrow's brief reads the updated training file and tunes accordingly.</li>
+  </ol>
+  <button id="showPicksBtn">Show my picks</button>
+  <button class="secondary" id="clearPicksBtn">Clear all picks</button>
+  <textarea id="picksTextarea" readonly></textarea>
+  <div class="copy-row" id="copyRow">
+    <button id="copyBtn">Copy to clipboard</button>
+  </div>
 </div>
 
-<footer>
-  Generated 2026-05-10 · Athens · Anthropic Cowork · adapted to yesterday's training pass
-</footer>
-
-</div>
+</div><!-- /container -->
 
 <script>
-(function(){
-  const TODAY = '2026-05-10';
-  const KEY_PREFIX = 'mb-' + TODAY + '-';
+(function() {
+  const DATE = '2026-05-11';
+  const PREFIX = 'mb-' + DATE + '-';
 
-  function buttonsHtml(itemId) {
-    return '<button data-act="up" data-id="'+itemId+'">👍 Interesting</button>'
-         + '<button data-act="down" data-id="'+itemId+'">👎 Skip</button>'
-         + '<button data-act="star" data-id="'+itemId+'">⭐ Save</button>';
+  function getState(id) {
+    return localStorage.getItem(PREFIX + id) || null;
+  }
+  function setState(id, action) {
+    if (getState(id) === action) {
+      localStorage.removeItem(PREFIX + id);
+      return null;
+    }
+    localStorage.setItem(PREFIX + id, action);
+    return action;
   }
 
-  function applyState(card, state) {
-    card.classList.remove('skipped','saved');
-    if (state === 'down') card.classList.add('skipped');
-    if (state === 'star') card.classList.add('saved');
-    card.querySelectorAll('.toggles button').forEach(function(b){
-      b.classList.remove('active','up','down','star');
-      if (b.dataset.act === state) {
-        b.classList.add('active', state);
+  function updateBtns(card, activeAction) {
+    const btns = card.querySelectorAll('.toggle-btn');
+    btns.forEach(btn => {
+      const action = btn.dataset.action;
+      btn.classList.remove('active-like', 'active-skip', 'active-save');
+      if (action === activeAction) {
+        if (action === 'like') btn.classList.add('active-like');
+        if (action === 'skip') btn.classList.add('active-skip');
+        if (action === 'save') btn.classList.add('active-save');
       }
     });
   }
 
-  document.querySelectorAll('[data-toggles]').forEach(function(div){
-    const card = div.closest('.card');
-    const itemId = card.dataset.id;
-    div.innerHTML = buttonsHtml(itemId);
-    const saved = localStorage.getItem(KEY_PREFIX + itemId);
-    if (saved) applyState(card, saved);
-  });
+  function initToggles() {
+    document.querySelectorAll('.toggles').forEach(container => {
+      const id = container.dataset.id;
+      if (!id) return;
+      const savedState = getState(id);
+      if (savedState) updateBtns(container, savedState);
 
-  document.body.addEventListener('click', function(e){
-    const btn = e.target.closest('button[data-act]');
-    if (!btn) return;
-    const id = btn.dataset.id;
-    const act = btn.dataset.act;
-    const card = btn.closest('.card');
-    const cur = localStorage.getItem(KEY_PREFIX + id);
-    const next = (cur === act) ? null : act;
-    if (next) localStorage.setItem(KEY_PREFIX + id, next);
-    else localStorage.removeItem(KEY_PREFIX + id);
-    applyState(card, next);
-  });
-
-  document.getElementById('show-picks').addEventListener('click', function(){
-    const cards = document.querySelectorAll('.card[data-id]');
-    const buckets = { up:[], star:[], down:[] };
-    cards.forEach(function(c){
-      const s = localStorage.getItem(KEY_PREFIX + c.dataset.id);
-      if (s && buckets[s]) buckets[s].push(c.dataset.title);
+      container.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const action = btn.dataset.action;
+          const newState = setState(id, action);
+          updateBtns(container, newState);
+        });
+      });
     });
-    let out = 'My picks from Morning Brief — ' + TODAY + '\n\n';
-    out += '👍 INTERESTING:\n';
-    out += (buckets.up.length ? buckets.up.map(t=>'- '+t).join('\n') : '- (none)') + '\n\n';
-    out += '⭐ SAVE FOR LATER:\n';
-    out += (buckets.star.length ? buckets.star.map(t=>'- '+t).join('\n') : '- (none)') + '\n\n';
-    out += '👎 SKIP:\n';
-    out += (buckets.down.length ? buckets.down.map(t=>'- '+t).join('\n') : '- (none)') + '\n';
-    document.getElementById('picks-text').value = out;
-  });
+  }
 
-  document.getElementById('copy-picks').addEventListener('click', function(){
-    const ta = document.getElementById('picks-text');
-    if (!ta.value) document.getElementById('show-picks').click();
-    ta.select();
-    try { document.execCommand('copy'); this.textContent = 'Copied!'; setTimeout(()=>this.textContent='Copy', 1400); } catch(_){}
-  });
-
-  document.getElementById('clear-picks').addEventListener('click', function(){
-    if (!confirm('Clear all picks for today?')) return;
-    document.querySelectorAll('.card[data-id]').forEach(function(c){
-      localStorage.removeItem(KEY_PREFIX + c.dataset.id);
-      applyState(c, null);
+  function generatePicksSummary() {
+    const liked = [], saved = [], skipped = [];
+    document.querySelectorAll('.toggles[data-id]').forEach(container => {
+      const id = container.dataset.id;
+      const title = container.dataset.title;
+      const state = getState(id);
+      if (state === 'like') liked.push(title);
+      else if (state === 'save') saved.push(title);
+      else if (state === 'skip') skipped.push(title);
     });
-    document.getElementById('picks-text').value = '';
+
+    let out = 'My picks from Morning Brief — ' + DATE + '\n\n';
+    if (liked.length) {
+      out += '👍 INTERESTING:\n';
+      liked.forEach(t => out += '- ' + t + '\n');
+      out += '\n';
+    }
+    if (saved.length) {
+      out += '⭐ SAVE FOR LATER:\n';
+      saved.forEach(t => out += '- ' + t + '\n');
+      out += '\n';
+    }
+    if (skipped.length) {
+      out += '👎 SKIP:\n';
+      skipped.forEach(t => out += '- ' + t + '\n');
+    }
+    if (!liked.length && !saved.length && !skipped.length) {
+      out += '(No picks yet — click 👍 / 👎 / ⭐ on items above first.)';
+    }
+    return out.trim();
+  }
+
+  document.getElementById('showPicksBtn').addEventListener('click', () => {
+    const ta = document.getElementById('picksTextarea');
+    const cr = document.getElementById('copyRow');
+    ta.value = generatePicksSummary();
+    ta.style.display = 'block';
+    cr.style.display = 'block';
   });
+
+  document.getElementById('clearPicksBtn').addEventListener('click', () => {
+    const keys = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith(PREFIX)) keys.push(k);
+    }
+    keys.forEach(k => localStorage.removeItem(k));
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+      btn.classList.remove('active-like', 'active-skip', 'active-save');
+    });
+    const ta = document.getElementById('picksTextarea');
+    ta.value = '';
+    ta.style.display = 'none';
+    document.getElementById('copyRow').style.display = 'none';
+  });
+
+  document.getElementById('copyBtn').addEventListener('click', () => {
+    const ta = document.getElementById('picksTextarea');
+    navigator.clipboard.writeText(ta.value).catch(() => {
+      ta.select();
+      document.execCommand('copy');
+    });
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => { btn.textContent = 'Copy to clipboard'; }, 2000);
+  });
+
+  initToggles();
 })();
 </script>
 </body>
