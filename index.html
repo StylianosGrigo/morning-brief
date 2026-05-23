@@ -3,597 +3,562 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morning Brief — May 21, 2026</title>
+<title>Morning Brief — May 23, 2026</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f5; color: #1a1a1a; font-size: 15px; line-height: 1.6; }
-  .header { background: #0f1d3a; color: #fff; padding: 18px 24px; position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; }
-  .header h1 { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.02em; }
-  .header .date { font-size: 0.85rem; color: #aac4ff; }
-  .container { max-width: 860px; margin: 0 auto; padding: 20px 16px 60px; }
-  .section { margin-bottom: 28px; }
-  .section-header { display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 8px 8px 0 0; color: #fff; font-weight: 700; font-size: 0.95rem; }
-  .section-body { background: #fff; border-radius: 0 0 8px 8px; border: 1px solid #e0e0e0; border-top: none; }
-  /* Section colors */
-  .sec-saved .section-header { background: #d4a017; }
-  .sec-ideas .section-header { background: #7d3c98; }
-  .sec-industry .section-header { background: #16a085; }
-  .sec-politics-gr .section-header { background: #1f4e79; }
-  .sec-politics-int .section-header { background: #d68910; }
-  .sec-wildcard .section-header { background: #4b3a8b; }
-  /* Cards */
-  .card { padding: 14px 16px; border-bottom: 1px solid #f0f0f0; }
-  .card:last-child { border-bottom: none; }
-  .card-title { font-weight: 700; font-size: 0.97rem; margin-bottom: 4px; }
-  .card-title a { color: inherit; text-decoration: none; }
-  .card-title a:hover { text-decoration: underline; }
-  .card-body { font-size: 0.88rem; color: #333; }
-  .card-body p { margin-bottom: 6px; }
-  .card-body p:last-child { margin-bottom: 0; }
-  .card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; font-size: 0.78rem; }
-  .tag { background: #f0f0f0; color: #555; padding: 2px 8px; border-radius: 10px; }
-  .saved-tag { background: #fff3cd; color: #856404; }
-  /* Idea cards */
-  .idea-card { padding: 16px; border-bottom: 1px solid #f0f0f0; }
-  .idea-card:last-child { border-bottom: none; }
-  .idea-card .idea-title { font-weight: 700; font-size: 1rem; color: #5a2d82; margin-bottom: 6px; }
-  .idea-card .idea-title a { color: inherit; text-decoration: none; }
-  .idea-card .idea-title a:hover { text-decoration: underline; }
-  .idea-what { font-size: 0.88rem; color: #333; margin-bottom: 6px; }
-  .idea-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 8px; }
-  @media (max-width: 600px) { .idea-grid { grid-template-columns: 1fr; } }
-  .idea-box { background: #f9f4ff; border-radius: 6px; padding: 8px 10px; font-size: 0.82rem; }
-  .idea-box .label { font-weight: 700; color: #7d3c98; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 2px; }
-  .sub-header { background: rgba(125,60,152,0.08); padding: 8px 16px; font-size: 0.82rem; font-weight: 700; color: #7d3c98; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #f0f0f0; }
-  /* Industry cards */
-  .pulse-card { padding: 14px 16px; border-bottom: 1px solid #f0f0f0; }
-  .pulse-card:last-child { border-bottom: none; }
-  .pulse-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
-  .pulse-bullets { list-style: none; }
-  .pulse-bullets li { font-size: 0.87rem; color: #333; padding: 2px 0 2px 14px; position: relative; }
-  .pulse-bullets li::before { content: "•"; position: absolute; left: 0; color: #16a085; }
-  .so-what { margin-top: 8px; font-size: 0.83rem; color: #0a5c4d; background: #e8f8f5; padding: 6px 10px; border-radius: 5px; border-left: 3px solid #16a085; }
-  /* Politics */
-  .pol-list { list-style: none; padding: 0; }
-  .pol-list li { padding: 10px 16px; border-bottom: 1px solid #f0f0f0; font-size: 0.88rem; }
-  .pol-list li:last-child { border-bottom: none; }
-  .pol-list li strong { font-weight: 700; }
-  /* Wildcard */
-  .wildcard-body { padding: 18px 16px; }
-  .wildcard-title { font-weight: 700; font-size: 1rem; color: #4b3a8b; margin-bottom: 8px; }
-  .wildcard-content { font-size: 0.88rem; color: #333; }
-  .why-today { margin-top: 10px; background: #f0edfb; border-left: 3px solid #4b3a8b; padding: 8px 12px; font-size: 0.85rem; color: #3a2d6e; border-radius: 0 6px 6px 0; }
-  /* Toggle buttons */
-  .toggle-row { display: flex; gap: 6px; margin-top: 10px; }
-  .toggle-btn { border: 1px solid #ddd; background: #fff; padding: 4px 10px; border-radius: 14px; font-size: 0.8rem; cursor: pointer; transition: all 0.15s; color: #555; }
-  .toggle-btn:hover { border-color: #aaa; }
-  .toggle-btn.active-like { background: #d4edda; border-color: #5cb85c; color: #2d6a2d; font-weight: 700; }
-  .toggle-btn.active-skip { background: #f8d7da; border-color: #d9534f; color: #7a1a1a; font-weight: 700; }
-  .toggle-btn.active-save { background: #fff3cd; border-color: #d4a017; color: #6b4e00; font-weight: 700; }
-  /* Saved items */
-  .saved-card { padding: 14px 16px; border-bottom: 1px solid #f0f0f0; }
-  .saved-card:last-child { border-bottom: none; }
-  .saved-card .saved-title { font-weight: 700; font-size: 0.97rem; color: #7a5500; margin-bottom: 4px; }
-  .saved-card .saved-title a { color: inherit; text-decoration: none; }
-  .saved-card .saved-meta { font-size: 0.80rem; color: #888; margin-bottom: 4px; }
-  /* Picks panel */
-  .picks-panel { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 20px; margin-top: 24px; }
-  .picks-panel h3 { font-size: 1rem; color: #0f1d3a; margin-bottom: 8px; }
-  .picks-steps { font-size: 0.84rem; color: #555; margin-bottom: 14px; line-height: 1.7; }
-  .picks-steps ol { padding-left: 18px; }
-  .picks-textarea { width: 100%; height: 160px; font-family: monospace; font-size: 0.82rem; padding: 10px; border: 1px solid #ddd; border-radius: 6px; resize: vertical; display: none; }
-  .picks-btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-  .btn { padding: 7px 16px; border-radius: 6px; border: none; cursor: pointer; font-size: 0.85rem; font-weight: 600; }
-  .btn-primary { background: #0f1d3a; color: #fff; }
-  .btn-secondary { background: #e0e0e0; color: #333; }
-  .btn-primary:hover { background: #1a3a6e; }
-  .btn-secondary:hover { background: #ccc; }
-  .notice { font-size: 0.78rem; color: #888; margin-top: 8px; }
-  code { background: #f4f4f4; padding: 1px 5px; border-radius: 3px; font-size: 0.85em; }
-  hr { border: none; border-top: 1px solid #e8e8e8; margin: 4px 0; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f6fa;color:#1a1a2e;line-height:1.6}
+a{color:inherit;text-decoration:underline;text-underline-offset:2px}
+a:hover{opacity:.75}
+
+/* Header */
+.site-header{background:#0f1d3a;color:#fff;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.site-header h1{font-size:1.25rem;font-weight:700;letter-spacing:-.01em}
+.site-header .meta{font-size:.8rem;opacity:.65;white-space:nowrap}
+
+.container{max-width:860px;margin:0 auto;padding:20px 16px 40px}
+
+/* Section shells */
+.section{background:#fff;border-radius:12px;margin-bottom:20px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.section-header{padding:14px 20px;display:flex;align-items:center;gap:10px}
+.section-header h2{font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.01em}
+.section-body{padding:16px 20px}
+
+/* Accent colours */
+.accent-gold   .section-header{background:#d4a017}
+.accent-violet .section-header{background:#7d3c98}
+.accent-teal   .section-header{background:#16a085}
+.accent-blue   .section-header{background:#1f4e79}
+.accent-amber  .section-header{background:#d68910}
+.accent-indigo .section-header{background:#4b3a8b}
+
+/* Sub-heading inside section */
+.sub-heading{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;margin:16px 0 8px}
+.sub-heading:first-child{margin-top:0}
+
+/* Item card */
+.item{border:1px solid #e8e8ef;border-radius:8px;padding:14px 16px;margin-bottom:10px;position:relative;transition:border-color .15s}
+.item:last-child{margin-bottom:0}
+.item-title{font-size:.95rem;font-weight:700;margin-bottom:5px;line-height:1.35}
+.item-body{font-size:.85rem;color:#444;line-height:1.55}
+.item-body p{margin-bottom:6px}
+.item-body p:last-child{margin-bottom:0}
+.item-meta{font-size:.75rem;color:#888;margin-top:6px}
+.item-label{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 6px;border-radius:4px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.lbl-gr{background:#edf6ff;color:#1f4e79}
+.lbl-fr{background:#f0e6ff;color:#7d3c98}
+
+/* Toggle buttons */
+.toggles{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.btn-toggle{background:#f0f0f5;border:1px solid #ddd;border-radius:20px;padding:4px 12px;font-size:.78rem;cursor:pointer;transition:all .15s;white-space:nowrap}
+.btn-toggle:hover{background:#e5e5ef}
+.btn-toggle.active-like{background:#d4edda;border-color:#28a745;color:#155724;font-weight:600}
+.btn-toggle.active-skip{background:#f8d7da;border-color:#dc3545;color:#721c24;font-weight:600}
+.btn-toggle.active-save{background:#fff3cd;border-color:#d4a017;color:#856404;font-weight:600}
+.item.liked{border-color:#28a745}
+.item.skipped{border-color:#dc3545;opacity:.7}
+.item.saved{border-color:#d4a017}
+
+/* Industry cards */
+.pulse-card{border-left:3px solid #16a085;padding:12px 14px;margin-bottom:12px;background:#f9fffd}
+.pulse-card:last-child{margin-bottom:0}
+.pulse-card-title{font-size:.88rem;font-weight:700;margin-bottom:6px}
+.pulse-card ul{margin:4px 0 4px 16px;font-size:.83rem;color:#333;line-height:1.55}
+.pulse-card .so-what{font-size:.78rem;color:#0d6e5a;margin-top:6px;font-weight:600;border-top:1px solid #d0ede8;padding-top:5px}
+
+/* Politics bullets */
+.pol-list{list-style:none;padding:0}
+.pol-list li{padding:8px 0;border-bottom:1px solid #f0f0f5;font-size:.85rem;line-height:1.5}
+.pol-list li:last-child{border-bottom:none}
+.pol-list li::before{content:'▸';margin-right:6px;opacity:.5}
+
+/* Wildcard card */
+.wildcard-body{border:2px solid #4b3a8b;border-radius:8px;padding:16px;background:#f7f5ff}
+.wildcard-body .wc-why{font-size:.78rem;color:#4b3a8b;font-weight:700;margin-top:8px;padding-top:8px;border-top:1px solid #d8d0f5}
+
+/* Picks panel */
+.picks-panel{background:#fff;border-radius:12px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.07);margin-top:20px}
+.picks-panel h3{font-size:.95rem;font-weight:700;margin-bottom:10px}
+.picks-steps{font-size:.82rem;color:#555;margin-bottom:14px;line-height:1.6}
+.picks-steps ol{padding-left:18px;margin-top:6px}
+.picks-steps code{background:#f0f0f5;padding:1px 5px;border-radius:3px;font-size:.8rem}
+.btn-show-picks{background:#0f1d3a;color:#fff;border:none;border-radius:8px;padding:9px 18px;font-size:.85rem;cursor:pointer;font-weight:600}
+.btn-show-picks:hover{background:#1a3158}
+#picks-output{display:none;margin-top:12px}
+#picks-textarea{width:100%;height:180px;font-size:.78rem;border:1px solid #ddd;border-radius:6px;padding:10px;font-family:monospace;resize:vertical;color:#333}
+.picks-actions{display:flex;gap:8px;margin-top:8px}
+.btn-copy,.btn-clear{background:#f0f0f5;border:1px solid #ddd;border-radius:6px;padding:6px 14px;font-size:.8rem;cursor:pointer}
+.btn-copy:hover,.btn-clear:hover{background:#e0e0ea}
 </style>
 </head>
 <body>
-<div class="header">
-  <div>
-    <div class="h1">☀️ Morning Brief</div>
-    <div style="font-size:0.85rem;color:#aac4ff;margin-top:2px;">Thursday, May 21, 2026 · Athens</div>
-  </div>
-  <div style="font-size:0.8rem;color:#7090cc;">Under 5 min</div>
-</div>
+
+<header class="site-header">
+  <h1>☀️ Morning Brief</h1>
+  <span class="meta">Saturday, May 23, 2026 &nbsp;·&nbsp; Athens time</span>
+</header>
 
 <div class="container">
 
-<!-- ===== SECTION 0: SAVED ITEMS ===== -->
-<div class="section sec-saved">
-  <div class="section-header">⭐ Your Saved Items</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 0 — SAVED ITEMS               -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section accent-gold">
+  <div class="section-header"><h2>⭐ Your Saved Items</h2></div>
   <div class="section-body">
 
-    <div class="saved-card" data-id="idea-gr-ama-compliance-tracker" data-title="AMA compliance tracker for Greek short-term rental hosts">
-      <div class="saved-title">
-        <a href="https://getproofsnap.com/posts/greece-short-term-rental-airbnb-regulations-2026.html" target="_blank" rel="noopener">AMA compliance tracker for Greek short-term rental hosts</a>
+    <div class="item" data-id="idea-gr-ama-compliance-tracker" data-title="AMA compliance tracker for Greek short-term rental hosts">
+      <span class="item-label lbl-gr">🇬🇷 Greece Idea</span>
+      <div class="item-title">AMA Compliance Tracker for Greek Short-Term Rental Hosts</div>
+      <div class="item-body">
+        <p>Saved <strong>May 4.</strong> Claude Code tool that monitors AMA (Accommodation Register Number) compliance, AADE penalties, and new STR platform requirements for Airbnb/Booking hosts. The regulation keeps tightening — Greek authorities issued €12M in fines in Q1 2026.</p>
+        <p><a href="https://getproofsnap.com/posts/greece-short-term-rental-airbnb-regulations-2026.html" target="_blank" rel="noopener">Signal source →</a></p>
       </div>
-      <div class="saved-meta">⭐ Saved May 4 · Greece Ideas</div>
-      <div style="font-size:0.86rem;color:#555;">Short-term rental AMA registration compliance tool. Regulatory pressure on Airbnb hosts hasn't eased — still ~90K+ properties in scope. Evergreen.</div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="idea-gr-ama-compliance-tracker" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="idea-gr-ama-compliance-tracker" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="idea-gr-ama-compliance-tracker" data-action="save">⭐ Save</button>
+      <div class="toggles">
+        <button class="btn-toggle" data-id="idea-gr-ama-compliance-tracker" data-action="like">👍 Interesting</button>
+        <button class="btn-toggle" data-id="idea-gr-ama-compliance-tracker" data-action="skip">👎 Dismiss</button>
+        <button class="btn-toggle" data-id="idea-gr-ama-compliance-tracker" data-action="save">⭐ Keep Saved</button>
       </div>
     </div>
 
-    <div class="saved-card" data-id="idea-fr-paris-agentic-agency" data-title="Paris Agentic Agency — non-technical boutique serving the AMI ecosystem">
-      <div class="saved-title">Paris Agentic Agency — non-technical boutique serving the AMI ecosystem</div>
-      <div class="saved-meta">⭐ Saved May 9 · France Ideas</div>
-      <div style="font-size:0.86rem;color:#555;">Boutique consultancy/agency using Claude Code to serve Paris AI ecosystem clients (AMI, BPI France-backed startups, etc.) — essentially your Paris Cowork mode as a service. AMI raised $1B in March; ecosystem density building.</div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="idea-fr-paris-agentic-agency" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="idea-fr-paris-agentic-agency" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="idea-fr-paris-agentic-agency" data-action="save">⭐ Save</button>
+    <div class="item" data-id="idea-fr-paris-agentic-agency" data-title="Paris Agentic Agency — non-technical boutique serving the AMI ecosystem">
+      <span class="item-label lbl-fr">🇫🇷 France Idea</span>
+      <div class="item-title">Paris Agentic Agency — Non-Technical Boutique Serving the AMI Ecosystem</div>
+      <div class="item-body">
+        <p>Saved <strong>May 9.</strong> A boutique shop offering Claude Code sprint delivery to Paris-based AI founders who need front-ends and automations but don't have engineers. Advanced Machine Intelligence (Yann LeCun's lab) just raised $1B in the largest European seed ever — the ecosystem around it is exploding with potential clients.</p>
+      </div>
+      <div class="toggles">
+        <button class="btn-toggle" data-id="idea-fr-paris-agentic-agency" data-action="like">👍 Interesting</button>
+        <button class="btn-toggle" data-id="idea-fr-paris-agentic-agency" data-action="skip">👎 Dismiss</button>
+        <button class="btn-toggle" data-id="idea-fr-paris-agentic-agency" data-action="save">⭐ Keep Saved</button>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ===== SECTION 1: SIDE HUSTLE IDEAS ===== -->
-<div class="section sec-ideas">
-  <div class="section-header">💡 Side Hustle Ideas</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 1 — SIDE HUSTLE IDEAS         -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section accent-violet">
+  <div class="section-header"><h2>💡 Side Hustle Ideas</h2></div>
   <div class="section-body">
 
-    <div class="sub-header">🇬🇷 Greece</div>
+    <div class="sub-heading">🇬🇷 Greece</div>
 
-    <!-- GR Idea 1 -->
-    <div class="idea-card" data-id="idea-gr-cava-q1-protein-garden-brief" data-title="CAVA Q1 Blowout → Protein Garden Investor Narrative Sprint">
-      <div class="idea-title">CAVA Q1 Blowout → Protein Garden "Mediterranean Wins" Investor Deck Insert</div>
-      <div class="idea-what">CAVA just reported $434M Q1 revenue (+32.2% YoY), +9.7% same-store sales, +6.8% traffic growth — the clearest proof yet that the Mediterranean fast-casual thesis works at scale. Ship a 2-page investor brief that maps Protein Garden's model directly onto CAVA's unit economics and narrative arc. Use it in STIQ's next fundraise conversation.</div>
-      <div class="idea-grid">
-        <div class="idea-box"><span class="label">Why now</span><a href="https://www.stocktitan.net/sec-filings/CAVA/8-k-cava-group-inc-reports-material-event-af1dcc1dc9e0.html" target="_blank" rel="noopener">CAVA May 19 earnings</a> — this data is 48 hours old. Every day you wait, a competitor sees it first.</div>
-        <div class="idea-box"><span class="label">Scope</span>1 day. Claude Code drafts the brief from CAVA's 8-K + your own STIQ unit data. You edit the narrative.</div>
-        <div class="idea-box"><span class="label">Money</span>Internal use → accelerates STIQ Series A positioning. Secondary: license the brief template to other Greek F&B chains for €1,000–2,000/each.</div>
+    <!-- GR-1 -->
+    <div class="item" data-id="idea-gr-us-tourist-concierge-0523" data-title="American Athens Insider — AI Concierge for the New US Direct-Flight Boom">
+      <span class="item-label lbl-gr">🇬🇷 Greece</span>
+      <div class="item-title">American Athens Insider — AI Concierge for the New US Direct-Flight Boom</div>
+      <div class="item-body">
+        <p><strong>What it is:</strong> A Claude Code-built AI concierge (web + WhatsApp) for US travelers arriving on the new non-stop routes. Covers Athens neighborhoods, day-trip itineraries, restaurant picks, and fast F&amp;B recommendations — including Protein Garden if it fits their vibe.</p>
+        <p><strong>Why now:</strong> American Airlines launched <a href="https://www.travelandtourworld.com/news/article/american-airlines-launches-new-dallas-athens-route-with-777-300er-how-this-new-service-will-impact-us-greece-travel-in-2026/" target="_blank" rel="noopener">Dallas-Athens non-stop on May 21</a> — the 11th direct US-Greece route. 40M visitors expected in 2026, €23B in revenue. US travelers have money and zero local knowledge.</p>
+        <p><strong>Scope:</strong> 2-3 weeks to MVP (Claude Code + WhatsApp Business API). B2B white-label for 3-5 Athens boutique hotels at launch.</p>
+        <p><strong>Money:</strong> B2B white-label €199/month per hotel (10 hotels = €2K MRR in 30 days). Referral kickbacks from partner restaurants.</p>
       </div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="idea-gr-cava-q1-protein-garden-brief" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="idea-gr-cava-q1-protein-garden-brief" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="idea-gr-cava-q1-protein-garden-brief" data-action="save">⭐ Save</button>
+      <div class="toggles">
+        <button class="btn-toggle" data-id="idea-gr-us-tourist-concierge-0523" data-action="like">👍 Interesting</button>
+        <button class="btn-toggle" data-id="idea-gr-us-tourist-concierge-0523" data-action="skip">👎 Skip</button>
+        <button class="btn-toggle" data-id="idea-gr-us-tourist-concierge-0523" data-action="save">⭐ Save</button>
       </div>
     </div>
 
-    <!-- GR Idea 2 -->
-    <div class="idea-card" data-id="idea-gr-2027-elections-fb-playbook" data-title="Greek 2027 Election Cycle F&B Operations Playbook">
-      <div class="idea-title">Greek 2027 Election Cycle F&B Operations Playbook</div>
-      <div class="idea-what">Mitsotakis confirmed at the ND Congress (May 17) elections will be in 2027 — the earliest a third-term campaign can begin is now. Greek election years consistently bring price sensitivity spikes, political risk premiums for business, and consumer spending hesitancy. Build an 18-month ops playbook for Greek restaurant chains: pricing strategy, staffing buffer, supplier contracts, cash positioning — for the window between now and polling day 2027.</div>
-      <div class="idea-grid">
-        <div class="idea-box"><span class="label">Why now</span>Elections confirmed for 2027 at <a href="https://en.protothema.gr/2026/05/17/mitsotakis-elections-in-2027-only-through-a-third-new-democracy-government-term-does-the-sure-path-to-greece-2030-pass-updated/" target="_blank" rel="noopener">ND Congress May 17</a>. 18-month window opens today.</div>
-        <div class="idea-box"><span class="label">Scope</span>2–3 days research + Claude Code to generate the brief + cover the three political scenarios (ND win, Tsipras win, coalition).</div>
-        <div class="idea-box"><span class="label">Money</span>Sell to 20+ Greek F&B chains at €1,500/brief = €30K. Update quarterly. Natural cross-sell to STIQ advisory.</div>
+    <!-- GR-2 -->
+    <div class="item" data-id="idea-gr-glp1-menu-audit-0523" data-title="GLP-1 Mediterranean Menu Optimizer — AI audit tool for Greek F&B operators">
+      <span class="item-label lbl-gr">🇬🇷 Greece</span>
+      <div class="item-title">GLP-1 Mediterranean Menu Optimizer — AI Audit for Greek F&amp;B Operators</div>
+      <div class="item-body">
+        <p><strong>What it is:</strong> Upload your menu → Claude analyzes GLP-1 friendliness (protein density, portion logic, satiety index) → outputs a scored report + 5 concrete tweaks. Mediterranean diet was rated #1 by 69% of nutrition experts for GLP-1 users. Greek operators have a natural advantage — almost nobody is marketing it yet.</p>
+        <p><strong>Why now:</strong> GLP-1 <a href="https://finance.yahoo.com/sectors/healthcare/articles/glp-1-market-innovation-landscape-135700562.html" target="_blank" rel="noopener">market growing $76B → $162B by 2031</a>. 73% of GLP-1 users are actively increasing protein intake. CAVA's 32% revenue growth is partly GLP-1 positioned. Greek restaurants are sitting on a goldmine they haven't named.</p>
+        <p><strong>Scope:</strong> 1 week Claude Code MVP. PDF menu → structured audit report. No backend needed for v1.</p>
+        <p><strong>Money:</strong> €299 one-time audit, €79/month for ongoing "GLP-1 Menu Pulse". Target: Athens + Mykonos premium operators, 20 clients = €6K upfront.</p>
       </div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="idea-gr-2027-elections-fb-playbook" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="idea-gr-2027-elections-fb-playbook" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="idea-gr-2027-elections-fb-playbook" data-action="save">⭐ Save</button>
-      </div>
-    </div>
-
-    <!-- GR Idea 3 -->
-    <div class="idea-card" data-id="idea-gr-three-party-business-compass" data-title="Three-Party Greek Business Compass: ND vs Tsipras vs Elpida">
-      <div class="idea-title">Three-Party Greek Business Compass: ND 2030 vs Tsipras vs Elpida — What Each Platform Means for Your Business</div>
-      <div class="idea-what">Karystianou launches "Elpida" in Thessaloniki <strong>tonight</strong> (May 21, 18:30). Tsipras's "Progressive Alliance" launches May 26. Mitsotakis is campaigning for 2027. For the first time since 2015 there are three credible parties with different economic visions. Build a living comparison — focused on tax, labor law, SMB regulations, and foreign investment — updated as manifestos evolve. Not a news tracker: a business-decision decision aid.</div>
-      <div class="idea-grid">
-        <div class="idea-box"><span class="label">Why now</span><a href="https://athens-times.com/maria-karystianou-unveils-her-new-political-party-in-thessaloniki/" target="_blank" rel="noopener">Elpida launches today</a>. Three distinct platforms for the first time in a decade. Business owners have zero structured analysis of what each government means for them.</div>
-        <div class="idea-box"><span class="label">Scope</span>1 day to launch v1 (scrape manifestos, generate comparison, build simple web page). Claude Code can do this in hours.</div>
-        <div class="idea-box"><span class="label">Money</span>Freemium: free 1-pager, paid deep-dive + quarterly updates at €9.99/month. 200 subscribers = €2,000/month.</div>
-      </div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="idea-gr-three-party-business-compass" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="idea-gr-three-party-business-compass" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="idea-gr-three-party-business-compass" data-action="save">⭐ Save</button>
+      <div class="toggles">
+        <button class="btn-toggle" data-id="idea-gr-glp1-menu-audit-0523" data-action="like">👍 Interesting</button>
+        <button class="btn-toggle" data-id="idea-gr-glp1-menu-audit-0523" data-action="skip">👎 Skip</button>
+        <button class="btn-toggle" data-id="idea-gr-glp1-menu-audit-0523" data-action="save">⭐ Save</button>
       </div>
     </div>
 
-    <div class="sub-header">🇫🇷 Paris / France</div>
-
-    <!-- FR Idea 1 -->
-    <div class="idea-card" data-id="idea-fr-eu-us-sunset-alert-2026" data-title="EU-US Trade Deal Sunset Alert for Paris SaaS Founders">
-      <div class="idea-title">EU-US Trade Deal Sunset Monitor for Paris-Based SaaS Founders</div>
-      <div class="idea-what">The EU and US struck a provisional trade deal on May 20 (yesterday). Key terms: 15% tariff cap on EU goods, EU drops duties on US industrials, but a sunset clause at end-2029 and suspension mechanism if either side defects. For Paris SaaS founders selling into the US, this creates a 3.5-year window of relative stability — but the sunset clause is a business risk to plan around now. A quarterly briefing product that monitors the ratification status, clause triggers, and US-side compliance.</div>
-      <div class="idea-grid">
-        <div class="idea-box"><span class="label">Why now</span><a href="https://www.cnbc.com/2026/05/20/eu-us-trade-deal-trump-autos.html" target="_blank" rel="noopener">Signed May 20</a>. EU ratification vote mid-June. The window between now and ratification is when founders need to understand their exposure.</div>
-        <div class="idea-box"><span class="label">Scope</span>2 days to build the initial report + briefing page. Quarterly updates as the deal progresses.</div>
-        <div class="idea-box"><span class="label">Money</span>B2B: sell quarterly briefings to Paris-based startups with US revenue exposure at €300–500/quarter. 50 subscribers = €20K/year. Or integrate into your Paris Agentic Agency offer.</div>
+    <!-- GR-3 -->
+    <div class="item" data-id="idea-gr-greek-bond-investor-brief-0523" data-title="Greece Capital Pulse — weekly brief for Greek diaspora investors">
+      <span class="item-label lbl-gr">🇬🇷 Greece</span>
+      <div class="item-title">Greece Capital Pulse — Weekly Brief for Greek Diaspora Investors</div>
+      <div class="item-body">
+        <p><strong>What it is:</strong> A weekly AI-curated email brief covering Greek sovereign bonds, VC rounds, ESPA grants, and big-ticket real estate. Aimed at the Greek diaspora (especially US-based post the new direct routes) and institutional investors watching Greece's re-rating story.</p>
+        <p><strong>Why now:</strong> Greece just <a href="https://www.tovima.com/finance/greeces-economy-in-2026-growth-risks-and-open-questions/" target="_blank" rel="noopener">reopened its 10-year bond</a> — target €300M, attracted €785M in bids (2.6x oversubscribed). The market is hungry for Greece exposure. No clean English-language weekly digest exists for this audience.</p>
+        <p><strong>Scope:</strong> 1 week to set up Claude Code pipeline (web scrape → brief → email via Resend). Newsletter-first, no app needed.</p>
+        <p><strong>Money:</strong> €49/month premium tier, free + paid split. 100 paid subscribers = €4.9K MRR, almost zero marginal cost.</p>
       </div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="idea-fr-eu-us-sunset-alert-2026" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="idea-fr-eu-us-sunset-alert-2026" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="idea-fr-eu-us-sunset-alert-2026" data-action="save">⭐ Save</button>
+      <div class="toggles">
+        <button class="btn-toggle" data-id="idea-gr-greek-bond-investor-brief-0523" data-action="like">👍 Interesting</button>
+        <button class="btn-toggle" data-id="idea-gr-greek-bond-investor-brief-0523" data-action="skip">👎 Skip</button>
+        <button class="btn-toggle" data-id="idea-gr-greek-bond-investor-brief-0523" data-action="save">⭐ Save</button>
       </div>
     </div>
 
-    <!-- FR Idea 2 -->
-    <div class="idea-card" data-id="idea-fr-code-with-claude-paris-cohort" data-title="Code with Claude Paris — Monthly Non-Technical Founder Workshop">
-      <div class="idea-title">Code with Claude Paris — Monthly Non-Technical Founder Workshop</div>
-      <div class="idea-what">Anthropic ran "Code with Claude: Extended London" on May 20 (yesterday) — founder stories, deep-dives, laptops-open workshops for non-technical builders. Paris has no equivalent. You have the profile — CPTO, non-technical agentic engineer who ships front-ends, Paris regular. Run a monthly evening event at a Paris co-working space: 20 non-technical founders, 3-hour build session, one real project output per event.</div>
-      <div class="idea-grid">
-        <div class="idea-box"><span class="label">Why now</span><a href="https://claude.com/code-with-claude/london-extended" target="_blank" rel="noopener">London event</a> ran yesterday. You can be the Paris chapter within weeks while the energy is live.</div>
-        <div class="idea-box"><span class="label">Scope</span>1 week to organize. Use your existing Paris network + post in French indie hacker communities.</div>
-        <div class="idea-box"><span class="label">Money</span>€150–300/ticket × 20 participants = €3,000–6,000/event. Monthly cadence = €36K–72K/year. Or partner with an incubator for a fixed monthly fee.</div>
+    <div class="sub-heading">🇫🇷 Paris / France</div>
+
+    <!-- FR-1 -->
+    <div class="item" data-id="idea-fr-eu-ai-act-sprint-kit-0523" data-title="EU AI Act Sprint Kit — 70-day compliance generator for French AI startups">
+      <span class="item-label lbl-fr">🇫🇷 France</span>
+      <div class="item-title">EU AI Act Sprint Kit — 70-Day Compliance Generator for French AI Startups</div>
+      <div class="item-body">
+        <p><strong>What it is:</strong> Claude Code tool that ingests a startup's product description + tech stack → generates their EU AI Act risk classification, documentation checklist, conformity assessment draft, and CNIL registration guide. Output is a structured Notion/PDF package.</p>
+        <p><strong>Why now:</strong> <a href="https://blog.mean.ceo/eu-ai-act-for-startups/" target="_blank" rel="noopener">High-risk AI system requirements become fully enforceable August 2, 2026</a> — exactly 71 days away. France has 750+ AI companies, most of whom are scrambling. The EuroHPC gigafactory submissions are also due June 23, amplifying AI compliance anxiety in Paris right now.</p>
+        <p><strong>Scope:</strong> 1 week Claude Code MVP. No legal advice — just structured documentation scaffolding (clear disclaimer). </p>
+        <p><strong>Money:</strong> €499 one-time kit per company. 10 clients in first month (Paris network) = €5K. Law firm partnership for upsell.</p>
       </div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="idea-fr-code-with-claude-paris-cohort" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="idea-fr-code-with-claude-paris-cohort" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="idea-fr-code-with-claude-paris-cohort" data-action="save">⭐ Save</button>
+      <div class="toggles">
+        <button class="btn-toggle" data-id="idea-fr-eu-ai-act-sprint-kit-0523" data-action="like">👍 Interesting</button>
+        <button class="btn-toggle" data-id="idea-fr-eu-ai-act-sprint-kit-0523" data-action="skip">👎 Skip</button>
+        <button class="btn-toggle" data-id="idea-fr-eu-ai-act-sprint-kit-0523" data-action="save">⭐ Save</button>
+      </div>
+    </div>
+
+    <!-- FR-2 -->
+    <div class="item" data-id="idea-fr-paris-gigafactory-radar-0523" data-title="Gigafactory Radar — Slack digest tracking France's €10B EU AI compute race">
+      <span class="item-label lbl-fr">🇫🇷 France</span>
+      <div class="item-title">Gigafactory Radar — Slack Digest Tracking France's €10B EU AI Compute Race</div>
+      <div class="item-body">
+        <p><strong>What it is:</strong> A daily Slack/email digest for Paris AI founders tracking France's bid to host the €10B EU AI gigafactory. Covers EuroHPC announcements, BPI France grants, and sovereign compute news — curated by Claude Code from EU institutional sources.</p>
+        <p><strong>Why now:</strong> <a href="https://startupfortune.com/france-leads-a-crowded-race-to-host-europes-10-billion-ai-gigafactory/" target="_blank" rel="noopener">EuroHPC call is open until June 23</a> — 76 expressions of interest, 60 potential sites, 16 member states competing. Every serious Paris AI founder is tracking this race. No single clean source exists.</p>
+        <p><strong>Scope:</strong> Claude Code + Slack API + Claude web scraper. 3-5 days to build. Free to seed 50 subscribers in your Paris network.</p>
+        <p><strong>Money:</strong> Free → €29/month premium with deeper analysis. Lead gen for Paris Agentic Agency. 200 free users → 20 paid = €580/month + pipeline.</p>
+      </div>
+      <div class="toggles">
+        <button class="btn-toggle" data-id="idea-fr-paris-gigafactory-radar-0523" data-action="like">👍 Interesting</button>
+        <button class="btn-toggle" data-id="idea-fr-paris-gigafactory-radar-0523" data-action="skip">👎 Skip</button>
+        <button class="btn-toggle" data-id="idea-fr-paris-gigafactory-radar-0523" data-action="save">⭐ Save</button>
+      </div>
+    </div>
+
+  </div><!-- /section-body -->
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 2 — INDUSTRY PULSE            -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section accent-teal">
+  <div class="section-header"><h2>📊 Industry Pulse</h2></div>
+  <div class="section-body" style="padding:12px 16px">
+
+    <!-- 1. AI Coding Agents -->
+    <div class="pulse-card" data-id="pulse-ai-coding-agents-0523" data-title="AI Coding Agents — Anthropic $30B run rate, Claude Code $2.5B ARR">
+      <div class="pulse-card-title">🤖 AI Coding Agents</div>
+      <ul>
+        <li>Anthropic hit a <strong>$30B annualized revenue run rate</strong> — CEO Dario Amodei calls it "80x growth in 3 years, crazy." <a href="https://venturebeat.com/technology/anthropic-says-it-hit-a-30-billion-revenue-run-rate-after-crazy-80x-growth" target="_blank" rel="noopener">VentureBeat</a></li>
+        <li><strong>Claude Code alone: $2.5B ARR</strong> — the primary driver, fastest-growing dev tool in history. <a href="https://www.mindstudio.ai/blog/claude-code-2-5-billion-annualized-revenue-terminal-tool" target="_blank" rel="noopener">MindStudio</a></li>
+        <li>OpenAI Q1 2026: <strong>$5.7B revenue</strong> but <strong>-122% non-GAAP operating margin</strong> — burning cash at scale. <a href="https://www.wheresyoured.at/news-openai-had-a-negative-122-operating-margin-in-q1-2026-and-chatgpt-growth-has-stalled/" target="_blank" rel="noopener">Ed Zitron</a></li>
+        <li>Anthropic $900B valuation raise in progress; secondary markets already pricing at ~$1T. <a href="https://techcrunch.com/2026/04/29/sources-anthropic-could-raise-a-new-50b-round-at-a-valuation-of-900b/" target="_blank" rel="noopener">TechCrunch</a></li>
+      </ul>
+      <div class="so-what">→ The tool you're building on ($30B run rate) is profitable and dominant. OpenAI is burning cash. Bet on Claude Code infrastructure continuing to improve rapidly.</div>
+      <div class="toggles" style="margin-top:8px">
+        <button class="btn-toggle" data-id="pulse-ai-coding-agents-0523" data-action="like">👍</button>
+        <button class="btn-toggle" data-id="pulse-ai-coding-agents-0523" data-action="skip">👎</button>
+        <button class="btn-toggle" data-id="pulse-ai-coding-agents-0523" data-action="save">⭐</button>
+      </div>
+    </div>
+
+    <!-- 2. Marketing Automation -->
+    <div class="pulse-card" data-id="pulse-marketing-automation-0523" data-title="Marketing Automation — $13B market, HubSpot + Klaviyo AI agents live">
+      <div class="pulse-card-title">📈 Marketing Automation</div>
+      <ul>
+        <li>Global marketing automation market projected to <strong>exceed $13B by end of 2026</strong>; 75%+ of companies now use some form. <a href="https://technologychecker.io/blog/marketing-automation-report-market-share-trends" target="_blank" rel="noopener">TechChecker</a></li>
+        <li>HubSpot "Breeze AI" — new "Active Intelligence" agents: autonomous email timing prediction, lead scoring, campaign-from-prompt generation. Now competing credibly with enterprise tools.</li>
+        <li>Klaviyo AI: autonomous "Marketing Agents" generating segments, copy, churn predictions. <strong>Klaviyo TTM revenue ~$1.31B</strong>, +28% YoY.</li>
+        <li>Both are racing to embed agentic features at the platform level — the "marketing operator" role is being automated from the inside out.</li>
+      </ul>
+      <div class="so-what">→ STIQ's marketing automation position: if you haven't evaluated HubSpot Breeze or Klaviyo AI agents for Protein Garden / Dina's, now is the window before pricing rises with adoption.</div>
+      <div class="toggles" style="margin-top:8px">
+        <button class="btn-toggle" data-id="pulse-marketing-automation-0523" data-action="like">👍</button>
+        <button class="btn-toggle" data-id="pulse-marketing-automation-0523" data-action="skip">👎</button>
+        <button class="btn-toggle" data-id="pulse-marketing-automation-0523" data-action="save">⭐</button>
+      </div>
+    </div>
+
+    <!-- 3. Greek Startups -->
+    <div class="pulse-card" data-id="pulse-greek-startups-0523" data-title="Greek Startups — 10Y bond 2.6x oversubscribed, DAEDALUS live, 40M tourist season">
+      <div class="pulse-card-title">🇬🇷 Greek Startups &amp; Economy</div>
+      <ul>
+        <li>Greece <strong>10-year bond reopened</strong>: target €300M, bids reached €785M (2.6× oversubscribed) — strong fiscal credibility signal for the region.</li>
+        <li><strong>DAEDALUS supercomputer</strong> now operational; PHAROS initiative for Greek AI model training underway — public AI infrastructure for startups to use.</li>
+        <li>NSRF Innovation Vouchers: <strong>€680M allocated</strong> for 2026 targeting AI, fintech, and sustainable tech startups. <a href="https://northspokanearearealestate.com/2026/01/10/innovation-grants-for-greek-startups/" target="_blank" rel="noopener">Guide →</a></li>
+        <li>Tourism 2026: <strong>~40M visitors, €23B revenue forecast</strong> — headcount up 7-8%, revenue +12%, but shorter stays are compressing margins. <a href="https://greektriplanner.me/insights/greece-tourism-q1-2026" target="_blank" rel="noopener">Q1 data →</a></li>
+      </ul>
+      <div class="so-what">→ Greek AI/tech has real institutional tailwinds now. DAEDALUS + ESPA grants = the cheapest time to pitch AI infrastructure ideas to Greek public-sector clients.</div>
+      <div class="toggles" style="margin-top:8px">
+        <button class="btn-toggle" data-id="pulse-greek-startups-0523" data-action="like">👍</button>
+        <button class="btn-toggle" data-id="pulse-greek-startups-0523" data-action="skip">👎</button>
+        <button class="btn-toggle" data-id="pulse-greek-startups-0523" data-action="save">⭐</button>
+      </div>
+    </div>
+
+    <!-- 4. Fast-Casual -->
+    <div class="pulse-card" data-id="pulse-fast-casual-0523" data-title="Fast-Casual — CAVA +32.2%, Sweetgreen -13% SSS, affordability gap widens">
+      <div class="pulse-card-title">🍔 Fast-Casual</div>
+      <ul>
+        <li><strong>CAVA Q1 2026: $434.4M revenue +32.2%</strong>, SSS +9.7%, traffic +6.8%, restaurant-level margin 25.1%. Everyday affordability strategy is the differentiator. <a href="https://www.sec.gov/Archives/edgar/data/0001639438/000162828026036461/earningsrelease2026q1.htm" target="_blank" rel="noopener">SEC filing →</a></li>
+        <li><strong>Sweetgreen Q1: SSS -12.7%</strong> — proof that premium pricing without value perception is fatal in 2026.</li>
+        <li><strong>Chipotle SSS: +0.5%</strong> — massive slowdown vs prior quarters; the bowl format is saturated for most chains except CAVA.</li>
+        <li><a href="https://www.restaurantbusinessonline.com/operations/cava-proves-keeping-menu-prices-down-can-drive-traffic-without-harming-margins" target="_blank" rel="noopener">CAVA "affordability without margin sacrifice" playbook</a> is now the industry template to study.</li>
+      </ul>
+      <div class="so-what">→ Protein Garden and Dina's: CAVA's 25.1% restaurant-level margin at "affordable" prices is the benchmark. If you're not tracking your own restaurant-level margins vs CAVA quarterly, start now.</div>
+      <div class="toggles" style="margin-top:8px">
+        <button class="btn-toggle" data-id="pulse-fast-casual-0523" data-action="like">👍</button>
+        <button class="btn-toggle" data-id="pulse-fast-casual-0523" data-action="skip">👎</button>
+        <button class="btn-toggle" data-id="pulse-fast-casual-0523" data-action="save">⭐</button>
+      </div>
+    </div>
+
+    <!-- 5. Food Trends -->
+    <div class="pulse-card" data-id="pulse-food-trends-0523" data-title="Food Trends — GLP-1 $76B→$162B, Mediterranean rated #1 by experts">
+      <div class="pulse-card-title">🥬 Food Trends</div>
+      <ul>
+        <li>GLP-1 drug market: <strong>$76B (2025) → $162B projected by 2031</strong>. Food &amp; beverage impact market: <strong>$4.6B → $26.1B by 2034</strong> (18.2% CAGR). <a href="https://finance.yahoo.com/sectors/healthcare/articles/glp-1-market-innovation-landscape-135700562.html" target="_blank" rel="noopener">Yahoo Finance →</a></li>
+        <li><strong>69% of surveyed nutrition experts</strong> rate Mediterranean diet as the most effective long-term approach for GLP-1 users. <a href="https://www.nutritioninsight.com/news/health-nutrition-trends-2026-us-news-glp1.html" target="_blank" rel="noopener">Nutrition Insight →</a></li>
+        <li><strong>73% of GLP-1 users</strong> are actively trying to consume more protein — creating clear menu demand signal.</li>
+        <li>Nestlé, Danone, Conagra dedicating significant R&amp;D budgets to "GLP-1 friendly" product lines in 2026. The supermarket shift is accelerating. <a href="https://www.foodnavigator.com/Article/2026/02/02/glp1-food-trends-what-manufacturers-must-do-next/" target="_blank" rel="noopener">Food Navigator →</a></li>
+      </ul>
+      <div class="so-what">→ Mediterranean = GLP-1 optimal. Protein Garden is scientifically positioned to be the Greek answer to CAVA's US GLP-1 marketing. The narrative isn't being claimed yet in Greece.</div>
+      <div class="toggles" style="margin-top:8px">
+        <button class="btn-toggle" data-id="pulse-food-trends-0523" data-action="like">👍</button>
+        <button class="btn-toggle" data-id="pulse-food-trends-0523" data-action="skip">👎</button>
+        <button class="btn-toggle" data-id="pulse-food-trends-0523" data-action="save">⭐</button>
+      </div>
+    </div>
+
+    <!-- 6. Restaurant Tech -->
+    <div class="pulse-card" data-id="pulse-restaurant-tech-0523" data-title="Restaurant Tech — SOUS $4.3M seed, Marc Lore 'AI restaurant' claim, M&A momentum">
+      <div class="pulse-card-title">🛠️ Restaurant Tech</div>
+      <ul>
+        <li><strong>SOUS raises $4.3M seed</strong> for AI-powered restaurant visibility, sales, and customer engagement. First dedicated marketing automation play for restaurants. <a href="https://restauranttechnologynews.com/2026/03/sous-raises-4-3-million-to-expand-its-ai-platform-for-restaurant-visibility-sales-and-customer-engagement/" target="_blank" rel="noopener">RTN →</a></li>
+        <li>Marc Lore (Wonder Group): <a href="https://techcrunch.com/2026/05/05/marc-lore-says-that-ai-will-soon-enable-anyone-open-a-restaurant/" target="_blank" rel="noopener">"AI will soon enable <em>anyone</em> to open a restaurant"</a> — the ops stack is being commoditized. Wonder Create expanding 120 → 400 locations.</li>
+        <li><strong>73% of operators</strong> actively investing in AI in 2026 (guest growth 53%, operations 40%). M&amp;A re-accelerating: Thoma Bravo/Olo roll-up continues.</li>
+        <li>New category emerging: agentic restaurant ops (voice AI drive-thru, forecasting, labor optimization).</li>
+      </ul>
+      <div class="so-what">→ STIQ AI's restaurant tech positioning: the $4.3M SOUS raise validates the category. If STIQ builds an agentic layer on top of Protein Garden ops, that's a fundable story to tell Greek investors.</div>
+      <div class="toggles" style="margin-top:8px">
+        <button class="btn-toggle" data-id="pulse-restaurant-tech-0523" data-action="like">👍</button>
+        <button class="btn-toggle" data-id="pulse-restaurant-tech-0523" data-action="skip">👎</button>
+        <button class="btn-toggle" data-id="pulse-restaurant-tech-0523" data-action="save">⭐</button>
+      </div>
+    </div>
+
+    <!-- 7. Indie / Claude Code -->
+    <div class="pulse-card" data-id="pulse-indie-claude-code-0523" data-title="Indie / Claude Code — $10K MRR in 6 weeks, $30K MRR AI marketing, $1M/yr bootstrapped">
+      <div class="pulse-card-title">🚀 Indie / Claude Code Success</div>
+      <ul>
+        <li><strong>Claude Code $2.5B ARR</strong> — "never seen such growth"; annualized run rate more than doubled since Jan 2026. The tool ecosystem is expanding. <a href="https://superframeworks.com/articles/claude-code-end-of-coding-era-for-founders" target="_blank" rel="noopener">Superframeworks →</a></li>
+        <li>IH: <a href="https://www.indiehackers.com/post/tech/hitting-10k-mrr-in-six-weeks-with-an-ai-design-tool-pEvmU5qkWS6ny0AR9SUv" target="_blank" rel="noopener"><strong>$10K MRR in 6 weeks</strong></a> — AI design tool, zero marketing spend. Figma agent launch last week adding new competitive pressure on this niche.</li>
+        <li>IH: <a href="https://www.indiehackers.com/post/tech/hitting-30k-mrr-with-an-ai-marketing-product-n59ORJCYjnZC61Q096UL" target="_blank" rel="noopener"><strong>$30K MRR</strong></a> with AI marketing product — solo founder.</li>
+        <li>IH: <a href="https://www.indiehackers.com/post/tech/leaving-a-funded-startup-and-bootstrapping-to-1m-yr-in-18-months-kPBpdxsTeQitOWOOVs2g" target="_blank" rel="noopener">Bootstrapped to <strong>$1M/yr in 18 months</strong></a> after leaving a funded startup — relevant template for a CPTO going indie.</li>
+      </ul>
+      <div class="so-what">→ The $10K MRR in 6 weeks pattern is real and repeatable. All the Greece ideas above are in this range. Your Claude Code skill is the moat — distribution + domain knowledge is the question.</div>
+      <div class="toggles" style="margin-top:8px">
+        <button class="btn-toggle" data-id="pulse-indie-claude-code-0523" data-action="like">👍</button>
+        <button class="btn-toggle" data-id="pulse-indie-claude-code-0523" data-action="skip">👎</button>
+        <button class="btn-toggle" data-id="pulse-indie-claude-code-0523" data-action="save">⭐</button>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ===== SECTION 2: INDUSTRY PULSE ===== -->
-<div class="section sec-industry">
-  <div class="section-header">📊 Industry Pulse</div>
-  <div class="section-body">
-
-    <!-- AI Coding Agents -->
-    <div class="pulse-card" data-id="pulse-ai-coding-agents-0521" data-title="AI Coding Agents — Anthropic targets $950B, $14B run-rate, Claude Code $2.5B ARR">
-      <div class="pulse-title">🤖 AI Coding Agents</div>
-      <ul class="pulse-bullets">
-        <li>Anthropic's run-rate revenue: <strong>$14B</strong>, growing 10×+ annually for 3 consecutive years.</li>
-        <li>New round in progress: <strong>$30–50B raise at $900–950B valuation</strong> — expected to close end of May. Already raised $30B at $380B in March.</li>
-        <li>1,000+ customers now spending $1M+/year (doubled from 500+ in under 2 months).</li>
-        <li>Claude Code: $2.5B ARR as of February — fastest-growing product in Anthropic's history.</li>
-      </ul>
-      <div class="so-what">For you: STIQ's "built on Anthropic" positioning ages like wine. Each raise validates the platform bet. Worth name-dropping the $950B round in your next investor touchpoint.</div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="pulse-ai-coding-agents-0521" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="pulse-ai-coding-agents-0521" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="pulse-ai-coding-agents-0521" data-action="save">⭐ Save</button>
-      </div>
-    </div>
-
-    <!-- Marketing Automation -->
-    <div class="pulse-card" data-id="pulse-marketing-automation-0521" data-title="Marketing Automation — HubSpot AEO + Salesforce Agentforce 18K customers">
-      <div class="pulse-title">📈 Marketing Automation</div>
-      <ul class="pulse-bullets">
-        <li>HubSpot Spring 2026 Spotlight: new <strong>Agentic Engagement Object (AEO)</strong>, Smart Deal Progression, enhanced Breeze — 100+ updates. Agentic features now baseline, not premium.</li>
-        <li>Salesforce Agentforce: <strong>18,500 customers</strong>, processing <strong>3 billion workflows/month</strong>. No longer a preview.</li>
-        <li>Salesforce's partner program overhauled: 170 badges → 28 core competencies; 4-tier → 2-tier (Select/Summit).</li>
-        <li>Agentic personalization and autonomous journey optimization are now table stakes on enterprise tiers.</li>
-      </ul>
-      <div class="so-what">For STIQ: HubSpot and Salesforce are both going agentic simultaneously — this is the moment to position STIQ as the restaurant-specific agentic ops layer they can't buy off the shelf.</div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="pulse-marketing-automation-0521" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="pulse-marketing-automation-0521" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="pulse-marketing-automation-0521" data-action="save">⭐ Save</button>
-      </div>
-    </div>
-
-    <!-- Greek Startups -->
-    <div class="pulse-card" data-id="pulse-greek-startups-0521" data-title="Greek Startups — DAEDALUS operational, OpenAI accelerator 21 teams, ecosystem on €320M+ track">
-      <div class="pulse-title">🇬🇷 Greek Startups</div>
-      <ul class="pulse-bullets">
-        <li>2025 ecosystem total: <strong>€732M</strong> across 90+ startups (+35% YoY). 2026 projected: <strong>€320M+</strong> in new rounds.</li>
-        <li>DAEDALUS supercomputer (EuroHPC framework) becomes operational in 2026 — national hub for AI model training and large-scale data.</li>
-        <li>OpenAI Greek Accelerator: 21 AI-native teams across 11 sectors, government-backed, still running.</li>
-        <li>Athens: 228 startups (~75% of Greek ecosystem), ranked 25th in Western Europe by StartupBlink.</li>
-      </ul>
-      <div class="so-what">No fresh funding round this week — quiet. But DAEDALUS going live is strategically important: if STIQ ever needs serious compute for food-ops AI at scale, national infrastructure is cheaper than AWS.</div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="pulse-greek-startups-0521" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="pulse-greek-startups-0521" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="pulse-greek-startups-0521" data-action="save">⭐ Save</button>
-      </div>
-    </div>
-
-    <!-- Fast Casual -->
-    <div class="pulse-card" data-id="pulse-fast-casual-0521" data-title="Fast-Casual Q1 2026: CAVA crushes +32.2%, Chipotle mixed, Sweetgreen sold Spyce">
-      <div class="pulse-title">🍔 Fast-Casual — CAVA Q1 2026 Blowout</div>
-      <ul class="pulse-bullets">
-        <li><strong>CAVA Q1 2026:</strong> Revenue <strong>$434.4M (+32.2% YoY)</strong>. Same-store sales <strong>+9.7%</strong>, traffic <strong>+6.8%</strong>. Adj EBITDA $61.7M (+37.6%). <a href="https://www.fool.com/earnings/call-transcripts/2026/05/19/cava-cava-q1-2026-earnings-call-transcript/" target="_blank" rel="noopener">Full transcript →</a></li>
-        <li>CAVA raised its full-year 2026 outlook post-earnings. 459 locations, AUV $3M, 20 net new openings in Q1.</li>
-        <li><strong>Chipotle Q1 2026:</strong> Revenue $3.09B (beat) but EPS $0.24 vs $0.29 prior year (-17%). Tariff pressures cited.</li>
-        <li><strong>Wingstop Q1:</strong> System-wide sales $1.4B (+5.9%) but domestic SSS <strong>-8.7%</strong>. Brand still in recovery mode.</li>
-        <li><strong>Sweetgreen Q1:</strong> EPS -$0.27 (beat estimate of -$0.19 but still a loss). $160.6M one-time gain from Spyce sale inflated net income figure — underlying ops still negative.</li>
-      </ul>
-      <div class="so-what">The Mediterranean fast-casual thesis is now empirically the winner of Q1 2026. CAVA is pulling away. Protein Garden has the clearest comp in the world — and the CAVA story is still early in European expansion.</div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="pulse-fast-casual-0521" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="pulse-fast-casual-0521" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="pulse-fast-casual-0521" data-action="save">⭐ Save</button>
-      </div>
-    </div>
-
-    <!-- Food Trends -->
-    <div class="pulse-card" data-id="pulse-food-trends-0521" data-title="Food Trends — GLP-1 cascade accelerates across major chains">
-      <div class="pulse-title">🥬 Food Trends</div>
-      <ul class="pulse-bullets">
-        <li>GLP-1 menu cascade is now structural, not trend: <strong>Shake Shack</strong> "Good Fit" menu, <strong>Chipotle</strong> "High Protein Cup," <strong>McDonald's</strong> revamping 17 items, <strong>Olive Garden</strong> new small-portion section in 2026 menu.</li>
-        <li>GLP-1 users now 1 in 8 American adults. Oral Wegovy in 70K+ US pharmacies.</li>
-        <li>Mediterranean = "the natural GLP-1 diet" narrative accelerating — CAVA CEO explicitly used this framing on the Q1 call.</li>
-        <li>Protein theater trend: food that looks high-protein is as important as being high-protein (visual merchandising plays).</li>
-      </ul>
-      <div class="so-what">CAVA's CEO framing Mediterranean as the "GLP-1 diet" is a gift to Protein Garden's marketing team. Use the same language now — before competitors find it.</div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="pulse-food-trends-0521" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="pulse-food-trends-0521" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="pulse-food-trends-0521" data-action="save">⭐ Save</button>
-      </div>
-    </div>
-
-    <!-- Restaurant Tech -->
-    <div class="pulse-card" data-id="pulse-restaurant-tech-0521" data-title="Restaurant Tech — no fresh M&A; Wonder Create 120→400 kitchens; AI agents becoming standard">
-      <div class="pulse-title">🛠️ Restaurant Tech</div>
-      <ul class="pulse-bullets">
-        <li>No fresh M&A this week. Last significant deal: Miso Robotics + Zignyl (BoH AI).</li>
-        <li>Wonder Create: 120 kitchens live, targeting 400 by 2027. Marc Lore <a href="https://techcrunch.com/2026/05/05/marc-lore-says-that-ai-will-soon-enable-anyone-open-a-restaurant/" target="_blank" rel="noopener">says AI will let anyone open a restaurant</a>. IPO target 2028 at $7B.</li>
-        <li>AI agents (agentic POS, autonomous ordering, kitchen display AI) moving from "feature" to expectation at enterprise POS level in 2026.</li>
-      </ul>
-      <div class="so-what">No fresh financial signal — nothing materially new beyond the ongoing Wonder Create story. The M&A window is still open for BoH AI plays.</div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="pulse-restaurant-tech-0521" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="pulse-restaurant-tech-0521" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="pulse-restaurant-tech-0521" data-action="save">⭐ Save</button>
-      </div>
-    </div>
-
-    <!-- Indie / Claude Code -->
-    <div class="pulse-card" data-id="pulse-indie-claude-code-0521" data-title="Indie / Claude Code — $0→$62K MRR in 3 months live; London Extended ran yesterday">
-      <div class="pulse-title">🚀 Indie / Claude Code</div>
-      <ul class="pulse-bullets">
-        <li>"$0 to $62K MRR in 3 months" builder story circulating on <a href="https://www.indiehackers.com/post/tech/from-0-to-62k-mrr-in-three-months-mUPVSYOlJAC2iogGK7d4" target="_blank" rel="noopener">Indie Hackers</a> this week. Stack: Next.js + Claude + Vercel.</li>
-        <li><a href="https://claude.com/code-with-claude/london-extended" target="_blank" rel="noopener">Code with Claude: Extended London</a> ran May 20 (yesterday) — founder-focused, laptops-open format. Paris equivalent doesn't exist yet.</li>
-        <li>Claude Code $2.5B ARR as of February — the tool is now a meaningful revenue product, not just a developer experiment.</li>
-        <li>Non-technical founder pattern reinforced: 34%+ of Claude Code power users report having no engineering background.</li>
-      </ul>
-      <div class="so-what">The London event yesterday is your signal for the Paris cohort idea above. The $62K MRR story is the proof-of-concept you'd use to pitch tickets.</div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="pulse-indie-claude-code-0521" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="pulse-indie-claude-code-0521" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="pulse-indie-claude-code-0521" data-action="save">⭐ Save</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- ===== SECTION 3: GREEK POLITICS ===== -->
-<div class="section sec-politics-gr">
-  <div class="section-header">🇬🇷 Greek Politics</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 3 — GREEK POLITICS            -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section accent-blue">
+  <div class="section-header"><h2>🇬🇷 Greek Politics</h2></div>
   <div class="section-body">
     <ul class="pol-list">
-      <li data-id="gp-nd-congress-outcome-may17" data-title="ND Congress: Mitsotakis declares third term a national necessity, elections 2027">
-        <strong>ND Congress closed May 17:</strong> Mitsotakis calls third term "a national necessity," <a href="https://en.protothema.gr/2026/05/17/mitsotakis-elections-in-2027-only-through-a-third-new-democracy-government-term-does-the-sure-path-to-greece-2030-pass-updated/" target="_blank" rel="noopener">confirms elections in 2027</a>, frames "Greece 2030" as the campaign vision. Karamanlis and Samaras conspicuously absent — silent signal of internal fractures.
-        <div class="toggle-row">
-          <button class="toggle-btn" data-id="gp-nd-congress-outcome-may17" data-action="like">👍 Interesting</button>
-          <button class="toggle-btn" data-id="gp-nd-congress-outcome-may17" data-action="skip">👎 Skip</button>
-          <button class="toggle-btn" data-id="gp-nd-congress-outcome-may17" data-action="save">⭐ Save</button>
-        </div>
-      </li>
-      <li data-id="gp-karystianou-elpida-launch-today" data-title="Karystianou launches Elpida party TODAY in Thessaloniki">
-        <strong>Karystianou's "Elpida" launches TONIGHT:</strong> <a href="https://athens-times.com/maria-karystianou-unveils-her-new-political-party-in-thessaloniki/" target="_blank" rel="noopener">Official launch at Olympion Cinema, Thessaloniki, 18:30</a>. Platform: accountability, meritocracy, judicial independence. Polling at 7.9% — third place, competing with Tsipras for center-left voters. Pro-Putin associations being raised by critics.
-        <div class="toggle-row">
-          <button class="toggle-btn" data-id="gp-karystianou-elpida-launch-today" data-action="like">👍 Interesting</button>
-          <button class="toggle-btn" data-id="gp-karystianou-elpida-launch-today" data-action="skip">👎 Skip</button>
-          <button class="toggle-btn" data-id="gp-karystianou-elpida-launch-today" data-action="save">⭐ Save</button>
-        </div>
-      </li>
-      <li data-id="gp-tsipras-progressive-alliance-may26" data-title="Tsipras launches Progressive Alliance party May 26">
-        <strong>Tsipras launches "Progressive Alliance" May 26:</strong> <a href="https://en.parapolitika.gr/politics/212659/alexis-tsipras-rallies-youth-before-new-party-launch-may-26/" target="_blank" rel="noopener">Thiseio Square, 20:00</a>. Early polls show 15–20% before even officially existing — SYRIZA in existential crisis. Greek politics is in the most fluid moment since 2015.
-        <div class="toggle-row">
-          <button class="toggle-btn" data-id="gp-tsipras-progressive-alliance-may26" data-action="like">👍 Interesting</button>
-          <button class="toggle-btn" data-id="gp-tsipras-progressive-alliance-may26" data-action="skip">👎 Skip</button>
-          <button class="toggle-btn" data-id="gp-tsipras-progressive-alliance-may26" data-action="save">⭐ Save</button>
-        </div>
-      </li>
-      <li data-id="gp-constitutional-reform-process-begins" data-title="Constitutional reform process: 30 articles, AI governance, Article 16 — begins in parliament">
-        <strong>Constitutional reform parliamentary phase begins:</strong> 30 articles proposed including non-state universities (Article 16), AI governance reference, postal voting, and minister-MP incompatibility. Cross-party negotiations required — uncertain timeline.
-        <div class="toggle-row">
-          <button class="toggle-btn" data-id="gp-constitutional-reform-process-begins" data-action="like">👍 Interesting</button>
-          <button class="toggle-btn" data-id="gp-constitutional-reform-process-begins" data-action="skip">👎 Skip</button>
-          <button class="toggle-btn" data-id="gp-constitutional-reform-process-begins" data-action="save">⭐ Save</button>
-        </div>
-      </li>
+      <li data-id="gp-hope-democracy-debut-0523" data-title="Karystianou 'Hope for Democracy' party premiere: 850 attendees vs 2,000 expected"><strong>Karystianou "Hope for Democracy" party premiere at Thessaloniki's Olympion (May 22):</strong> 850 attendees vs 2,000 expected — weaker-than-hoped debut, but organizing continues; submission to Supreme Court this week. <a href="https://en.protothema.gr/2026/05/22/debut-for-karystianous-party-with-avgerinos-and-moutsatsou-what-happened-at-the-olympion-plans-for-a-gathering-in-an-athens-neighborhood/" target="_blank" rel="noopener">ProtoThema →</a></li>
+      <li data-id="gp-tsipras-may26-launch-0523" data-title="Tsipras Progressive Alliance launch May 26 at Thiseio"><strong>Tsipras countdown: May 26 (3 days).</strong> Progressive Alliance launch at Thiseio, Athens — polling 15-20% potential. ND Maximos tracking both new parties as "warning shots." <a href="https://en.parapolitika.gr/politics/212070/alexis-tsipras-to-launch-new-party-may-26-progressive-alliance/" target="_blank" rel="noopener">Parapolitika →</a></li>
+      <li data-id="gp-election-timeline-0523" data-title="Early elections to September 2026 speculation; Mitsotakis most suitable PM at 23.1%"><strong>Election speculation:</strong> September 2026 snap elections mentioned in party circles; Mitsotakis remains most suitable PM at 23.1%. New parties accelerating to secure position before campaign season.</li>
+      <li data-id="gp-bond-success-0523" data-title="Greece 10Y bond: €785M bids on €300M target — 2.6x oversubscribed"><strong>Greece bond market:</strong> 10-year bond reopening attracted €785M bids on a €300M target (2.6× oversubscribed) — Greece's strongest market signal in years, reflecting post-investment grade upgrade momentum.</li>
+      <li data-id="gp-dallas-athens-0523" data-title="American Airlines Dallas-Athens inaugural flight May 22"><strong>American Airlines Dallas-Athens inaugural (May 22):</strong> 11th direct US-Greece non-stop route now active — PM Mitsotakis had lobbied for US connectivity for 2 years. First connection for the southern/central US market. <a href="https://www.travelandtourworld.com/news/article/american-airlines-launches-new-dallas-athens-route-with-777-300er-how-this-new-service-will-impact-us-greece-travel-in-2026/" target="_blank" rel="noopener">Travel &amp; Tour World →</a></li>
     </ul>
   </div>
 </div>
 
-<!-- ===== SECTION 4: INTERNATIONAL POLITICS ===== -->
-<div class="section sec-politics-int">
-  <div class="section-header">🌍 International Politics</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 4 — INTERNATIONAL POLITICS    -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section accent-amber">
+  <div class="section-header"><h2>🌍 International Politics</h2></div>
   <div class="section-body">
     <ul class="pol-list">
-      <li data-id="ip-ukraine-russia-peace-signals-may21" data-title="Ukraine/Russia: Trump ceasefire held; Putin hints war ending; talks stalled">
-        <strong>Ukraine/Russia:</strong> Trump's 3-day ceasefire (May 9–11) + 1,000-prisoner swap completed. <a href="https://www.aljazeera.com/news/2026/5/10/putin-suggests-russias-war-on-ukraine-coming-to-an-end" target="_blank" rel="noopener">Putin suggested war "coming to end"</a> and proposed meeting Zelensky in a third country after a treaty. Broader peace talks remain stalled — no formal process in place.
-        <div class="toggle-row">
-          <button class="toggle-btn" data-id="ip-ukraine-russia-peace-signals-may21" data-action="like">👍 Interesting</button>
-          <button class="toggle-btn" data-id="ip-ukraine-russia-peace-signals-may21" data-action="skip">👎 Skip</button>
-          <button class="toggle-btn" data-id="ip-ukraine-russia-peace-signals-may21" data-action="save">⭐ Save</button>
-        </div>
-      </li>
-      <li data-id="ip-iran-hormuz-stalemate-may21" data-title="Iran: Operation Epic Fury concluded but no deal; Hormuz contested; Iranian FM in Beijing">
-        <strong>Iran/US:</strong> Rubio declares Operation Epic Fury "concluded." Trump <a href="https://www.cnbc.com/2026/05/11/iran-war-trump-negotiation-hormuz-nuclear-talks.html" target="_blank" rel="noopener">rejected Iran's counteroffer</a> as "totally unacceptable." Iran refuses 20-year nuclear moratorium. Hormuz remains contested. Iranian FM in Beijing ahead of Trump-Xi summit — China is the back channel.
-        <div class="toggle-row">
-          <button class="toggle-btn" data-id="ip-iran-hormuz-stalemate-may21" data-action="like">👍 Interesting</button>
-          <button class="toggle-btn" data-id="ip-iran-hormuz-stalemate-may21" data-action="skip">👎 Skip</button>
-          <button class="toggle-btn" data-id="ip-iran-hormuz-stalemate-may21" data-action="save">⭐ Save</button>
-        </div>
-      </li>
-      <li data-id="ip-eu-us-trade-provisional-deal-may20" data-title="EU-US: Provisional trade deal struck May 20 — 15% tariff cap, sunset 2029, ratification mid-June">
-        <strong>EU-US Trade Deal:</strong> <a href="https://www.cnbc.com/2026/05/20/eu-us-trade-deal-trump-autos.html" target="_blank" rel="noopener">Provisional deal agreed May 20</a>. 15% tariff cap on EU goods, EU drops duties on US industrials. Sunset clause end-2029. EU ratification vote mid-June — July 4 deadline now achievable. Watch for the suspension mechanism: either side can void the deal if commitments lapse.
-        <div class="toggle-row">
-          <button class="toggle-btn" data-id="ip-eu-us-trade-provisional-deal-may20" data-action="like">👍 Interesting</button>
-          <button class="toggle-btn" data-id="ip-eu-us-trade-provisional-deal-may20" data-action="skip">👎 Skip</button>
-          <button class="toggle-btn" data-id="ip-eu-us-trade-provisional-deal-may20" data-action="save">⭐ Save</button>
-        </div>
-      </li>
+      <li data-id="ip-iran-strike-pending-0523" data-title="US weighing Iran strike — officials canceling weekend plans, Trump press lid May 22"><strong>Iran — strike decision pending:</strong> US officials reportedly canceling weekend plans over a possible strike; Trump imposed press lid May 22 evening. Final decision not yet made. Strait of Hormuz risk elevated. <a href="https://en.wikipedia.org/wiki/2026_Iran_war" target="_blank" rel="noopener">Context →</a></li>
+      <li data-id="ip-ukraine-eu-associate-0523" data-title="EU skeptical of Merz Ukraine 'associate membership' proposal"><strong>Ukraine / EU:</strong> German Chancellor Merz proposed "associate EU membership" for Ukraine as a ceasefire incentive — EU politicians responded skeptically. Donetsk stalemate continues. <a href="https://usa.news-pravda.com/world/2026/05/22/780435.html" target="_blank" rel="noopener">Pravda USA →</a></li>
+      <li data-id="ip-eu-us-trade-sunset-0523" data-title="EU-US 15% tariff provisional deal — sunset clause still being negotiated"><strong>EU-US trade:</strong> Provisional deal (15% tariff cap, May 20) — sunset clause terms still being worked. Gives Paris SaaS founders temporary stability but uncertainty past 2027 remains. <a href="https://news.crunchbase.com/venture/european-ai-funding-startups-recursive-ineffable-advanced-machine-intelligence/" target="_blank" rel="noopener">Crunchbase context →</a></li>
     </ul>
   </div>
 </div>
 
-<!-- ===== SECTION 5: WILDCARD ===== -->
-<div class="section sec-wildcard">
-  <div class="section-header">🎲 Today's Wildcard</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 5 — WILDCARD                  -->
+<!-- ═══════════════════════════════════════ -->
+<div class="section accent-indigo">
+  <div class="section-header"><h2>🎲 Today's Wildcard</h2></div>
   <div class="section-body">
-    <div class="wildcard-body" data-id="wildcard-2026-05-21-cava-greek-founders" data-title="The Three Greeks Who Built CAVA: From Rockville Diner to $7B Fast-Casual Giant">
-      <div class="wildcard-title">The Three Greeks Who Built CAVA: From a Single Rockville Diner to America's Fastest-Growing Fast-Casual Giant</div>
-      <div class="wildcard-content">
-        <p>CAVA was not born in a Silicon Valley accelerator. It started in 2006 as a single Greek Mediterranean restaurant in Rockville, Maryland, founded by three Greek-Americans: <strong>Ike Grigoropoulos</strong>, <strong>Dimitri Moshovitis</strong>, and <strong>Theodore Xenohristos</strong>. They cooked family recipes, ran the counter themselves, and slowly built one of the most admired brands in American food. They went public in June 2023 and today trade at a $7B+ market cap.</p>
-        <p>Today's Q1 results — $434M revenue, +32.2% YoY, +9.7% same-store sales — are the latest data point in a 20-year story of Greek stubbornness. The founders are still operationally active. CEO Brett Schulman joined later and scaled the business, but the three original Greek founders are still involved in the brand's culinary DNA.</p>
-        <p>The line between what they built and what you are building is shorter than it looks: same cuisine thesis, same Mediterranean-health-protein intersection, different country, different decade, different tools (you have Claude Code).</p>
+
+    <div class="wildcard-body" data-id="wildcard-2026-05-23-small-llm-moat" data-title="The Unreasonable Effectiveness of Small Fine-Tuned LLMs for Vertical Products">
+      <div class="item-title">The Unreasonable Effectiveness of Small Fine-Tuned LLMs for Vertical Products</div>
+      <div class="item-body" style="margin-top:8px">
+        <p>A growing body of evidence — from Hamel Husain's writing, Stanford's HELM benchmarks, and a cluster of indie hacker postmortems — shows that fine-tuned 7B–13B parameter models are <strong>outperforming GPT-4 class models on narrow vertical tasks at roughly 1/100th the cost</strong>. The pattern: define your task tightly, generate 500-2000 examples with a frontier model, fine-tune a small open model, ship.</p>
+        <p>The most cited current resource is <a href="https://hamel.dev/blog/posts/evals/" target="_blank" rel="noopener">Hamel Husain's LLM evaluation framework</a> — a deeply practical, non-academic guide to when to fine-tune vs. prompt vs. RAG. It's not new (updated 2025) but is being rediscovered by the indie AI wave.</p>
+        <p style="margin-top:8px"><em>Why this is NOT a side hustle idea:</em> it's a capability decision — a lever you either pull or don't.</p>
       </div>
-      <div class="why-today"><strong>Why this for you today:</strong> CAVA just posted its best quarter ever, 2 days ago. Their earnings call framed Mediterranean food as the "natural GLP-1 diet" — language you should be borrowing. And behind every great quarter is the founding story: three Greeks, one restaurant, twenty years. It's worth reading about where they started. <a href="https://www.aol.com/articles/cava-cava-q1-2026-earnings-223950654.html" target="_blank" rel="noopener">Q1 earnings transcript →</a></div>
-      <div class="toggle-row">
-        <button class="toggle-btn" data-id="wildcard-2026-05-21-cava-greek-founders" data-action="like">👍 Interesting</button>
-        <button class="toggle-btn" data-id="wildcard-2026-05-21-cava-greek-founders" data-action="skip">👎 Skip</button>
-        <button class="toggle-btn" data-id="wildcard-2026-05-21-cava-greek-founders" data-action="save">⭐ Save</button>
+      <div class="wc-why">💡 Why this for you today: you're building vertical tools for Greek F&B operators and tourism with Claude Code. If any of those tools hit product-market fit, the moat won't be the idea — it'll be a fine-tuned model trained on Greek hospitality data that no one else has. This is the fork in the road.</div>
+      <div class="toggles" style="margin-top:10px">
+        <button class="btn-toggle" data-id="wildcard-2026-05-23-small-llm-moat" data-action="like">👍 Interesting</button>
+        <button class="btn-toggle" data-id="wildcard-2026-05-23-small-llm-moat" data-action="skip">👎 Skip</button>
+        <button class="btn-toggle" data-id="wildcard-2026-05-23-small-llm-moat" data-action="save">⭐ Save</button>
       </div>
     </div>
+
   </div>
 </div>
 
-<!-- ===== PICKS PANEL ===== -->
+<!-- ═══════════════════════════════════════ -->
+<!-- PICKS PANEL                           -->
+<!-- ═══════════════════════════════════════ -->
 <div class="picks-panel">
   <h3>📋 My Picks &amp; Training</h3>
   <div class="picks-steps">
-    <p style="margin-bottom:8px;">How to make tomorrow's brief better:</p>
+    The brief gets smarter every day through a 4-step loop:
     <ol>
-      <li><strong>Read</strong> — Claude read your training file before generating this brief and ranked items by your tag preferences.</li>
-      <li><strong>React</strong> — Click 👍 (more like this), 👎 (less like this), or ⭐ (save for tomorrow's top) on any item. State saves to your browser automatically.</li>
-      <li><strong>Train</strong> — Hit "Show my picks" below → copy the summary → paste into Cowork chat starting with: <code>train brief: [paste here]</code></li>
-      <li><strong>Adapt</strong> — Tomorrow's 7 AM brief reads your updated training file and adjusts flavor, emphasis, and section ranking accordingly.</li>
+      <li><strong>Read</strong> — work through each section.</li>
+      <li><strong>React</strong> — click 👍 / 👎 / ⭐ on items. State saves automatically.</li>
+      <li><strong>Export</strong> — hit "Show my picks" below, copy the summary.</li>
+      <li><strong>Train</strong> — open Cowork, paste with prefix: <code>train brief: [your picks]</code></li>
     </ol>
+    Tomorrow's 7 AM brief will reflect your picks: more of what you liked, less of what you skipped, ⭐ items pinned at the top.
   </div>
-  <div class="picks-btn-row">
-    <button class="btn btn-primary" id="showPicksBtn">Show my picks</button>
-    <button class="btn btn-secondary" id="copyPicksBtn" style="display:none;">Copy to clipboard</button>
-    <button class="btn btn-secondary" id="clearPicksBtn">Clear all picks</button>
+  <button class="btn-show-picks" onclick="showPicks()">Show my picks</button>
+  <div id="picks-output">
+    <textarea id="picks-textarea" readonly placeholder="Your picks will appear here..."></textarea>
+    <div class="picks-actions">
+      <button class="btn-copy" onclick="copyPicks()">📋 Copy to clipboard</button>
+      <button class="btn-clear" onclick="clearAll()">🗑️ Clear all picks</button>
+    </div>
   </div>
-  <textarea class="picks-textarea" id="picksSummary" readonly></textarea>
-  <p class="notice">Picks persist in your browser via localStorage with key prefix <code>mb-2026-05-21-</code></p>
 </div>
 
 </div><!-- /container -->
 
 <script>
-const DATE = '2026-05-21';
+const DATE = '2026-05-23';
 const PREFIX = 'mb-' + DATE + '-';
 
-// Restore toggle states on load
-function restoreStates() {
-  document.querySelectorAll('[data-id]').forEach(function(el) {
-    var id = el.getAttribute('data-id');
-    if (!id) return;
-    var state = localStorage.getItem(PREFIX + id);
-    if (!state) return;
-    var btn = el.querySelector('.toggle-btn[data-action="' + state + '"]');
-    if (btn) {
-      var cls = state === 'like' ? 'active-like' : state === 'skip' ? 'active-skip' : 'active-save';
-      btn.classList.add(cls);
+// Restore state on load
+document.querySelectorAll('.btn-toggle').forEach(btn => {
+  const id = btn.dataset.id;
+  const action = btn.dataset.action;
+  const stored = localStorage.getItem(PREFIX + id);
+  if (stored === action) {
+    activateButton(btn, action);
+  }
+});
+
+// Click handler
+document.querySelectorAll('.btn-toggle').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.id;
+    const action = btn.dataset.action;
+    const current = localStorage.getItem(PREFIX + id);
+
+    // Toggle off if already active
+    if (current === action) {
+      localStorage.removeItem(PREFIX + id);
+      clearButtonsForItem(id);
+      updateItemStyle(id, null);
+      return;
     }
+
+    // Set new state
+    localStorage.setItem(PREFIX + id, action);
+    clearButtonsForItem(id);
+    activateButton(btn, action);
+    updateItemStyle(id, action);
+  });
+});
+
+function clearButtonsForItem(id) {
+  document.querySelectorAll(`.btn-toggle[data-id="${id}"]`).forEach(b => {
+    b.classList.remove('active-like', 'active-skip', 'active-save');
   });
 }
 
-// Toggle button click handler
-document.addEventListener('click', function(e) {
-  if (!e.target.classList.contains('toggle-btn')) return;
-  var btn = e.target;
-  var action = btn.getAttribute('data-action');
-  var row = btn.closest('.toggle-row');
-  if (!row) return;
-  var card = btn.closest('[data-id]');
-  if (!card) return;
-  var id = card.getAttribute('data-id');
-
-  // Clear all active states in this row
-  row.querySelectorAll('.toggle-btn').forEach(function(b) {
-    b.classList.remove('active-like', 'active-skip', 'active-save');
-  });
-
-  // Check if this was already active (toggle off)
-  var existing = localStorage.getItem(PREFIX + id);
-  if (existing === action) {
-    localStorage.removeItem(PREFIX + id);
-    return;
-  }
-
-  // Set new state
-  var cls = action === 'like' ? 'active-like' : action === 'skip' ? 'active-skip' : 'active-save';
-  btn.classList.add(cls);
-  localStorage.setItem(PREFIX + id, action);
-});
-
-// Generate picks summary
-function generateSummary() {
-  var liked = [], saved = [], skipped = [];
-  document.querySelectorAll('[data-id][data-title]').forEach(function(el) {
-    var id = el.getAttribute('data-id');
-    var title = el.getAttribute('data-title');
-    if (!id || !title) return;
-    var state = localStorage.getItem(PREFIX + id);
-    if (state === 'like') liked.push(title);
-    else if (state === 'save') saved.push(title);
-    else if (state === 'skip') skipped.push(title);
-  });
-  var lines = ['My picks from Morning Brief — ' + DATE, ''];
-  if (liked.length) {
-    lines.push('👍 INTERESTING:');
-    liked.forEach(function(t) { lines.push('- ' + t); });
-    lines.push('');
-  }
-  if (saved.length) {
-    lines.push('⭐ SAVE FOR LATER:');
-    saved.forEach(function(t) { lines.push('- ' + t); });
-    lines.push('');
-  }
-  if (skipped.length) {
-    lines.push('👎 SKIP:');
-    skipped.forEach(function(t) { lines.push('- ' + t); });
-    lines.push('');
-  }
-  if (!liked.length && !saved.length && !skipped.length) {
-    lines.push('(No picks yet — click 👍 / 👎 / ⭐ on items above first)');
-  }
-  return lines.join('\n');
+function activateButton(btn, action) {
+  if (action === 'like') btn.classList.add('active-like');
+  if (action === 'skip') btn.classList.add('active-skip');
+  if (action === 'save') btn.classList.add('active-save');
 }
 
-document.getElementById('showPicksBtn').addEventListener('click', function() {
-  var ta = document.getElementById('picksSummary');
-  var copyBtn = document.getElementById('copyPicksBtn');
-  if (ta.style.display === 'block') {
-    ta.style.display = 'none';
-    copyBtn.style.display = 'none';
-    this.textContent = 'Show my picks';
-  } else {
-    ta.value = generateSummary();
-    ta.style.display = 'block';
-    copyBtn.style.display = 'inline-block';
-    this.textContent = 'Hide picks';
-  }
+function updateItemStyle(id, action) {
+  const item = document.querySelector(`[data-id="${id}"].item, .wildcard-body[data-id="${id}"]`);
+  if (!item) return;
+  item.classList.remove('liked', 'skipped', 'saved');
+  if (action === 'like') item.classList.add('liked');
+  if (action === 'skip') item.classList.add('skipped');
+  if (action === 'save') item.classList.add('saved');
+}
+
+// Initialize item styles from storage
+const allIds = new Set();
+document.querySelectorAll('.btn-toggle').forEach(b => allIds.add(b.dataset.id));
+allIds.forEach(id => {
+  const stored = localStorage.getItem(PREFIX + id);
+  if (stored) updateItemStyle(id, stored);
 });
 
-document.getElementById('copyPicksBtn').addEventListener('click', function() {
-  var ta = document.getElementById('picksSummary');
-  ta.value = generateSummary();
-  navigator.clipboard.writeText(ta.value).then(function() {
-    var btn = document.getElementById('copyPicksBtn');
-    btn.textContent = 'Copied!';
-    setTimeout(function() { btn.textContent = 'Copy to clipboard'; }, 2000);
-  });
-});
+function showPicks() {
+  const output = document.getElementById('picks-output');
+  output.style.display = 'block';
+  generatePicksText();
+}
 
-document.getElementById('clearPicksBtn').addEventListener('click', function() {
-  if (!confirm('Clear all picks for today?')) return;
-  document.querySelectorAll('[data-id]').forEach(function(el) {
-    var id = el.getAttribute('data-id');
-    if (id) localStorage.removeItem(PREFIX + id);
+function generatePicksText() {
+  const liked = [], saved = [], skipped = [];
+  allIds.forEach(id => {
+    const action = localStorage.getItem(PREFIX + id);
+    const titleEl = document.querySelector(`[data-id="${id}"]`);
+    const title = titleEl ? (titleEl.dataset.title || id) : id;
+    if (action === 'like') liked.push('- ' + title);
+    if (action === 'save') saved.push('- ' + title);
+    if (action === 'skip') skipped.push('- ' + title);
   });
-  document.querySelectorAll('.toggle-btn').forEach(function(b) {
+
+  let text = `My picks from Morning Brief — ${DATE}\n\n`;
+  if (liked.length) text += `👍 INTERESTING:\n${liked.join('\n')}\n\n`;
+  if (saved.length) text += `⭐ SAVE FOR LATER:\n${saved.join('\n')}\n\n`;
+  if (skipped.length) text += `👎 SKIP:\n${skipped.join('\n')}\n\n`;
+  if (!liked.length && !saved.length && !skipped.length) text += '(no picks yet — click 👍 / 👎 / ⭐ on items above)';
+
+  document.getElementById('picks-textarea').value = text.trim();
+}
+
+function copyPicks() {
+  generatePicksText();
+  const ta = document.getElementById('picks-textarea');
+  ta.select();
+  document.execCommand('copy');
+  const btn = document.querySelector('.btn-copy');
+  btn.textContent = '✅ Copied!';
+  setTimeout(() => { btn.textContent = '📋 Copy to clipboard'; }, 2000);
+}
+
+function clearAll() {
+  if (!confirm('Clear all picks for this brief?')) return;
+  allIds.forEach(id => localStorage.removeItem(PREFIX + id));
+  document.querySelectorAll('.btn-toggle').forEach(b => {
     b.classList.remove('active-like', 'active-skip', 'active-save');
   });
-  var ta = document.getElementById('picksSummary');
-  if (ta.style.display === 'block') ta.value = generateSummary();
-});
-
-restoreStates();
+  document.querySelectorAll('.item, .wildcard-body').forEach(el => {
+    el.classList.remove('liked', 'skipped', 'saved');
+  });
+  document.getElementById('picks-textarea').value = '(cleared)';
+}
 </script>
 </body>
 </html>
