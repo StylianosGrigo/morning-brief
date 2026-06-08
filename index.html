@@ -1,570 +1,515 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Morning Brief — Saturday, 6 June 2026</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f4f5f7; color: #1a1a1a; line-height: 1.5; }
-
-    .header { background: #0f1d3a; color: white; padding: 18px 24px 14px; }
-    .header h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; }
-    .header .subtitle { opacity: 0.65; font-size: 0.82rem; margin-top: 3px; }
-
-    .container { max-width: 860px; margin: 0 auto; padding: 20px 16px 40px; }
-
-    .section { margin-bottom: 28px; }
-    .section-title {
-      font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.1em; padding: 8px 14px; border-radius: 6px 6px 0 0;
-      color: white; display: flex; align-items: center; gap: 8px;
-    }
-    .section-title .emoji { font-size: 1rem; }
-
-    .card {
-      background: white; border-radius: 0 0 8px 8px; padding: 14px 16px 12px;
-      margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-      border-left: 4px solid transparent;
-    }
-    .card + .card { border-radius: 8px; }
-    .card:first-of-type { border-top-left-radius: 0; border-top-right-radius: 0; }
-
-    .card h3 { font-size: 0.92rem; font-weight: 600; margin-bottom: 5px; line-height: 1.4; }
-    .card p { font-size: 0.855rem; color: #3a3a3a; line-height: 1.65; margin-bottom: 4px; }
-    .card a { color: #1a6ccc; text-decoration: none; }
-    .card a:hover { text-decoration: underline; }
-
-    .toggles { display: flex; gap: 7px; margin-top: 10px; flex-wrap: wrap; }
-    .toggle-btn {
-      padding: 3px 11px; font-size: 0.77rem; border: 1px solid #ddd;
-      border-radius: 20px; cursor: pointer; background: white; color: #555;
-      transition: all 0.15s ease; user-select: none;
-    }
-    .toggle-btn:hover { background: #f5f5f5; }
-    .toggle-btn.active-like { background: #d4edda; border-color: #28a745; color: #155724; font-weight: 600; }
-    .toggle-btn.active-skip { background: #f8d7da; border-color: #dc3545; color: #721c24; font-weight: 600; }
-    .toggle-btn.active-save { background: #fff3cd; border-color: #e6a817; color: #7a5800; font-weight: 600; }
-
-    /* SECTION 0 — SAVED */
-    .s0 .section-title { background: #b8860b; }
-    .s0 .card { border-left-color: #d4a017; background: #fffdf0; }
-    .saved-badge { display: inline-block; background: #fff3cd; border: 1px solid #e6a817; color: #7a5800; font-size: 0.7rem; font-weight: 700; padding: 2px 9px; border-radius: 12px; margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.05em; }
-
-    /* SECTION 1 — IDEAS */
-    .s1 .section-title { background: #7d3c98; }
-    .s1 .card { border-left-color: #7d3c98; }
-    .subsection-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #7d3c98; margin: 16px 0 6px; border-bottom: 1px solid #e5d0f7; padding-bottom: 4px; }
-    .idea-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 8px; }
-    .idea-pill { font-size: 0.77rem; background: #f3e8fb; border-radius: 5px; padding: 4px 9px; }
-    .idea-pill strong { color: #7d3c98; display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 1px; }
-    .idea-pill span { color: #333; }
-
-    /* SECTION 2 — INDUSTRY */
-    .s2 .section-title { background: #16a085; }
-    .s2 .card { border-left-color: #16a085; }
-    .s2 ul { padding-left: 16px; margin-top: 6px; }
-    .s2 ul li { font-size: 0.855rem; color: #333; line-height: 1.6; margin-bottom: 2px; }
-    .so-what { font-size: 0.805rem; background: #e8f8f5; border-radius: 5px; padding: 6px 10px; margin-top: 8px; color: #0e6655; line-height: 1.5; }
-    .so-what::before { content: "→ "; font-weight: 700; }
-    .no-signal { color: #888; font-style: italic; font-size: 0.84rem; }
-
-    /* SECTION 3 — GREEK POLITICS */
-    .s3 .section-title { background: #1f4e79; }
-    .pol-item {
-      background: white; border-radius: 8px; padding: 11px 14px;
-      margin-bottom: 8px; font-size: 0.855rem; line-height: 1.6;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06); border-left: 4px solid #1f4e79;
-    }
-    .pol-item strong { display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: #1f4e79; margin-bottom: 3px; }
-
-    /* SECTION 4 — INTL POLITICS */
-    .s4 .section-title { background: #c07a00; }
-    .s4 .pol-item { border-left-color: #d68910; }
-    .s4 .pol-item strong { color: #a06000; }
-
-    /* SECTION 5 — WILDCARD */
-    .s5 .section-title { background: #4b3a8b; }
-    .s5 .card { border-left-color: #4b3a8b; background: #f7f5ff; }
-    .wildcard-why { font-size: 0.82rem; background: #ede9fe; border-radius: 5px; padding: 7px 11px; margin-top: 8px; color: #4b3a8b; line-height: 1.55; }
-    .wildcard-why::before { content: "✦ Why this for you today: "; font-weight: 700; }
-
-    /* PICKS PANEL */
-    .picks-panel { background: #111827; color: white; border-radius: 12px; padding: 20px 22px; margin-top: 28px; }
-    .picks-panel h2 { font-size: 0.95rem; font-weight: 700; margin-bottom: 10px; }
-    .picks-steps { font-size: 0.82rem; opacity: 0.8; line-height: 1.7; margin-bottom: 12px; }
-    .picks-steps ol { padding-left: 18px; }
-    .picks-steps li { margin-bottom: 2px; }
-    .picks-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-    .btn { padding: 7px 16px; border-radius: 6px; border: none; cursor: pointer; font-size: 0.83rem; font-weight: 600; }
-    .btn-primary { background: #7d3c98; color: white; }
-    .btn-secondary { background: #1f2937; color: #ccc; border: 1px solid #374151; }
-    #picks-output { width: 100%; height: 160px; margin-top: 12px; padding: 10px; border-radius: 6px; background: #0d111a; color: #d1d5db; border: 1px solid #374151; font-size: 0.79rem; font-family: 'Menlo', 'Monaco', monospace; resize: vertical; display: none; }
-
-    @media (max-width: 600px) {
-      .idea-grid { grid-template-columns: 1fr 1fr; }
-      .container { padding: 12px 10px 30px; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Brief — June 8, 2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; color: #1a1a1a; }
+  .header { background: #0f1d3a; color: white; padding: 18px 24px; }
+  .header h1 { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.5px; }
+  .header .date { font-size: 0.85rem; opacity: 0.7; margin-top: 3px; }
+  .container { max-width: 860px; margin: 0 auto; padding: 20px 16px 60px; }
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 12px; border-radius: 4px; display: inline-block; margin-bottom: 12px; color: white; }
+  .s0 .section-title { background: #d4a017; }
+  .s1 .section-title { background: #7d3c98; }
+  .s2 .section-title { background: #16a085; }
+  .s3 .section-title { background: #1f4e79; }
+  .s4 .section-title { background: #d68910; }
+  .s5 .section-title { background: #4b3a8b; }
+  .card { background: white; border-radius: 8px; padding: 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border-left: 4px solid #ccc; }
+  .s0 .card { border-left-color: #d4a017; }
+  .s1gr .card { border-left-color: #7d3c98; }
+  .s1fr .card { border-left-color: #9b59b6; }
+  .s2 .card { border-left-color: #16a085; }
+  .s3 .card { border-left-color: #1f4e79; }
+  .s4 .card { border-left-color: #d68910; }
+  .s5 .card { border-left-color: #4b3a8b; }
+  .card-title { font-weight: 700; font-size: 1rem; margin-bottom: 6px; line-height: 1.3; }
+  .card-body { font-size: 0.88rem; color: #333; line-height: 1.6; }
+  .card-body p { margin-bottom: 6px; }
+  .card-body ul { margin: 6px 0 6px 18px; }
+  .card-body li { margin-bottom: 3px; }
+  .card-body a { color: #1a73e8; text-decoration: none; }
+  .card-body a:hover { text-decoration: underline; }
+  .card-meta { font-size: 0.78rem; color: #888; margin-bottom: 8px; }
+  .card-tag { display: inline-block; background: #f0e6ff; color: #7d3c98; font-size: 0.7rem; padding: 2px 7px; border-radius: 10px; margin-right: 4px; margin-bottom: 4px; }
+  .card-tag.fr { background: #e6f0ff; color: #1a4a8a; }
+  .idea-section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 16px 0 8px; padding-left: 2px; }
+  .idea-section-label.gr { color: #7d3c98; }
+  .idea-section-label.fr { color: #1a4a8a; }
+  .idea-meta { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #f0f0f0; }
+  .idea-meta-item { font-size: 0.78rem; }
+  .idea-meta-item strong { display: block; color: #888; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+  .pulse-bullets { margin: 0; padding-left: 0; list-style: none; }
+  .pulse-bullets li { padding: 3px 0 3px 0; font-size: 0.87rem; border-bottom: 1px solid #f5f5f5; }
+  .pulse-bullets li:last-child { border-bottom: none; }
+  .sowhat { margin-top: 10px; padding: 8px 10px; background: #f0fdf8; border-radius: 5px; font-size: 0.82rem; color: #0e7a5f; border-left: 3px solid #16a085; }
+  .politics-bullets { list-style: none; padding: 0; }
+  .politics-bullets li { padding: 8px 0; font-size: 0.87rem; border-bottom: 1px solid #f0f0f0; line-height: 1.5; }
+  .politics-bullets li:last-child { border-bottom: none; }
+  .toggle-row { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+  .toggle-btn { padding: 4px 12px; font-size: 0.78rem; border: 1px solid #ddd; border-radius: 20px; background: white; cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+  .toggle-btn:hover { border-color: #aaa; background: #f9f9f9; }
+  .toggle-btn.active-like { background: #d4edda; border-color: #5cb85c; color: #2d6a2d; }
+  .toggle-btn.active-skip { background: #fde8e8; border-color: #e05c5c; color: #8a2020; }
+  .toggle-btn.active-save { background: #fff3cd; border-color: #e0a020; color: #7a5000; }
+  .saved-banner { background: #fffbe6; border: 1px solid #d4a017; border-radius: 6px; padding: 6px 12px; font-size: 0.78rem; color: #7a5000; margin-bottom: 8px; }
+  .picks-panel { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-top: 32px; }
+  .picks-panel h3 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+  .picks-steps { font-size: 0.82rem; color: #555; line-height: 1.7; margin-bottom: 16px; }
+  .picks-steps ol { padding-left: 18px; }
+  .picks-output { display: none; }
+  .picks-output textarea { width: 100%; height: 200px; font-size: 0.82rem; padding: 10px; border: 1px solid #ddd; border-radius: 6px; resize: vertical; font-family: monospace; }
+  .btn-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .btn { padding: 7px 16px; font-size: 0.82rem; border-radius: 6px; cursor: pointer; border: none; font-weight: 600; }
+  .btn-primary { background: #0f1d3a; color: white; }
+  .btn-secondary { background: #f0f0f0; color: #333; }
+  .btn-danger { background: #fde8e8; color: #8a2020; }
+  .pulse-topic { font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; }
+  .why-today { background: #ede9ff; border-left: 3px solid #4b3a8b; padding: 8px 10px; border-radius: 0 5px 5px 0; font-size: 0.83rem; color: #3a2a6a; margin-top: 10px; }
+  @media (max-width: 600px) {
+    .idea-meta { grid-template-columns: 1fr; gap: 4px; }
+    .header h1 { font-size: 1.1rem; }
+  }
+</style>
 </head>
 <body>
 
 <div class="header">
   <h1>☀️ Morning Brief</h1>
-  <div class="subtitle">Saturday, 6 June 2026 &nbsp;·&nbsp; Athens, GR &nbsp;·&nbsp; Sections: Saved · Ideas · Industry · Greek Politics · International · Wildcard</div>
+  <div class="date">Monday, June 8, 2026 &nbsp;·&nbsp; 7 sections &nbsp;·&nbsp; ~5 min read</div>
 </div>
 
 <div class="container">
 
-<!-- ========== SECTION 0: SAVED ITEMS ========== -->
+<!-- ═══════════════════════════════════════════ SECTION 0 — SAVED ITEMS -->
 <div class="section s0">
-  <div class="section-title"><span class="emoji">⭐</span> Your Saved Items</div>
+  <div class="section-title">⭐ Your Saved Items</div>
 
   <div class="card" data-id="idea-gr-ama-compliance-tracker" data-title="AMA compliance tracker for Greek short-term rental hosts">
-    <div class="saved-badge">⭐ Saved May 4</div>
-    <h3>AMA compliance tracker for Greek short-term rental hosts</h3>
-    <p>Greek short-term rental hosts still face AMA registration + digital platform declaration requirements. The compliance gap remains — enforcement was quietly extended to cover unlicensed listings as of Q1 2026.</p>
-    <p><a href="https://getproofsnap.com/posts/greece-short-term-rental-airbnb-regulations-2026.html" target="_blank" rel="noopener">Signal source ↗</a> &nbsp;·&nbsp; <span style="color:#888;font-size:0.8rem;">Greece is #6 in Europe for Airbnb listings — compliance tooling gap is still real.</span></p>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','idea-gr-ama-compliance-tracker')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','idea-gr-ama-compliance-tracker')">👎 Skip / Dismiss</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','idea-gr-ama-compliance-tracker')">⭐ Keep saved</button>
+    <div class="saved-banner">⭐ Saved on May 4 · ideas-gr</div>
+    <div class="card-title">AMA compliance tracker for Greek short-term rental hosts</div>
+    <div class="card-body">
+      <p>Greece's short-term rental AMA compliance rules remain a persistent pain point for 100K+ Airbnb hosts. A Claude-powered compliance tracker that reads AADE regulations, generates per-property checklists, and flags penalty exposure. <a href="https://getproofsnap.com/posts/greece-short-term-rental-airbnb-regulations-2026.html" target="_blank" rel="noopener">Signal →</a></p>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Keep saved</button>
     </div>
   </div>
 
   <div class="card" data-id="idea-fr-paris-agentic-agency" data-title="Paris Agentic Agency — non-technical boutique serving the AMI ecosystem">
-    <div class="saved-badge">⭐ Saved May 9</div>
-    <h3>Paris Agentic Agency — non-technical boutique serving the AMI ecosystem</h3>
-    <p>Non-technical boutique agentic services agency targeting the AMI research + startup ecosystem in Paris. Offer: custom Claude Code automations, internal dashboards, reporting tools — shipped in days, not months.</p>
-    <p><em style="color:#888;font-size:0.8rem;">Salesforce just opened the first EU AI Innovation Hub in Paris (June 1). The buyer market in Paris for agentic services is expanding.</em></p>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','idea-fr-paris-agentic-agency')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','idea-fr-paris-agentic-agency')">👎 Skip / Dismiss</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','idea-fr-paris-agentic-agency')">⭐ Keep saved</button>
+    <div class="saved-banner">⭐ Saved on May 9 · ideas-fr</div>
+    <div class="card-title">Paris Agentic Agency — non-technical boutique serving the AMI ecosystem</div>
+    <div class="card-body">
+      <p>A solo consultancy positioned at the intersection of AMI's $1B research build-up and the enterprise demand for Claude/AI implementation in Paris. Non-technical founders with domain expertise become the connective tissue between AI labs and French enterprise clients. <strong>Note:</strong> The Claude Partner Network Services Track (launched June 3) now gives this business model a formal certification path and distribution channel — see Section 1 below.</p>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Keep saved</button>
     </div>
   </div>
 </div>
 
-<!-- ========== SECTION 1: IDEAS ========== -->
-<div class="section s1">
-  <div class="section-title"><span class="emoji">💡</span> Section 1 — Side Hustle Ideas</div>
+<!-- ═══════════════════════════════════════════ SECTION 1 — IDEAS -->
+<div class="section">
+  <div class="section-title" style="background:#7d3c98;">💡 Side Hustle Ideas</div>
 
-  <div class="subsection-label">🇬🇷 Greece</div>
+  <div class="idea-section-label gr">🇬🇷 Greece</div>
 
-  <div class="card" data-id="idea-gr-samaras-six-party-scenario-0606" data-title="Samaras Launches → Greek Business Scenario Planning for 2027 Coalition">
-    <h3>Samaras in Crete → Greece Heading for Six-Party Race</h3>
-    <p><strong>What it is:</strong> Samaras visited Crete yesterday (June 5) for a major speech with his coalition assembled — ballot lists ready in most constituencies. His "patriotic identity" party (modeled on de Gaulle) would target disaffected ND voters on the right. If he launches, Greece faces 6+ parties above the 3% threshold for the first time: ND, ELAS, ELPIDA, SYRIZA/PASOK, and Samaras. A one-pager scenario brief — "the 4 coalition outcomes and what each means for your business" — targeted at Greek entrepreneurs with cross-party exposure.</p>
-    <p><strong>Why now:</strong> <a href="https://greekcitytimes.com/2026/06/02/antonis-samaras-new-party-greece/" target="_blank" rel="noopener">Samaras formally edging toward launch ↗</a> — Crete tour June 5, announcement expected this month. June 3 GPO poll has four parties already above 10% simultaneously.</p>
-    <div class="idea-grid">
-      <div class="idea-pill"><strong>Scope</strong><span>1-2 days Claude Code + research</span></div>
-      <div class="idea-pill"><strong>Money</strong><span>€199-€499/report, chambers of commerce</span></div>
-      <div class="idea-pill"><strong>Freshness</strong><span>72-hour window on Crete news</span></div>
+  <div class="s1gr">
+    <div class="card" data-id="idea-gr-samaras-six-party-0608" data-title="Six-Party Greece Scenario Map — What Samaras entering means for Greek B2B">
+      <div class="card-title">Six-Party Greece Scenario Map — What Samaras Entering Means for Greek B2B</div>
+      <div class="card-body">
+        <p><strong>What it is:</strong> ND ~29%, ELAS ~15%, Elpida ~10.5%, PASOK ~11%, SYRIZA ~1–2%, and Samaras's right-wing vehicle imminent. A 6-party fragmented election is likely in 2027. A 1-page "coalition scenario map" shows Greek B2B founders which 3 realistic governments form — and what each means for tech procurement, ESPA funding, and digital tax enforcement.</p>
+        <p><strong>Why now:</strong> Samaras hasn't formally launched yet. Building this before the launch = being the "analyst" when media scrambles. <a href="https://greekcitytimes.com/2026/06/02/antonis-samaras-new-party-greece/" target="_blank" rel="noopener">Signal →</a></p>
+        <div class="idea-meta">
+          <div class="idea-meta-item"><strong>Scope</strong> 1 day with Claude</div>
+          <div class="idea-meta-item"><strong>Money</strong> €50 × 60 founders = €3K, or lead-gen for STIQ consulting</div>
+          <div class="idea-meta-item"><strong>Tags</strong> greek-politics, polling</div>
+        </div>
+      </div>
+      <div class="toggle-row">
+        <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+        <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+        <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
+      </div>
     </div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','idea-gr-samaras-six-party-scenario-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','idea-gr-samaras-six-party-scenario-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','idea-gr-samaras-six-party-scenario-0606')">⭐ Save</button>
+
+    <div class="card" data-id="idea-gr-macro-clean-investor-brief-0608" data-title="Greece EU Clean Bill — Macro credibility insert for Greek startup fundraising decks">
+      <div class="card-title">Greece EU Clean Bill — Macro Credibility Insert for Fundraising Decks</div>
+      <div class="card-body">
+        <p><strong>What it is:</strong> On June 3, the EU formally removed Greece from macroeconomic imbalances monitoring for the first time since 2010. GDP +2.1% Q1 2026, government surplus +1.7% GDP, growth forecast double the Eurozone average. Most Greek startup decks still carry the implicit "Greek risk discount." A 2-slide insert — citing the EU Commission removal, the growth data, and the debt trajectory — lets Greek founders bury the narrative. <a href="https://en.protothema.gr/2026/06/03/milestone-for-greece-the-ec-removed-greece-from-the-list-of-countries-with-macroeconomic-imbalances-16-years-after-the-crisis/" target="_blank" rel="noopener">Signal →</a></p>
+        <p><strong>Why now:</strong> This is a once-in-16-years narrative unlock. The window to be "the person who showed founders how to use this" closes in 2–3 weeks as it becomes common knowledge.</p>
+        <div class="idea-meta">
+          <div class="idea-meta-item"><strong>Scope</strong> Half day</div>
+          <div class="idea-meta-item"><strong>Money</strong> Free lead-gen → paid deck review at €300–500/deck</div>
+          <div class="idea-meta-item"><strong>Tags</strong> greek-politics, funding</div>
+        </div>
+      </div>
+      <div class="toggle-row">
+        <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+        <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+        <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
+      </div>
+    </div>
+
+    <div class="card" data-id="idea-gr-partner-network-select-0608" data-title="Claude Partner Network Select Tier — The 10-customer path to enterprise inbound">
+      <div class="card-title">Claude Partner Network Select Tier — 10-Customer Path to Enterprise Inbound</div>
+      <div class="card-body">
+        <p><strong>What it is:</strong> Anthropic launched the Claude Partner Network Services Track on June 3 with $100M ecosystem investment. The "Select" tier requires just 10 certified individuals + 2 deployed customers + 1 public story. Solo agencies are eligible. Once listed in the Partner Hub, enterprise buyers (L'Oréal, Salesforce, KPMG) actively search and contact you. <a href="https://www.anthropic.com/news/services-track-partner-hub" target="_blank" rel="noopener">Services Track →</a></p>
+        <p><strong>Why now:</strong> The directory went live 5 days ago. Early movers will rank highest in search. Within 6 months it'll be saturated.</p>
+        <div class="idea-meta">
+          <div class="idea-meta-item"><strong>Scope</strong> 2 days: certify + build 2 case studies</div>
+          <div class="idea-meta-item"><strong>Money</strong> Single enterprise project = €5K–€50K, recurring</div>
+          <div class="idea-meta-item"><strong>Tags</strong> anthropic, indie-claude-code</div>
+        </div>
+      </div>
+      <div class="toggle-row">
+        <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+        <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+        <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
+      </div>
     </div>
   </div>
 
-  <div class="card" data-id="idea-gr-tourism-ai-ops-summer-0606" data-title="Greece Tourism Record + 80K Worker Gap → AI Ops Summer Case">
-    <h3>Greece Tourism Record + 80K Worker Gap → AI Ops Summer Window</h3>
-    <p><strong>What it is:</strong> Q1 2026 tourism receipts +64.3% to €1.68B. Greece's 13-hour workday law (since Jan 2026) reflects an 80,000+ hospitality worker shortage going into peak summer. Restaurant and hotel operators are hiring anyone — or burning out. This is the strongest structural argument for AI operations tools in Greek hospitality in a decade. Build a 1-page "AI Ops ROI for Peak Summer" case study using STIQ's own operations data as the anchor, then pitch it to peer operators.</p>
-    <p><strong>Why now:</strong> Worker gap is acute NOW — peak season is June-August. IMF projects Greece GDP +2.4% this year. The economic tailwind + labor constraint = rare window.</p>
-    <div class="idea-grid">
-      <div class="idea-pill"><strong>Scope</strong><span>1 day — STIQ dogfood content</span></div>
-      <div class="idea-pill"><strong>Money</strong><span>B2B content-led lead gen for STIQ</span></div>
-      <div class="idea-pill"><strong>Freshness</strong><span>Summer 2026 peak timing</span></div>
+  <div class="idea-section-label fr">🇫🇷 Paris / France</div>
+
+  <div class="s1fr">
+    <div class="card" data-id="idea-fr-forced-labor-tariff-scan-0608" data-title="Forced Labor Tariff Scan — What the US June 16 threat means for Paris SaaS contracts">
+      <div class="card-title">Forced Labor Tariff Scan — What the June 16 US Threat Means for Paris SaaS Contracts</div>
+      <div class="card-body">
+        <p><strong>What it is:</strong> On top of the 15% Turnberry tariff cap being voted June 16, the US has now threatened an additional 10% surcharge on EU goods linked to forced labor. EU says "unjustified," but if both measures pass, effective tariffs could hit 25%+ on some categories. French tech exporters with US contracts need an urgent scan. A Claude-powered document scanner that flags exposed clauses and quantifies the revenue risk. <a href="https://www.euronews.com/my-europe/2026/06/03/us-tariff-threats-over-forced-labour-unjustified-commission-says" target="_blank" rel="noopener">Signal →</a></p>
+        <p><strong>Why now:</strong> June 16 is 8 days away. Law firms and consultancies in Paris will scramble for this.</p>
+        <div class="idea-meta">
+          <div class="idea-meta-item"><strong>Scope</strong> 1 day</div>
+          <div class="idea-meta-item"><strong>Money</strong> €199/scan or subscription for law firms</div>
+          <div class="idea-meta-item"><strong>Tags</strong> trade, geopolitics, eu</div>
+        </div>
+      </div>
+      <div class="toggle-row">
+        <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+        <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+        <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
+      </div>
     </div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','idea-gr-tourism-ai-ops-summer-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','idea-gr-tourism-ai-ops-summer-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','idea-gr-tourism-ai-ops-summer-0606')">⭐ Save</button>
+
+    <div class="card" data-id="idea-fr-anthropic-paris-hub-0608" data-title="Partner Hub Paris Listing — Positioning the Paris Agentic Agency as Select partner">
+      <div class="card-title">Partner Hub Paris Listing — Activate Your Saved "Paris Agentic Agency" Idea</div>
+      <div class="card-body">
+        <p><strong>What it is:</strong> If you're building the saved "Paris Agentic Agency" concept, the newly launched Claude Partner Hub is the distribution channel. Getting listed as "Select" in Paris places you in front of L'Oréal, LVMH, Salesforce, and French enterprise buyers actively searching for certified Claude implementers. The Services Track launched June 3 — the directory is fresh and early entrants rank first. <a href="https://www.anthropic.com/news/services-track-partner-hub" target="_blank" rel="noopener">Partner Hub →</a></p>
+        <p><strong>Why now:</strong> Your saved item + this distribution channel = a complete business model. The STIQ case studies you already have could count as "deployed customers."</p>
+        <div class="idea-meta">
+          <div class="idea-meta-item"><strong>Scope</strong> Build 2 case studies → apply</div>
+          <div class="idea-meta-item"><strong>Money</strong> Single Paris enterprise project covers months of STIQ runway</div>
+          <div class="idea-meta-item"><strong>Tags</strong> anthropic, eu-sovereign-ai</div>
+        </div>
+      </div>
+      <div class="toggle-row">
+        <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+        <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+        <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
+      </div>
     </div>
   </div>
+</div>
 
-  <div class="card" data-id="idea-gr-athens-defence-summit-ai-0606" data-title="Athens Defence Summit 2026 → Greek AI Dual-Use Positioning Window">
-    <h3>Athens Defence Summit 2026 → Greek AI Dual-Use Window</h3>
-    <p><strong>What it is:</strong> An "Athens Defence Summit 2026" is taking place this year featuring weapons, NATO, and AI. Greece is committed to 5% GDP defense spending by 2035 — a €28B multi-year program. The new constitutional article on AI governance creates a procurement pathway for Greek AI companies targeting dual-use (civilian + defense) contracts. A "positioning brief for Greek AI founders" that maps the procurement entry points: PHAROS AI fund, defense ministry digital programs, and the NATO innovation bridge. Different from an intel brief — this is a market-entry map.</p>
-    <p><strong>Why now:</strong> <a href="https://www.facebook.com/tovimagr/posts/1540892631374397/" target="_blank" rel="noopener">Athens Defence Summit 2026 underway ↗</a>. Greece spending 3.7% GDP on defense today — highest in EU.</p>
-    <div class="idea-grid">
-      <div class="idea-pill"><strong>Scope</strong><span>2-3 days research + brief</span></div>
-      <div class="idea-pill"><strong>Money</strong><span>Sell to Greek AI founders pitching defense (€499-€999)</span></div>
-      <div class="idea-pill"><strong>Freshness</strong><span>Summit happening now</span></div>
-    </div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','idea-gr-athens-defence-summit-ai-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','idea-gr-athens-defence-summit-ai-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','idea-gr-athens-defence-summit-ai-0606')">⭐ Save</button>
-    </div>
-  </div>
-
-  <div class="subsection-label">🇫🇷 Paris / France</div>
-
-  <div class="card" data-id="idea-fr-salesforce-partner-readiness-0606" data-title="Salesforce Paris AI Hub → Partner Readiness Brief for French SIs">
-    <h3>Salesforce Paris AI Hub → Brief for France's 2,000+ Salesforce Partners</h3>
-    <p><strong>What it is:</strong> Salesforce's Paris AI Innovation Hub (opened June 1, €2B by 2030) created an immediate need among 2,000+ French system integrators, agencies, and consultants: "what does this mean for our Agentforce vs. Claude AI positioning with clients?" Build a "Salesforce Partner AI Readiness Brief" — a concise comparison of Agentforce vs. Claude API for common French SMB use cases (CRM automation, customer service, sales ops). Sell per-agency or distribute via Salesforce user groups.</p>
-    <p><strong>Why now:</strong> <a href="https://www.salesforce.com/news/press-releases/2026/06/01/2-billion-ai-transformation-investment-france/" target="_blank" rel="noopener">Salesforce France €2B announcement ↗</a> — partner ecosystem activation is live this week.</p>
-    <div class="idea-grid">
-      <div class="idea-pill"><strong>Scope</strong><span>1-2 days Claude Code + research</span></div>
-      <div class="idea-pill"><strong>Money</strong><span>€149-€299/report or subscription</span></div>
-      <div class="idea-pill"><strong>Freshness</strong><span>June 1 announcement — 5 days</span></div>
-    </div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','idea-fr-salesforce-partner-readiness-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','idea-fr-salesforce-partner-readiness-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','idea-fr-salesforce-partner-readiness-0606')">⭐ Save</button>
-    </div>
-  </div>
-
-  <div class="card" data-id="idea-fr-turnberry-ratification-paris-0606" data-title="Turnberry Ratification (June 15-18) → Paris Founder US-Export Impact Brief">
-    <h3>Turnberry Ratification (June 15-18) → Paris Founder US-Export Impact Brief</h3>
-    <p><strong>What it is:</strong> The EU-US Turnberry Agreement goes to final Parliament vote in 9 days. 15% tariff cap on EU exports, sunset 2029. French founders with US revenue or US partnerships need to know: what actually changes for their SaaS subscriptions, professional services, or hardware exports? A plain-language "10 questions, 10 answers" brief. Ship before the vote on June 15.</p>
-    <p><strong>Why now:</strong> <a href="https://www.consilium.europa.eu/en/press/press-releases/2026/05/20/eu-us-trade-council-and-parliament-strike-a-deal-to-implement-the-tariff-elements-of-the-joint-statement/" target="_blank" rel="noopener">EU Council approved May 20 ↗</a> — ratification vote June 15-18. 9-day window.</p>
-    <div class="idea-grid">
-      <div class="idea-pill"><strong>Scope</strong><span>1 day research + Claude Code build</span></div>
-      <div class="idea-pill"><strong>Money</strong><span>Free lead gen → paid advisory</span></div>
-      <div class="idea-pill"><strong>Freshness</strong><span>9 days to vote</span></div>
-    </div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','idea-fr-turnberry-ratification-paris-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','idea-fr-turnberry-ratification-paris-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','idea-fr-turnberry-ratification-paris-0606')">⭐ Save</button>
-    </div>
-  </div>
-
-</div><!-- /s1 -->
-
-<!-- ========== SECTION 2: INDUSTRY PULSE ========== -->
+<!-- ═══════════════════════════════════════════ SECTION 2 — INDUSTRY PULSE -->
 <div class="section s2">
-  <div class="section-title"><span class="emoji">📊</span> Section 2 — Industry Pulse</div>
+  <div class="section-title">📊 Industry Pulse</div>
 
-  <div class="card" data-id="pulse-ai-coding-agents-0606" data-title="AI Coding Agents — Anthropic IPO filed, Q2 $10.9B, first profitable quarter approaching">
-    <h3>🤖 AI Coding Agents</h3>
-    <ul>
-      <li>Anthropic filed confidential IPO prospectus with SEC on <strong>June 1</strong> — valuation anchor $965B after $65B Series H</li>
-      <li>Q2 2026 revenue expected <strong>$10.9B+</strong> — more than double Q1. Full-year ARR targeting $50B+ by June end</li>
-      <li>First profitable quarter approaching — S-1 will be public before October 2026 listing</li>
-      <li>Anthropic's IPO will, for the first time, publicly break out Claude Code revenue vs. enterprise API vs. consumer</li>
-    </ul>
-    <div class="so-what">The S-1 revenue breakdown will become the reference for every AI founder pitch in the next 6 months. Watch for the Claude Code / enterprise split — that's the metric that benchmarks STIQ's positioning.</div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','pulse-ai-coding-agents-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','pulse-ai-coding-agents-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','pulse-ai-coding-agents-0606')">⭐ Save</button>
+  <div class="card" data-id="pulse-ai-coding-agents-0608" data-title="AI Coding Agents — Anthropic IPO + Partner Network + $47B ARR">
+    <div class="pulse-topic">🤖 AI Coding Agents</div>
+    <div class="card-body">
+      <ul class="pulse-bullets">
+        <li>Anthropic filed confidential S-1 with SEC on June 1. Target: October 2026 listing at ~$965B valuation (surpasses OpenAI at $852B)</li>
+        <li>Run-rate revenue: $47B in May 2026 (up from $9B end-2025 — 5× in 5 months). Claude Code alone: $2.5B+ run-rate; 50%+ from enterprise</li>
+        <li>Claude Partner Network Services Track launched June 3: $100M ecosystem investment, 3-tier directory (Select/Preferred/Global Premier), enterprise buyers now searching the Hub for certified implementers</li>
+        <li>June 15 (next week): Anthropic splits API and subscription credits — solo builders should check cost structure</li>
+      </ul>
+      <div class="sowhat">So what for you: The Partner Hub is the first formal sales channel Anthropic has given its ecosystem. If you're building agentic services, this is your distribution play — and it opened 5 days ago.</div>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
     </div>
   </div>
 
-  <div class="card" data-id="pulse-marketing-automation-0606" data-title="Marketing Automation — Salesforce Paris AI Hub open, Agentforce 18.5K customers">
-    <h3>📈 Marketing Automation</h3>
-    <ul>
-      <li>Salesforce opened EU's first AI Innovation Hub in Paris (June 1) — €2B investment through 2030</li>
-      <li>Agentforce now at <strong>18,500 customers</strong>; Salesforce Ventures backed Mistral + Hugging Face in Paris</li>
-      <li>No fresh financial signal from Klaviyo or HubSpot this week — post-earnings quiet</li>
-    </ul>
-    <div class="so-what">Salesforce is betting Paris becomes the EU's enterprise AI hub. That's both a competitor signal and a market signal for the Paris Agentic Agency saved item.</div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','pulse-marketing-automation-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','pulse-marketing-automation-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','pulse-marketing-automation-0606')">⭐ Save</button>
+  <div class="card" data-id="pulse-marketing-automation-0608" data-title="Marketing Automation — Salesforce Brand Settings, Klaviyo hospitality expansion">
+    <div class="pulse-topic">📈 Marketing Automation</div>
+    <div class="card-body">
+      <ul class="pulse-bullets">
+        <li>Salesforce Agentforce Spring '26 adds "Brand Settings": brand voice + style guide applied automatically to every AI-generated email/landing page — direct HubSpot Breeze competitor</li>
+        <li>Klaviyo 2026 expansion: beyond e-commerce into hospitality, subscription, media verticals. Active competitive threat to STIQ's marketing layer</li>
+        <li>Global marketing automation market: $6.9B in 2024, projected $12.2B by 2028. Agentic personalization now baseline on enterprise tiers</li>
+        <li>No fresh earnings signal this week</li>
+      </ul>
+      <div class="sowhat">So what for you: Klaviyo is coming for hospitality. If STIQ's marketing automation is Klaviyo-adjacent, monitor their hospitality roadmap closely.</div>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
     </div>
   </div>
 
-  <div class="card" data-id="pulse-greek-startups-0606" data-title="Greek Startups — NBG Innovation Finals June 10, €892M cumulative, HDBI €2.2B firepower">
-    <h3>🇬🇷 Greek Startups</h3>
-    <ul>
-      <li><strong>Tuesday June 10:</strong> NBG 16th Innovation &amp; Technology Competition winners announced — watch for AI-native winners</li>
-      <li>Greek startup ecosystem at <strong>€892M cumulative</strong> raised in 2026 track; HDBI has €2.2B in available investment capacity</li>
-      <li>ESPA €445M Digital Transformation vouchers still live — application window ongoing</li>
-    </ul>
-    <div class="so-what">June 10 NBG finalists are worth tracking as STIQ partners or future competitors. The HDBI €2.2B signal means institutional capital is available for Greek startups — STIQ's fundraise timing is opportunistic.</div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','pulse-greek-startups-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','pulse-greek-startups-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','pulse-greek-startups-0606')">⭐ Save</button>
+  <div class="card" data-id="pulse-greek-startups-0608" data-title="Greek Startups — NBG Innovation Finals June 10, OramaVR $4.5M, HDBI €2.9B">
+    <div class="pulse-topic">🇬🇷 Greek Startups</div>
+    <div class="card-body">
+      <ul class="pulse-bullets">
+        <li><strong>NBG Innovation Awards finals: Tuesday June 10</strong> — Greece's most prestigious startup competition. Watch which F&B or hospitality-tech team wins</li>
+        <li>OramaVR: $4.5M late-seed from Big Pi + Evercurious (medical XR). Big Pi remains the most active lead investor in Greek AI</li>
+        <li>HDBI now manages €2.9B across 42 active funds — Greek VC infrastructure formally institutionalized</li>
+        <li>€732M raised in Greek startups in 2025 (+35% YoY). 2026 on track for €320M+ in private rounds alone</li>
+      </ul>
+      <div class="sowhat">So what for you: NBG finals on Tuesday. If a Greek restaurant-tech or F&B AI team wins, it'll be the ecosystem signal of the week.</div>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
     </div>
   </div>
 
-  <div class="card" data-id="pulse-fast-casual-0606" data-title="Fast-Casual — CAVA Q1 $438M +32.2%, SSS +9.7%, FY26 guidance raised">
-    <h3>🍔 Fast-Casual</h3>
-    <ul>
-      <li>CAVA Q1 2026: <strong>$438.3M revenue (+32.2% YoY)</strong>, same-store sales <strong>+9.7%</strong>, traffic +6.8%</li>
-      <li>EPS $0.20 beat consensus $0.18; EBITDA +37.6% to $61.7M; <strong>25.1% restaurant-level margin</strong></li>
-      <li>FY26 guidance raised to $181-$191M EBITDA; now 459 locations (+20 net new this quarter)</li>
-      <li>Chipotle: opened 4,000th restaurant (Manhattan, KS). Sweetgreen implementing "comprehensive menu &amp; pricing redesign" post-disaster Q1 (SSS -12.8%)</li>
-    </ul>
-    <div class="so-what">CAVA's 25.1% restaurant-level margin is the benchmark. A Mediterranean chain operating at similar margins commands a 46× EBITDA multiple in current markets. That's Protein Garden's investor comp.</div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','pulse-fast-casual-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','pulse-fast-casual-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','pulse-fast-casual-0606')">⭐ Save</button>
+  <div class="card" data-id="pulse-fast-casual-0608" data-title="Fast-Casual — CAVA Q1 $438M +32.2%, Chipotle +7.4%, Shake Shack misses EBITDA">
+    <div class="pulse-topic">🍔 Fast-Casual</div>
+    <div class="card-body">
+      <ul class="pulse-bullets">
+        <li><strong>CAVA Q1 2026:</strong> $438M revenue (+32.2% YoY), SSS +9.7% (traffic +6.8%), adj. EBITDA guidance raised to $181–191M. Stock reaction: +3%. Mediterranean casual = fastest-growing public restaurant category in the US</li>
+        <li><strong>Chipotle Q1 2026:</strong> $3.09B (+7.4%), beat estimates across the board. Sector bellwether remains stable</li>
+        <li><strong>Shake Shack Q1 2026:</strong> $366.7M (+14.3%), missed EBITDA estimate — premium burger softening vs. Mediterranean casual acceleration</li>
+        <li><strong>Sweetgreen:</strong> SSS -12.8% in Q1. "Modern healthy" without protein narrative = still losing</li>
+      </ul>
+      <div class="sowhat">So what for you: CAVA's raised guidance is the clearest signal yet. Protein Garden's investor story is now backed by a $7B public comparable reporting 9.7% traffic growth. That's the number to put in every deck.</div>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
     </div>
   </div>
 
-  <div class="card" data-id="pulse-food-trends-0606" data-title="Food Trends — GLP-1 1 in 8 US adults, $32B CPG impact, Greece tourism +64.3%">
-    <h3>🥬 Food Trends</h3>
-    <ul>
-      <li>GLP-1 drugs now used by <strong>1 in 8 US adults</strong>; projected $32B CPG impact by 2027</li>
-      <li>Starbucks protein lattes, Smoothie King GLP-1 menus — cascade continues into Q2</li>
-      <li>Greece Q1 tourism receipts +<strong>64.3% to €1.68B</strong>; 80,000 hospitality worker gap going into peak summer</li>
-    </ul>
-    <div class="so-what">Mediterranean food IS the natural GLP-1 diet — Protein Garden is structurally aligned with the biggest diet shift in decades. The 80K worker gap makes AI ops tools a must-have, not a nice-to-have, this summer.</div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','pulse-food-trends-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','pulse-food-trends-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','pulse-food-trends-0606')">⭐ Save</button>
+  <div class="card" data-id="pulse-food-trends-0608" data-title="Food Trends — GLP-1 $32B CPG impact, 1 in 8 US adults, all major chains adapt">
+    <div class="pulse-topic">🥬 Food Trends</div>
+    <div class="card-body">
+      <ul class="pulse-bullets">
+        <li>GLP-1 estimated $32B annual CPG loss: users eat less processed food, fewer snacks, smaller portions — restaurants with real-ingredient, high-protein menus benefit</li>
+        <li>1 in 8 US adults now on GLP-1 drugs. Major chains (Olive Garden, Subway, Shake Shack, McDonald's) now have explicit GLP-1 menu tracks</li>
+        <li>Mediterranean diet narrative strongest it's been: CAVA's success + GLP-1 compatibility = cross-validated thesis</li>
+        <li>Greece tourism: €23.6B, 80K worker gap in hospitality — a signal that Greek F&B infrastructure is under pressure just as demand peaks</li>
+      </ul>
+      <div class="sowhat">So what for you: Every month this signal strengthens. Protein Garden is perfectly positioned — high protein, Mediterranean, portion-honest. Lean into the "natural GLP-1 diet" framing.</div>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
     </div>
   </div>
 
-  <div class="card" data-id="pulse-restaurant-tech-0606" data-title="Restaurant Tech — PAR Engagement Cloud launched, SpotOn $923M, no fresh M&A">
-    <h3>🛠️ Restaurant Tech</h3>
-    <ul>
-      <li>PAR Technology launched <strong>Engagement Cloud</strong> — loyalty + guest data platform for chains</li>
-      <li>SpotOn ongoing Series E at <strong>$923M valuation</strong>; Nory €37M closed</li>
-      <li>No fresh M&A signal this week — Wonder Create + allO remain the most recent major moves</li>
-    </ul>
-    <div class="so-what">PAR's Engagement Cloud + SpotOn growth show the loyalty-ops stack is consolidating. STIQ's differentiation needs to be clearly positioned above this commodity layer.</div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','pulse-restaurant-tech-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','pulse-restaurant-tech-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','pulse-restaurant-tech-0606')">⭐ Save</button>
+  <div class="card" data-id="pulse-restaurant-tech-0608" data-title="Restaurant Tech — SlangAI $36M, Chowbus $81M, full-stack OS race intensifies">
+    <div class="pulse-topic">🛠️ Restaurant Tech</div>
+    <div class="card-body">
+      <ul class="pulse-bullets">
+        <li><strong>SlangAI:</strong> $36M Series B (total $68M). AI voice platform that eliminates restaurant phone calls — routes to reservations + ordering autonomously</li>
+        <li><strong>Chowbus:</strong> $81M raised. Expanding from POS into marketing, accounting, supply ordering, and insurance. First full-stack restaurant OS at scale for Asian restaurants — proving the bundle thesis</li>
+        <li><strong>allô:</strong> €14M Series A (Zigg Capital lead) — AI-native restaurant OS expanding across Europe from Belgium. Not in Greece yet</li>
+        <li>Anthropic Partner Network: restaurant operators can now access certified AI implementers through the new Partner Hub</li>
+      </ul>
+      <div class="sowhat">So what for you: Chowbus's $81M raise is the clearest proof that "full-stack restaurant OS" is the winning bundle. STIQ's multi-brand platform is on the right architectural bet.</div>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
     </div>
   </div>
 
-  <div class="card" data-id="pulse-indie-claude-code-0606" data-title="Indie / Claude Code — Emergent $25M ARR in 5 months, June 15 API credit restructure">
-    <h3>🚀 Indie / Claude Code Success</h3>
-    <ul>
-      <li>"Emergent" reached <strong>$25M ARR in 5 months</strong> — fully non-technical founders, Claude Code only</li>
-      <li>Leadmore AI at <strong>$30K MRR</strong> via content-led growth + AI marketing product</li>
-      <li><strong>June 15:</strong> Anthropic restructures API credit pools — subscription credits will split. Audit which pool your STIQ usage draws from before the change</li>
-    </ul>
-    <div class="so-what">The June 15 credit restructure is operational — check your Anthropic dashboard before next weekend. The Emergent $25M ARR story is the clearest benchmark yet for what you could build with STIQ's ops expertise as the moat.</div>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','pulse-indie-claude-code-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','pulse-indie-claude-code-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','pulse-indie-claude-code-0606')">⭐ Save</button>
+  <div class="card" data-id="pulse-indie-claude-code-0608" data-title="Indie / Claude Code — Partner Network for solo agencies, June 15 credit restructure">
+    <div class="pulse-topic">🚀 Indie / Claude Code</div>
+    <div class="card-body">
+      <ul class="pulse-bullets">
+        <li>IndieHackers documented: solo agency (one-person shop) accepted into Anthropic Partner Network Select tier. Proof the requirement (10 certified + 2 deployed customers) is achievable alone</li>
+        <li>Claude Code $2.5B+ run-rate. Enterprise is 50%+ — non-technical founder case is now Anthropic's IPO narrative, not a side note</li>
+        <li><strong>June 15 (next week):</strong> Anthropic splits API credits and subscription credits — separate pools. Review your Claude Code usage if you have active automations</li>
+        <li>Pattern holding: solo founders at $62K MRR, $25M ARR stories in 5 months. The bottleneck is now distribution, not building</li>
+      </ul>
+      <div class="sowhat">So what for you: June 15 credit restructure = check your active STIQ Claude integrations before Wednesday. A wrong cost assumption could hit unexpectedly.</div>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
     </div>
   </div>
+</div>
 
-</div><!-- /s2 -->
-
-<!-- ========== SECTION 3: GREEK POLITICS ========== -->
+<!-- ═══════════════════════════════════════════ SECTION 3 — GREEK POLITICS -->
 <div class="section s3">
-  <div class="section-title"><span class="emoji">🇬🇷</span> Section 3 — Greek Politics</div>
-
-  <div class="pol-item" data-id="gp-june3-poll-0606" data-title="June 3 GPO poll: ND 28.6%, ELAS 15.1%, PASOK 12.4%, Elpida 10.5%">
-    <strong>Freshest Poll — GPO, June 3</strong>
-    ND 28.6% · ELAS (Tsipras) 15.1% · PASOK 12.4% · Elpida (Karystianou) 10.5%. First time four parties simultaneously above 10%. Mitsotakis PM preference at 26.3%; Tsipras 15.1%; Karystianou 7.1%. <a href="https://en.protothema.gr/2026/06/03/gpo-nd-at-28-6-elas-at-15-1-pasok-at-12-4-down-3-5-points-karystianou-at-10-5/" target="_blank" rel="noopener">Protothema ↗</a>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','gp-june3-poll-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','gp-june3-poll-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','gp-june3-poll-0606')">⭐ Save</button>
+  <div class="section-title">🇬🇷 Greek Politics</div>
+  <div class="card" data-id="gp-roundup-0608" data-title="Greek Politics June 8: EU macro exit, polls, Samaras, constitutional reform">
+    <div class="card-body">
+      <ul class="politics-bullets">
+        <li>🟢 <strong>EU removes Greece from macroeconomic imbalances list</strong> (June 3) — First time since 2010. EU Commission cites GDP +2.1% Q1 2026, government surplus +1.7% GDP, growth forecast +1.8% for 2026 vs Eurozone average 0.9%. Mitsotakis calls it "a negative chapter opened 16 years ago now closes." OECD and markets issued simultaneous positive reports — a rare triple endorsement. <a href="https://en.protothema.gr/2026/06/03/milestone-for-greece-the-ec-removed-greece-from-the-list-of-countries-with-macroeconomic-imbalances-16-years-after-the-crisis/" target="_blank" rel="noopener">→</a></li>
+        <li>📊 <strong>New polls (June 2–4):</strong> All three major polls converge: ND ~29%, ELAS (Tsipras) ~15%, PASOK ~11% (now 3rd, down ~4 pts in 6 weeks), Elpida (Karystianou) ~10.5%, SYRIZA ~1–2%. PASOK's collapse from 17% → 11% is the most dramatic shift. The opposition is fragmenting faster than expected. <a href="https://en.protothema.gr/2026/06/03/gpo-nd-at-28-6-elas-at-15-1-pasok-at-12-4-down-3-5-points-karystianou-at-10-5/" target="_blank" rel="noopener">Polls →</a></li>
+        <li>⚠️ <strong>Samaras watch:</strong> Spoke in Heraklion June 5, cryptic "we'll talk about the rest this afternoon." Launch officially slipping to summer/fall — not this week. When it comes, targeting disaffected ND right flank; could push ND below 27%.</li>
+        <li>📋 <strong>Constitutional reform:</strong> 30 articles formally in parliament process, including AI governance clause. Progress slow but the AI provision could be the most consequential for Greek tech companies seeking public sector contracts.</li>
+      </ul>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
     </div>
   </div>
+</div>
 
-  <div class="pol-item" data-id="gp-samaras-crete-launch-imminent-0606" data-title="Samaras in Crete June 5 — right-wing party launch imminent">
-    <strong>Samaras — Party Launch Imminent (Crete, June 5)</strong>
-    Former PM Samaras visited Crete yesterday, toured the regional authority, and delivered remarks at a think-tank event. Ballot lists ready in most constituencies. His "patriotic identity" party (de Gaulle model) targets disaffected ND conservatives. If launched, ND could fall below 25%. <a href="https://greekcitytimes.com/2026/06/02/antonis-samaras-new-party-greece/" target="_blank" rel="noopener">GreekCityTimes ↗</a>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','gp-samaras-crete-launch-imminent-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','gp-samaras-crete-launch-imminent-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','gp-samaras-crete-launch-imminent-0606')">⭐ Save</button>
-    </div>
-  </div>
-
-  <div class="pol-item" data-id="gp-splintering-bloomberg-0606" data-title="Bloomberg: Greece's splintering politics raises specter of messy election">
-    <strong>Bloomberg, May 31 — "Splintering Politics"</strong>
-    Five-to-six-party landscape raises the specter of a hung parliament or coalition in 2027. Cost-of-living crisis + political fragmentation = investor confidence concern flagged explicitly. Mitsotakis confirmed H2 2027 timeline, but the path to a stable majority is narrowing. <a href="https://www.bloomberg.com/news/articles/2026-05-31/greece-s-splintering-politics-raises-specter-of-messy-election-next-year" target="_blank" rel="noopener">Bloomberg ↗</a>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','gp-splintering-bloomberg-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','gp-splintering-bloomberg-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','gp-splintering-bloomberg-0606')">⭐ Save</button>
-    </div>
-  </div>
-
-</div><!-- /s3 -->
-
-<!-- ========== SECTION 4: INTERNATIONAL POLITICS ========== -->
+<!-- ═══════════════════════════════════════════ SECTION 4 — INTERNATIONAL POLITICS -->
 <div class="section s4">
-  <div class="section-title"><span class="emoji">🌍</span> Section 4 — International Politics</div>
-
-  <div class="pol-item" data-id="ip-euus-turnberry-vote-0606" data-title="EU-US Turnberry Agreement: ratification vote June 15-18, 9 days away">
-    <strong>EU-US Turnberry Agreement — Vote in 9 Days</strong>
-    EU Parliament trade committee cleared the deal June 2. Full ratification vote June 15-18. Terms: 15% tariff cap on EU exports to US, EU ends tariffs on industrial and farm goods, sunset clause 2029. Greek agriculture (olive oil, feta, wine) and French luxury exports are in scope. <a href="https://www.bloomberg.com/news/articles/2026-06-02/eu-lawmakers-clear-us-trade-deal-for-final-approval" target="_blank" rel="noopener">Bloomberg ↗</a>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','ip-euus-turnberry-vote-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','ip-euus-turnberry-vote-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','ip-euus-turnberry-vote-0606')">⭐ Save</button>
+  <div class="section-title">🌍 International Politics</div>
+  <div class="card" data-id="ip-roundup-0608" data-title="International Politics June 8: Ukraine London summit, Iran deal pending, EU-US June 16">
+    <div class="card-body">
+      <ul class="politics-bullets">
+        <li>🇺🇦 <strong>Ukraine — European leaders demand unconditional ceasefire</strong> (June 7): UK PM Starmer hosted Zelenskyy + EU leaders at Downing Street summit. Joint statement: Putin must accept unconditional ceasefire. EU summit June 18–19 will include Ukraine on the agenda. US-Russia-Ukraine Geneva talks yielded no territorial breakthrough — Russia continues to reject ceasefire-first framing. <a href="https://www.bloomberg.com/news/articles/2026-06-07/european-leaders-join-ukraine-s-call-for-ceasefire-with-russia" target="_blank" rel="noopener">→</a></li>
+        <li>🇮🇷 <strong>Iran — Deal "essentially negotiated," still unannounced:</strong> Trump said deal is "largely negotiated" (May 23). Framework: 60-day ceasefire extension + Hormuz reopening + nuclear enrichment freeze + sanctions relief negotiations. Iran disputes Trump's framing on Hormuz control. IAEA's Grossi says the 2015 JCPOA is dead — any new deal is fresh architecture, not a revival. Trump has yet to announce final determination. <a href="https://www.axios.com/2026/05/24/iran-deal-strait-hormuz-sanctions-nuclear" target="_blank" rel="noopener">→</a></li>
+        <li>🤝 <strong>EU-US — June 16 vote + forced labor complication:</strong> EU Parliament votes in 8 days on the Turnberry Agreement (15% tariff cap). NEW: US threatening additional 10% surcharge on EU goods linked to forced labor. EU Commission calls it "unjustified." If both pass, effective tariffs could reach 25%+ on some categories — partially reversing the deal. <a href="https://www.euronews.com/my-europe/2026/06/03/us-tariff-threats-over-forced-labour-unjustified-commission-says" target="_blank" rel="noopener">→</a></li>
+      </ul>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
     </div>
   </div>
+</div>
 
-  <div class="pol-item" data-id="ip-ukraine-june-deadline-0606" data-title="Ukraine-Russia: US set June deadline, talks on pause, Ukraine regaining initiative">
-    <strong>Ukraine-Russia — June Deadline, Talks Stalled</strong>
-    Zelensky confirmed US set a June deadline for a peace framework. Geneva trilateral talks paused — Washington's focus shifted toward Middle East after US-Israel strikes on Iran. Ukraine regaining battlefield initiative with long-range strikes inside Russia. Russia calls for resumption. Ceasefire by June 30 assessed as "unlikely." <a href="https://velinatchakarova.substack.com/p/the-ukraine-war-the-june-opening" target="_blank" rel="noopener">Analysis ↗</a>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','ip-ukraine-june-deadline-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','ip-ukraine-june-deadline-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','ip-ukraine-june-deadline-0606')">⭐ Save</button>
-    </div>
-  </div>
-
-  <div class="pol-item" data-id="ip-iran-nuclear-june-0606" data-title="Iran nuclear talks: Trump pushing firmer commitments, IAEA says 2015 deal dead">
-    <strong>Iran — Nuclear Talks at Critical Stage</strong>
-    Trump sent revised terms demanding firmer written commitments on uranium enrichment and disposal. Iran reviewing via intermediaries. IAEA Director Grossi stated clearly: "the 2015 deal is no longer a workable model — any future agreement must reflect today's realities." Key sticking points: enrichment levels, frozen assets, Lebanon ceasefire linkage. Hormuz situation: contested but not escalating today. <a href="https://www.aljazeera.com/video/newsfeed/2026/6/2/aje-onl-nf_qt_grossi-on-new-iran-nuclear-deal-020626" target="_blank" rel="noopener">Al Jazeera / Grossi ↗</a>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','ip-iran-nuclear-june-0606')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','ip-iran-nuclear-june-0606')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','ip-iran-nuclear-june-0606')">⭐ Save</button>
-    </div>
-  </div>
-
-</div><!-- /s4 -->
-
-<!-- ========== SECTION 5: WILDCARD ========== -->
+<!-- ═══════════════════════════════════════════ SECTION 5 — WILDCARD -->
 <div class="section s5">
-  <div class="section-title"><span class="emoji">🎲</span> Section 5 — Today's Wildcard</div>
-
-  <div class="card" data-id="wildcard-2026-06-06-karamanlis-paris-exile" data-title="Karamanlis's 11 Years in Paris: The Original Athens-Paris Operating Model">
-    <h3>Karamanlis's 11-Year Paris Exile — The Original Athens-Paris Operating Model (1963–1974)</h3>
-    <p>When Constantine Karamanlis was forced out of power in 1963, he chose Paris. Not London, not Washington — Paris. For 11 years, he lived in a quiet apartment near Champ-de-Mars, maintained relationships across French political and business circles, studied European integration from the inside, and positioned Greece for the EEC when the moment came. When the military junta fell in July 1974, he was summoned back to Athens and, within 7 years, delivered Greece's EEC accession (1981). The two-city operating model — Athens as home base, Paris as the European relationship layer — has a 50-year track record in Greek statecraft.</p>
-    <p>What's less known: Karamanlis credited his Paris years not as exile but as his most productive intellectual period. He wasn't waiting — he was building the context engineering that let him move fast when conditions changed.</p>
-    <div class="wildcard-why">You're running STIQ from Athens while building a Paris presence — the same dual-city playbook Karamanlis ran, but in venture-backed agentic software rather than politics. The precedent suggests that Paris patience pays off on a longer timescale than most founders expect. It's not a market you enter; it's a relationship you compound. Also: the EU-US Turnberry Agreement ratifying in 9 days is, in a small way, the latest chapter of what Karamanlis started in 1981.</div>
-    <p style="margin-top:10px;"><a href="https://en.wikipedia.org/wiki/Konstantinos_Karamanlis" target="_blank" rel="noopener">Wikipedia — Konstantinos Karamanlis ↗</a></p>
-    <div class="toggles">
-      <button class="toggle-btn" onclick="toggle(this,'like','wildcard-2026-06-06-karamanlis-paris-exile')">👍 Interesting</button>
-      <button class="toggle-btn" onclick="toggle(this,'skip','wildcard-2026-06-06-karamanlis-paris-exile')">👎 Skip</button>
-      <button class="toggle-btn" onclick="toggle(this,'save','wildcard-2026-06-06-karamanlis-paris-exile')">⭐ Save</button>
+  <div class="section-title">🎲 Today's Wildcard</div>
+  <div class="card" style="border-left-color:#4b3a8b;" data-id="wildcard-2026-06-08-diolkos-platform" data-title="The Diolkos: Ancient Corinth's 6km Toll Road That Ran Profitably for 1,300 Years">
+    <div class="card-title">The Diolkos: Ancient Corinth's 6km Toll Road That Ran Profitably for 1,300 Years</div>
+    <div class="card-body">
+      <p>Around 600 BC, Corinth built a paved stone trackway called the <em>Diolkos</em> — a 6km track of grooved limestone slabs — to drag ships across the isthmus between the Aegean and Ionian seas. Ships paid a toll to skip a 700km coastal journey around the Peloponnese. The Diolkos required no ships of its own: just a track, rollers, and winches.</p>
+      <p>It operated continuously from ~600 BC to ~700 AD — <strong>1,300 years of profitable infrastructure</strong>. Corinth became the wealthiest city in Greece not because it made things, but because it owned the crossing.</p>
+      <p><a href="https://en.wikipedia.org/wiki/Diolkos" target="_blank" rel="noopener">Read more →</a></p>
+      <div class="why-today">
+        <strong>Why this for you today:</strong> You commute between Athens and Paris every two weeks — you're literally the Diolkos between two food and tech markets. The most profitable ancient Greek businesses weren't the traders (they took risks) or the warriors (expensive). They were the people who owned the crossing. STIQ's multi-brand platform model is exactly this insight, 2,600 years later.
+      </div>
+    </div>
+    <div class="toggle-row">
+      <button class="toggle-btn" onclick="toggle(this,'like')">👍 Interesting</button>
+      <button class="toggle-btn" onclick="toggle(this,'skip')">👎 Skip</button>
+      <button class="toggle-btn" onclick="toggle(this,'save')">⭐ Save</button>
     </div>
   </div>
-</div><!-- /s5 -->
+</div>
 
-<!-- ========== PICKS PANEL ========== -->
+<!-- ═══════════════════════════════════════════ PICKS PANEL -->
 <div class="picks-panel">
-  <h2>📋 My Picks &amp; Training</h2>
+  <h3>📋 My Picks &amp; Training</h3>
   <div class="picks-steps">
+    <strong>How to train tomorrow's brief:</strong>
     <ol>
-      <li><strong>Read</strong> — Each morning Claude reads your training file before generating the brief.</li>
-      <li><strong>React</strong> — Click 👍 / 👎 / ⭐ on items. State saves to localStorage. Won't reset on reload.</li>
-      <li><strong>Train</strong> — Hit "Show my picks" → copy → paste into Cowork as: <code style="background:#1f2937;padding:2px 6px;border-radius:3px;font-size:0.78rem;">train brief: [paste]</code></li>
-      <li><strong>Adapt</strong> — Tomorrow's brief ranks items by your accumulated tag preferences.</li>
+      <li>Click 👍 / 👎 / ⭐ on any item above — state saves automatically to your browser</li>
+      <li>Hit <strong>"Show my picks"</strong> below when done</li>
+      <li>Copy the summary and open Cowork</li>
+      <li>Paste with prefix: <code>train brief: [your picks]</code></li>
     </ol>
+    <em>Each session adjusts what appears tomorrow — flavors items within sections, moves high-signal topics higher, and saves ⭐ items to Section 0 of the next brief.</em>
   </div>
-  <div class="picks-actions">
+  <div class="btn-row">
     <button class="btn btn-primary" onclick="showPicks()">Show my picks</button>
-    <button class="btn btn-secondary" onclick="copyPicks()">Copy to clipboard</button>
-    <button class="btn btn-secondary" onclick="clearPicks()">Clear all picks</button>
+    <button class="btn btn-danger" onclick="clearAll()">Clear all picks</button>
   </div>
-  <textarea id="picks-output" readonly placeholder="Your picks will appear here..."></textarea>
+  <div class="picks-output" id="picks-output">
+    <textarea id="picks-text" readonly></textarea>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="copyPicks()">Copy to clipboard</button>
+    </div>
+  </div>
 </div>
 
 </div><!-- /container -->
 
 <script>
-const DATE_KEY = '2026-06-06';
+const DATE = '2026-06-08';
+const PREFIX = 'mb-' + DATE + '-';
 
-function getKey(id) {
-  return `mb-${DATE_KEY}-${id}`;
+function getKey(card) {
+  return PREFIX + card.getAttribute('data-id');
 }
 
-function toggle(btn, type, id) {
-  const key = getKey(id);
-  const current = localStorage.getItem(key);
-  const typeMap = { like: 'active-like', skip: 'active-skip', save: 'active-save' };
+function toggle(btn, type) {
   const card = btn.closest('[data-id]');
-  const allBtns = card ? card.querySelectorAll('.toggle-btn') : [];
-
-  // Clear all active states for this item
-  allBtns.forEach(b => {
-    b.classList.remove('active-like', 'active-skip', 'active-save');
-  });
-
+  const key = getKey(card);
+  const current = localStorage.getItem(key);
+  const buttons = card.querySelectorAll('.toggle-btn');
+  buttons.forEach(b => { b.classList.remove('active-like','active-skip','active-save'); });
   if (current === type) {
-    // Toggle off
     localStorage.removeItem(key);
   } else {
-    // Set new state
     localStorage.setItem(key, type);
-    btn.classList.add(typeMap[type]);
+    const cls = type === 'like' ? 'active-like' : type === 'skip' ? 'active-skip' : 'active-save';
+    btn.classList.add(cls);
   }
 }
 
 function restoreState() {
   document.querySelectorAll('[data-id]').forEach(card => {
-    const id = card.getAttribute('data-id');
-    const val = localStorage.getItem(getKey(id));
-    if (val) {
-      const typeMap = { like: 'active-like', skip: 'active-skip', save: 'active-save' };
-      const btns = card.querySelectorAll('.toggle-btn');
-      const typeText = { like: '👍 Interesting', skip: '👎 Skip', save: '⭐' };
-      btns.forEach(btn => {
-        const text = btn.textContent.trim();
-        if ((val === 'like' && text.includes('👍')) ||
-            (val === 'skip' && (text.includes('👎') || text.includes('Dismiss'))) ||
-            (val === 'save' && text.includes('⭐'))) {
-          btn.classList.add(typeMap[val]);
-        }
-      });
-    }
+    const key = getKey(card);
+    const val = localStorage.getItem(key);
+    if (!val) return;
+    const cls = val === 'like' ? 'active-like' : val === 'skip' ? 'active-skip' : 'active-save';
+    card.querySelectorAll('.toggle-btn').forEach(btn => {
+      const t = btn.textContent.includes('👍') ? 'like' : btn.textContent.includes('👎') ? 'skip' : 'save';
+      if (t === val) btn.classList.add(cls);
+    });
   });
 }
 
 function showPicks() {
-  const items = { like: [], save: [], skip: [] };
+  const liked = [], saved = [], skipped = [];
   document.querySelectorAll('[data-id]').forEach(card => {
-    const id = card.getAttribute('data-id');
+    const key = getKey(card);
+    const val = localStorage.getItem(key);
     const title = card.getAttribute('data-title');
-    const val = localStorage.getItem(getKey(id));
-    if (val && title) items[val].push(title);
+    if (!val || !title) return;
+    if (val === 'like') liked.push(title);
+    else if (val === 'save') saved.push(title);
+    else if (val === 'skip') skipped.push(title);
   });
-
-  let out = `My picks from Morning Brief — ${DATE_KEY}\n\n`;
-  if (items.like.length) {
-    out += `👍 INTERESTING:\n${items.like.map(t => `- ${t}`).join('\n')}\n\n`;
-  }
-  if (items.save.length) {
-    out += `⭐ SAVE FOR LATER:\n${items.save.map(t => `- ${t}`).join('\n')}\n\n`;
-  }
-  if (items.skip.length) {
-    out += `👎 SKIP:\n${items.skip.map(t => `- ${t}`).join('\n')}\n`;
-  }
-  if (!items.like.length && !items.save.length && !items.skip.length) {
-    out += '(No picks yet — click the toggle buttons on items above.)';
-  }
-
-  const ta = document.getElementById('picks-output');
-  ta.value = out;
-  ta.style.display = 'block';
+  let out = 'My picks from Morning Brief — ' + DATE + '\n\n';
+  out += '👍 INTERESTING:\n';
+  out += liked.length ? liked.map(t => '- ' + t).join('\n') : '(none)';
+  out += '\n\n⭐ SAVE FOR LATER:\n';
+  out += saved.length ? saved.map(t => '- ' + t).join('\n') : '(none)';
+  out += '\n\n👎 SKIP:\n';
+  out += skipped.length ? skipped.map(t => '- ' + t).join('\n') : '(none)';
+  document.getElementById('picks-text').value = out;
+  document.getElementById('picks-output').style.display = 'block';
 }
 
 function copyPicks() {
-  showPicks();
-  const ta = document.getElementById('picks-output');
+  const ta = document.getElementById('picks-text');
   ta.select();
-  try {
-    navigator.clipboard.writeText(ta.value).then(() => {
-      const btn = document.querySelector('.btn-secondary');
-      btn.textContent = 'Copied!';
-      setTimeout(() => btn.textContent = 'Copy to clipboard', 2000);
-    });
-  } catch (e) {
-    document.execCommand('copy');
-  }
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
 }
 
-function clearPicks() {
+function clearAll() {
   document.querySelectorAll('[data-id]').forEach(card => {
-    const id = card.getAttribute('data-id');
-    localStorage.removeItem(getKey(id));
-    card.querySelectorAll('.toggle-btn').forEach(btn => {
-      btn.classList.remove('active-like', 'active-skip', 'active-save');
-    });
+    localStorage.removeItem(getKey(card));
+    card.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active-like','active-skip','active-save'));
   });
-  const ta = document.getElementById('picks-output');
-  ta.value = '';
-  ta.style.display = 'none';
+  document.getElementById('picks-output').style.display = 'none';
 }
 
-// Restore on load
 restoreState();
 </script>
 </body>
