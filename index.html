@@ -7,351 +7,347 @@
 <style>
   :root{
     --navy:#0f1d3a; --gold:#d4a017; --violet:#7d3c98; --teal:#16a085;
-    --blue:#1f4e79; --amber:#d68910; --indigo:#4b3a8b; --ink:#1b1f24; --muted:#5b6470;
-    --line:#e7e9ee; --bg:#ffffff;
+    --blue:#1f4e79; --amber:#d68910; --indigo:#4b3a8b;
+    --ink:#1a1a1a; --muted:#5d6b7a; --line:#e6e9ee; --bg:#ffffff;
   }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
+  body{margin:0;background:#f3f5f8;color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.5;font-size:16px}
-  .wrap{max-width:860px;margin:0 auto;padding:0 16px 60px}
-  header.top{background:var(--navy);color:#fff;border-radius:0 0 14px 14px;padding:22px 18px;margin-bottom:18px}
-  header.top h1{margin:0;font-size:22px;letter-spacing:.2px}
-  header.top .sub{opacity:.85;font-size:13px;margin-top:4px}
-  header.top .read{display:inline-block;margin-top:10px;background:rgba(255,255,255,.14);
-    padding:4px 10px;border-radius:999px;font-size:12px}
-  section{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 18px}
-  section h2{margin:0 0 4px;font-size:18px;display:flex;align-items:center;gap:8px}
-  section .lead{color:var(--muted);font-size:13px;margin:0 0 12px}
-  .s0{border-top:4px solid var(--gold)} .s0 h2{color:var(--gold)}
-  .s1{border-top:4px solid var(--violet)} .s1 h2{color:var(--violet)}
-  .s2{border-top:4px solid var(--teal)} .s2 h2{color:var(--teal)}
-  .s3{border-top:4px solid var(--blue)} .s3 h2{color:var(--blue)}
-  .s4{border-top:4px solid var(--amber)} .s4 h2{color:var(--amber)}
-  .s5{border-top:4px solid var(--indigo)} .s5 h2{color:var(--indigo)}
-  .subhead{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;
-    color:var(--muted);margin:14px 0 8px}
-  .item{border:1px solid var(--line);border-radius:10px;padding:12px 12px 8px;margin:0 0 12px;background:#fcfcfd}
-  .item h3{margin:0 0 6px;font-size:15.5px}
-  .item p{margin:5px 0;font-size:14px}
-  .item .meta{font-size:12.5px;color:var(--muted)}
-  .item .lbl{font-weight:700;color:var(--ink)}
-  .item a{color:var(--blue);text-decoration:none}
-  .item a:hover{text-decoration:underline}
-  .pulse h3{font-size:14.5px;margin-bottom:4px}
-  .pulse ul{margin:4px 0 6px;padding-left:18px}
-  .pulse li{font-size:13.5px;margin:2px 0}
-  .sowhat{font-size:13px;color:var(--teal);font-weight:600}
-  .bullet{font-size:14px;margin:6px 0;padding-left:2px}
-  .toggles{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-  .toggles button{border:1px solid var(--line);background:#fff;border-radius:999px;
-    padding:5px 11px;font-size:12.5px;cursor:pointer;color:var(--muted);transition:.12s}
-  .toggles button:hover{border-color:#c9ced6}
-  .toggles button.on-up{background:#e8f7ee;border-color:#27ae60;color:#1e8449}
-  .toggles button.on-down{background:#fdecea;border-color:#e74c3c;color:#c0392b}
-  .toggles button.on-star{background:#fdf6e3;border-color:var(--gold);color:#9c7a12}
-  .picks{border:1px dashed #c9ced6;border-radius:12px;padding:16px;background:#fafbfc}
-  .picks h2{margin:0 0 8px;font-size:17px}
-  .picks ol{margin:8px 0 12px;padding-left:20px;font-size:13.5px;color:var(--muted)}
-  .picks .btns{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-  .picks button{border:0;border-radius:8px;padding:9px 14px;font-size:13.5px;cursor:pointer}
-  .pbtn{background:var(--navy);color:#fff} .cbtn{background:#eef0f3;color:var(--ink)}
-  textarea{width:100%;min-height:170px;border:1px solid var(--line);border-radius:8px;
-    padding:10px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;margin-top:8px}
-  .hidden{display:none}
-  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:8px}
+    line-height:1.5;font-size:16px;}
+  .wrap{max-width:860px;margin:0 auto;background:var(--bg);min-height:100vh;
+    box-shadow:0 0 30px rgba(0,0,0,.05);}
+  header{background:var(--navy);color:#fff;padding:22px 22px 18px;}
+  header h1{margin:0;font-size:21px;letter-spacing:.2px;}
+  header .date{margin-top:4px;font-size:13px;color:#aebfd6;}
+  header .tagline{margin-top:10px;font-size:13px;color:#cdd9ea;line-height:1.45;}
+  section{padding:18px 20px;border-bottom:1px solid var(--line);}
+  .sec-head{display:flex;align-items:center;gap:9px;margin:0 0 12px;}
+  .sec-head .bar{width:5px;height:22px;border-radius:3px;}
+  .sec-head h2{margin:0;font-size:17px;}
+  .sec-head .sub{margin-left:auto;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
+  .card{border:1px solid var(--line);border-left-width:4px;border-radius:8px;
+    padding:12px 14px;margin-bottom:11px;background:#fff;}
+  .card h3{margin:0 0 5px;font-size:15px;line-height:1.35;}
+  .card p{margin:4px 0;font-size:14px;color:#2b3440;}
+  .card .meta{font-size:12.5px;color:var(--muted);}
+  .card .meta b{color:#3a4654;}
+  .card a{color:var(--blue);text-decoration:none;}
+  .card a:hover{text-decoration:underline;}
+  .pulse h3{font-size:14.5px;}
+  .pulse ul{margin:6px 0 4px;padding-left:18px;}
+  .pulse li{font-size:13.5px;margin:2px 0;}
+  .sowhat{font-size:13px;color:#155;background:#eafaf4;border-radius:6px;
+    padding:6px 9px;margin-top:7px;}
+  .polrow{font-size:14px;margin:7px 0;padding-left:2px;}
+  .polrow b{color:#1f3a5a;}
+  .nofresh{font-size:13px;color:var(--muted);font-style:italic;}
+  /* toggles */
+  .toggles{display:flex;gap:7px;margin-top:9px;}
+  .tg{border:1px solid var(--line);background:#fafbfc;border-radius:20px;
+    padding:3px 11px;font-size:12.5px;cursor:pointer;user-select:none;
+    transition:.12s;color:#44505e;}
+  .tg:hover{border-color:#bcc6d2;}
+  .tg.up.on{background:#e6f4ea;border-color:#56b06a;color:#1f7a37;}
+  .tg.down.on{background:#fdecea;border-color:#e06a5c;color:#b23022;}
+  .tg.save.on{background:#fcf3da;border-color:var(--gold);color:#8a6708;}
+  /* picks panel */
+  .picks{padding:20px;background:#0f1d3a;color:#dde6f3;}
+  .picks h2{margin:0 0 6px;font-size:16px;color:#fff;}
+  .picks ol{margin:8px 0 12px;padding-left:20px;font-size:13px;color:#b9c7dd;}
+  .picks li{margin:3px 0;}
+  .picks code{background:#1d2f52;padding:1px 6px;border-radius:4px;color:#ffd98a;font-size:12.5px;}
+  .btnrow{display:flex;gap:9px;flex-wrap:wrap;margin:10px 0;}
+  .btn{background:var(--gold);color:#1a1200;border:none;border-radius:7px;
+    padding:9px 15px;font-size:13.5px;font-weight:600;cursor:pointer;}
+  .btn.alt{background:#27406b;color:#dde6f3;}
+  .btn:active{transform:translateY(1px);}
+  textarea{width:100%;height:180px;margin-top:10px;border-radius:8px;border:none;
+    padding:11px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;
+    background:#0a1426;color:#cfe0f5;display:none;}
+  .count{font-size:12px;color:#8fa3c2;margin-left:auto;}
+  .picks .top{display:flex;align-items:center;gap:10px;}
+  footer{padding:16px 20px;font-size:11.5px;color:var(--muted);text-align:center;}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header class="top">
-  <h1>☕ Morning Brief — Sunday, June 14, 2026</h1>
-  <div class="sub">For Stylianos · STIQ AI · Athens ↔ Paris</div>
-  <span class="read">~4 min read · intl-politics leads today (your strongest signal)</span>
+<header>
+  <h1>☕ Morning Brief</h1>
+  <div class="date">Sunday, 14 June 2026 · Athens</div>
+  <div class="tagline">Side hustles → industry money → Greek politics → world → one wildcard. Under 5 minutes. Tap 👍 / 👎 / ⭐ as you read; train at the bottom.</div>
 </header>
 
 <!-- SECTION 0: SAVED -->
-<section class="s0">
-  <h2>⭐ Your Saved Items</h2>
-  <p class="lead">Pinned from earlier briefs. 👎 to dismiss for tomorrow.</p>
+<section>
+  <div class="sec-head"><span class="bar" style="background:var(--gold)"></span><h2>⭐ Your Saved Items</h2><span class="sub">pinned</span></div>
 
-  <div class="item" data-id="idea-gr-ama-compliance-tracker" data-title="AMA compliance tracker for Greek short-term rental hosts">
+  <div class="card" style="border-left-color:var(--gold)" data-id="idea-gr-ama-compliance-tracker" data-title="AMA compliance tracker for Greek short-term rental hosts">
     <h3>AMA compliance tracker for Greek short-term rental hosts</h3>
-    <p>Short-term-rental rules keep tightening; a tracker that flags AMA registration + tax obligations per property stays evergreen as the 2026 enforcement ramps.</p>
-    <p class="meta"><span class="lbl">Source:</span> <a href="https://getproofsnap.com/posts/greece-short-term-rental-airbnb-regulations-2026.html" target="_blank" rel="noopener">Greece STR regulations 2026</a></p>
-    <div class="toggles" data-item></div>
+    <p>Tool that keeps Greek short-term-rental hosts inside the AMA / short-let registration rules and flags filing deadlines. You saved this on 04 May — still live as the 2026 STR rules tighten.</p>
+    <p class="meta"><a href="https://getproofsnap.com/posts/greece-short-term-rental-airbnb-regulations-2026.html" target="_blank" rel="noopener">2026 Greek STR regulation overview →</a></p>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item" data-id="idea-fr-paris-agentic-agency" data-title="Paris Agentic Agency — non-technical boutique serving the AMI ecosystem">
-    <h3>Paris Agentic Agency — non-technical boutique serving the AMI ecosystem</h3>
-    <p>Boutique shipping agentic front-ends for Paris SMBs and the sovereign-AI crowd. See today's GR/FR ideas — VivaTech week (June 17–20) is the live door-opener.</p>
-    <p class="meta"><span class="lbl">Source:</span> <a href="https://news.crunchbase.com/venture/funding-picked-up-ai-led-europe-q1-2026/" target="_blank" rel="noopener">European AI funding, Q1 2026</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card" style="border-left-color:var(--gold)" data-id="idea-fr-paris-agentic-agency" data-title="Paris Agentic Agency — non-technical boutique serving the AMI ecosystem">
+    <h3>Paris Agentic Agency — non-technical boutique for the AMI ecosystem</h3>
+    <p>A boutique that ships agentic builds for Paris firms riding the sovereign-AI wave. With Mistral now raising €3B at a €20B valuation (12 Jun) and VivaTech next week, this thesis is hotter than when you saved it.</p>
+    <p class="meta"><a href="https://www.bloomberg.com/news/articles/2026-06-12/france-s-mistral-in-funding-talks-at-about-20-billion-valuation" target="_blank" rel="noopener">Mistral €20B round →</a></p>
+    <div class="toggles"></div>
   </div>
 </section>
 
 <!-- SECTION 1: IDEAS -->
-<section class="s1">
-  <h2>💡 Side Hustle Ideas</h2>
-  <p class="lead">Concrete, ship-with-Claude-Code projects tied to this week's signals. Operational / "what-changed" framings only — tool & calculator pitches deliberately dropped.</p>
+<section>
+  <div class="sec-head"><span class="bar" style="background:var(--violet)"></span><h2>💡 Side Hustle Ideas</h2><span class="sub">main</span></div>
 
-  <div class="subhead">🇬🇷 Greece</div>
+  <p class="meta" style="margin:-4px 0 10px;color:var(--muted)"><b>🇬🇷 Greece</b> — operational, STIQ-dogfood-able</p>
 
-  <div class="item" data-id="idea-gr-chipotle-accuracy-audit-0614" data-title="Order-Accuracy Audit for STIQ venues — the Chipotle lesson">
+  <div class="card" style="border-left-color:var(--violet)" data-id="idea-gr-chipotle-accuracy-audit-0614" data-title="Order-Accuracy Audit for STIQ venues — the Chipotle lesson">
     <h3>Order-Accuracy Audit for STIQ venues — the Chipotle lesson</h3>
-    <p><span class="lbl">What:</span> A weekly Claude-Code audit that scores Dina's / Protein Garden tickets on accuracy vs. speed — flags where "go faster" incentives are quietly hurting repeat visits.</p>
-    <p><span class="lbl">Why now:</span> Chipotle's Q1 reset turned transactions positive for the first time in several quarters precisely by admitting its incentives "prioritized speed at the expense of accuracy." That's a free, dated playbook to dogfood internally.</p>
-    <p><span class="lbl">Scope:</span> 1–2 days on existing POS/ops exports. <span class="lbl">Money:</span> Internal first; productize to other Greek chains at €200–400/mo once it moves a metric.</p>
-    <p class="meta"><span class="lbl">Source:</span> <a href="https://www.nasdaq.com/articles/cava-or-cmg-which-fast-casual-stock-looks-stronger-right-now" target="_blank" rel="noopener">CAVA vs CMG, June 2026</a></p>
-    <div class="toggles" data-item></div>
+    <p><b>What:</b> An agent that samples POS tickets vs. what actually left the pass, scoring accuracy and lost margin per venue per shift.</p>
+    <p><b>Why now:</b> Chipotle's softening transactions this quarter trace partly to throughput-vs-accuracy strain — the cheapest lever a Mediterranean operator can pull is getting the bowl right the first time.</p>
+    <p class="meta"><b>Scope:</b> 1–2 days on existing STIQ ticket data · <b>Money:</b> dogfood first at Dina's / Protein Garden, then sell as a €99/venue/mo add-on.</p>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item" data-id="idea-gr-returning-guest-recognition-0614" data-title="Returning-guest recognition experiment for Greek F&B">
-    <h3>Returning-guest recognition experiment for Greek F&B</h3>
-    <p><span class="lbl">What:</span> Lightweight returning-guest detection (loyalty/booking data → a "welcome back" cue to staff), aimed at the repeat-visitor wave rather than discounting.</p>
-    <p><span class="lbl">Why now:</span> ~55% of 2026 Greece travellers are repeat visitors and North-American per-person spend is tracking €3,000+. The money is in recognizing returners, not couponing strangers.</p>
-    <p><span class="lbl">Scope:</span> 2–3 days on reservation/loyalty exports. <span class="lbl">Money:</span> Dogfood at Dina's; sell to boutique hotels/tavernas as a €150–300/mo summer add-on.</p>
-    <p class="meta"><span class="lbl">Source:</span> <a href="https://www.travelandtourworld.com/news/article/greece-sees-rising-repeat-travel-and-strong-spending-boost-in-2026-tourism-wave-all-you-need-to-know/" target="_blank" rel="noopener">Greece repeat-travel wave 2026</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card" style="border-left-color:var(--violet)" data-id="idea-gr-returning-guest-recognition-0614" data-title="Returning-guest recognition experiment for Greek F&B">
+    <h3>Returning-guest recognition experiment</h3>
+    <p><b>What:</b> Lightweight recognition layer (phone / loyalty match) that flags a returning guest to staff with their last order plus a non-discount perk.</p>
+    <p><b>Why now:</b> CAVA's whole +9.7% same-store story is frequency, not discounting — recognition drives repeat visits without giving up margin, exactly the summer test for a tourist-heavy season.</p>
+    <p class="meta"><b>Scope:</b> 2–3 days on one Protein Garden location · <b>Money:</b> internal lift first; package later for Greek QSR chains.</p>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item" data-id="idea-gr-summer-shift-coverage-0614" data-title="Summer shift-coverage copilot for peak-season Greek F&B">
-    <h3>Summer shift-coverage copilot for peak-season Greek F&B</h3>
-    <p><span class="lbl">What:</span> A scheduling copilot that turns a record season into covered shifts — predicts demand spikes and surfaces who to call when someone drops.</p>
-    <p><span class="lbl">Why now:</span> Tourism is at €32.4B (13% of GDP) but operators say they're "at the limit" on labour and costs. The bottleneck this summer is staffing, not demand.</p>
-    <p><span class="lbl">Scope:</span> 3–4 days; reads roster + reservations. <span class="lbl">Money:</span> €100–250/mo per venue; bundle into STIQ ops.</p>
-    <p class="meta"><span class="lbl">Source:</span> <a href="https://greektriplanner.me/insights/greece-tourism-economy-2026" target="_blank" rel="noopener">Greece tourism economy 2026</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card" style="border-left-color:var(--violet)" data-id="idea-gr-summer-shift-coverage-0614" data-title="Summer shift-coverage copilot for peak-season Greek F&B">
+    <h3>Summer shift-coverage copilot</h3>
+    <p><b>What:</b> Agent that watches the rota plus forecast covers, surfaces understaffed shifts a week out, and drafts the swap messages.</p>
+    <p><b>Why now:</b> Greek tourism is at a capacity limit on labour and costs — peak-season no-shows are the operational pain right now, not demand.</p>
+    <p class="meta"><b>Scope:</b> 2 days wired to your scheduling sheet · <b>Money:</b> dogfood; then €79/venue/mo for independents.</p>
+    <div class="toggles"></div>
   </div>
 
-  <div class="subhead">🇫🇷 Paris / France</div>
+  <p class="meta" style="margin:6px 0 10px;color:var(--muted)"><b>🇫🇷 Paris / France</b></p>
 
-  <div class="item" data-id="idea-fr-vivatech-door-opener-0614" data-title="VivaTech-week door-opener for the Paris Agentic Agency">
-    <h3>VivaTech-week door-opener for the Paris Agentic Agency</h3>
-    <p><span class="lbl">What:</span> A 3-email + 1-landing-page outreach sprint timed to VivaTech (June 17–20): "Saw you at VivaTech — here's an agentic prototype of your workflow by Friday."</p>
-    <p><span class="lbl">Why now:</span> Europe's largest tech event is in Paris next week with a Jensen Huang sovereign-AI keynote — the one week a year French SMB decision-makers are primed to talk AI. A warm, dated hook for the saved agency.</p>
-    <p><span class="lbl">Scope:</span> 1 day to build, then live outreach. <span class="lbl">Money:</span> Each closed prototype → €2–5k engagement.</p>
-    <p class="meta"><span class="lbl">Source:</span> <a href="https://www.techtimes.com/articles/318178/20260610/nvidia-gtc-paris-keynote-headlines-vivatech-june-17-20ai-factories-sovereign-ai-robotics-europe.htm" target="_blank" rel="noopener">NVIDIA GTC Paris / VivaTech June 17–20</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card" style="border-left-color:var(--violet)" data-id="idea-fr-vivatech-door-opener-0614" data-title="VivaTech-week door-opener for the Paris Agentic Agency">
+    <h3>VivaTech-week door-opener for the agency</h3>
+    <p><b>What:</b> A one-page "ship one agent before VivaTech ends" offer — book a 90-minute build slot, leave with a working workflow.</p>
+    <p><b>Why now:</b> VivaTech runs <b>17–20 June</b> at Porte de Versailles (10th-anniversary edition) — the highest concentration of warm, AI-curious Paris buyers all year, and you're there roughly every two weeks anyway.</p>
+    <p class="meta"><a href="https://vivatech.com/" target="_blank" rel="noopener">VivaTech 2026 →</a> · <b>Money:</b> €1.5–3k per pilot build; 3–5 slots = a paid trip.</p>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item" data-id="idea-fr-sovereign-reality-check-0614" data-title="'Is your AI actually sovereign?' positioning piece for the agency">
-    <h3>"Is your AI actually sovereign?" — a positioning piece, not a compliance tool</h3>
-    <p><span class="lbl">What:</span> A short, opinionated explainer the agency publishes during VivaTech: what "sovereign AI" really means for a 20-person French SMB once you strip the keynote glamour — hosting, data residency, and where Mistral actually fits.</p>
-    <p><span class="lbl">Why now:</span> Mistral is raising €3B at a ~€20B valuation (ASML its top holder at 11%) and NVIDIA's "20 AI factories" promise gets re-tested on stage next week. Buyers will be confused; a clear voice converts to leads.</p>
-    <p><span class="lbl">Scope:</span> Half a day to write + ship. <span class="lbl">Money:</span> Pure top-of-funnel for the agency — no build, just authority.</p>
-    <p class="meta"><span class="lbl">Source:</span> <a href="https://www.bloomberg.com/news/articles/2026-06-12/france-s-mistral-in-funding-talks-at-about-20-billion-valuation" target="_blank" rel="noopener">Mistral €20B talks, June 12</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card" style="border-left-color:var(--violet)" data-id="idea-fr-sovereign-reality-check-0614" data-title="'Is your AI actually sovereign?' positioning piece for the agency">
+    <h3>"Is your AI actually sovereign?" positioning piece</h3>
+    <p><b>What:</b> A short, sharp checklist that lets a French SMB test whether its "sovereign AI" stack truly keeps data in-EU — published as the agency's calling card.</p>
+    <p><b>Why now:</b> The Mistral €20B narrative makes "sovereign" the word every Paris vendor is slapping on; a credible reality-check is contrarian and shareable the week of VivaTech.</p>
+    <p class="meta"><a href="https://techcrunch.com/2026/06/12/mistral-is-rumored-to-be-raising-e3b-at-e20-valuation/" target="_blank" rel="noopener">Mistral €3B / €20B →</a> · <b>Money:</b> lead magnet → agency pilots.</p>
+    <div class="toggles"></div>
   </div>
 </section>
 
 <!-- SECTION 2: INDUSTRY PULSE -->
-<section class="s2">
-  <h2>📊 Industry Pulse</h2>
-  <p class="lead">Money signals across your watch list. Saturated topics trimmed per your feedback — only what moved.</p>
+<section>
+  <div class="sec-head"><span class="bar" style="background:var(--teal)"></span><h2>📊 Industry Pulse</h2><span class="sub">follow the money</span></div>
 
-  <div class="item pulse" data-id="pulse-ai-coding-agents-0614" data-title="AI coding agents — Mistral €3B/€20B; Anthropic unchanged since IPO filing">
+  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-ai-coding-agents-0614" data-title="AI coding agents — Mistral €3B/€20B; Anthropic unchanged since IPO filing">
     <h3>🤖 AI coding agents</h3>
     <ul>
-      <li>Mistral in talks to raise <b>€3B at ~€20B valuation</b> (June 12) — nearly 2× its €11.7B Series C; ASML remains top holder at 11%.</li>
-      <li>Anthropic: <b>no materially new</b> since the confidential IPO filing (~$47B ARR, ~$965B target).</li>
-      <li>NVIDIA GTC Paris keynote (Jensen Huang) headlines VivaTech June 17–20 — sovereign-AI factories get re-tested.</li>
+      <li><b>Mistral</b> in talks to raise <b>€3B at ~€20B</b> valuation (12 Jun) — nearly double September's €11.7B; early-stage, terms may move up.</li>
+      <li><b>Anthropic</b> unchanged since the IPO filing — <b>~$47B ARR</b>, <b>~$965B</b> valuation track, Claude Code ~$2.5B ARR.</li>
     </ul>
-    <p class="sowhat">So what: the EU-sovereign narrative is the live wedge for your Paris agency this week — not the US-lab valuation race.</p>
-    <p class="meta"><a href="https://techcrunch.com/2026/06/12/mistral-is-rumored-to-be-raising-e3b-at-e20-valuation/" target="_blank" rel="noopener">TechCrunch — Mistral €3B</a></p>
-    <div class="toggles" data-item></div>
+    <div class="sowhat">So what: the EU-sovereign trade is the live one this week — it's the wind behind your Paris agency, not US-lab hype.</div>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item pulse" data-id="pulse-marketing-automation-0614" data-title="Marketing automation — no fresh financial signal">
+  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-marketing-automation-0614" data-title="Marketing automation — no fresh financial signal">
     <h3>📈 Marketing automation</h3>
-    <ul><li>No fresh financial signal — nothing materially new.</li></ul>
-    <div class="toggles" data-item></div>
+    <p class="nofresh">No fresh financial signal — nothing materially new since HubSpot AEO / Klaviyo K:AI.</p>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item pulse" data-id="pulse-greek-startups-0614" data-title="Greek startups — quiet; tourism €32.4B drives the macro">
+  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-greek-startups-0614" data-title="Greek startups — quiet; tourism €32.4B/13% GDP, receipts up sharply">
     <h3>🇬🇷 Greek startups</h3>
     <ul>
-      <li>No fresh round; ecosystem still anchored at <b>€732M (2025, +35%)</b>.</li>
-      <li>Macro tailwind: tourism <b>€32.4B / 13% of GDP</b>; Jan–Feb receipts <b>+70.7% YoY</b> (€1.006B).</li>
+      <li>Quiet round week; ecosystem anchor stays <b>€732.2M raised in 2025 (+35%)</b>.</li>
+      <li>Macro tailwind: tourism <b>€32.4B (~13% of GDP)</b>; Jan–Feb receipts <b>+70.7%</b> y/y.</li>
     </ul>
-    <p class="sowhat">So what: the capital story for Greek F&B/hospitality is the season, not VC — useful framing for any Protein Garden raise.</p>
-    <p class="meta"><a href="https://greektriplanner.me/insights/greece-tourism-economy-2026" target="_blank" rel="noopener">Greece tourism economy 2026</a></p>
-    <div class="toggles" data-item></div>
+    <div class="sowhat">So what: the fundraising story for a Greek consumer / F&B play is "ride a 13%-of-GDP tourism boom," not "Greek tech is hot."</div>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item pulse" data-id="pulse-fast-casual-0614" data-title="Fast-casual — UBS says re-enter; CAVA +20.9% sales est, Chipotle transactions turn positive">
+  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-fast-casual-0614" data-title="Fast-casual — UBS upgrades CAVA to Buy PT $90; +45.8% YTD">
     <h3>🍔 Fast-casual</h3>
     <ul>
-      <li><b>UBS (June 10)</b> recommends getting back into fast-casual — flagged both CAVA and Chipotle.</li>
-      <li>CAVA 2026 consensus: sales <b>+20.9%</b>, EPS <b>$0.53</b> (flat vs $0.54), accelerating to <b>$0.73 in 2027</b>.</li>
-      <li>Chipotle Q1: comps <b>+0.5%</b>, transactions <b>positive for the first time in several quarters</b> after fixing accuracy-vs-speed incentives.</li>
+      <li><b>UBS upgraded CAVA to Buy</b>, PT <b>$90</b> (from $85); stock <b>+8% on the day, +23% in a week, +45.8% YTD</b> — "rare growth story."</li>
+      <li>CAVA guiding <b>75+ new restaurants</b> and <b>2,500+ hires</b> in 2026; FY26 EBITDA $181–191M.</li>
+      <li><b>Chipotle</b> transactions soft — the affordability gap vs. CAVA is widening.</li>
     </ul>
-    <p class="sowhat">So what: the operative lesson — accuracy beats speed — is today's GR idea #1. Free, dated playbook for STIQ venues.</p>
-    <p class="meta"><a href="https://finance.yahoo.com/news/cava-cmg-fast-casual-stock-162000300.html" target="_blank" rel="noopener">CAVA or CMG, June 2026</a></p>
-    <div class="toggles" data-item></div>
+    <div class="sowhat">So what: the public market just re-rated the exact Mediterranean-frequency model you operate — your strongest comp for a Protein Garden capital story.</div>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item pulse" data-id="pulse-food-trends-0614" data-title="Food trends — no materially new; GLP-1 $44B 2026 estimate stands">
+  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-food-trends-0614" data-title="Food trends — GLP-1 $44B 2026 estimate stands">
     <h3>🥬 Food trends</h3>
-    <ul><li>No materially new signal — the GLP-1 CPG impact estimate (<b>$44B, ~12M users</b> for 2026) still stands.</li></ul>
-    <div class="toggles" data-item></div>
+    <p class="nofresh">No materially new signal — the <b>$44B 2026 GLP-1 CPG impact</b> estimate (~12M users) stands; Mediterranean = the natural GLP-1 plate.</p>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item pulse" data-id="pulse-restaurant-tech-0614" data-title="Restaurant tech — no fresh M&A since Yoco/Dyner">
+  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-restaurant-tech-0614" data-title="Restaurant tech — no fresh M&A since Yoco/Dyner">
     <h3>🛠️ Restaurant tech</h3>
-    <ul><li>No fresh M&A since <b>Yoco → Dyner</b> (June 8) and the <b>SOUS €4M</b> round.</li></ul>
-    <div class="toggles" data-item></div>
+    <p class="nofresh">No fresh M&A since <b>Yoco acquired Dyner</b> (8 Jun); SOUS €4M round still the last funding mark.</p>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item pulse" data-id="pulse-indie-claude-code-0614" data-title="Indie / Claude Code — no materially new">
+  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-indie-claude-code-0614" data-title="Indie / Claude Code — no materially new; Claude Code ~$2.5B ARR">
     <h3>🚀 Indie / Claude Code</h3>
-    <ul><li>No materially new this cycle — Claude Code ~$2.5B ARR; the sobering solo-distribution math from last week still holds.</li></ul>
-    <div class="toggles" data-item></div>
+    <p class="nofresh">No materially new this 24h — <b>Claude Code ~$2.5B ARR</b>; the sobering solo-distribution reality (a great build ≠ great distribution) from this week is still the takeaway.</p>
+    <div class="toggles"></div>
   </div>
 </section>
 
 <!-- SECTION 3: GREEK POLITICS -->
-<section class="s3">
-  <h2>🏛️ Greek Politics</h2>
-  <p class="lead">Trimmed hard — only what's genuinely fresh after weeks of full coverage.</p>
+<section>
+  <div class="sec-head"><span class="bar" style="background:var(--blue)"></span><h2>🏛️ Greek Politics</h2><span class="sub">brief</span></div>
 
-  <div class="item" data-id="gp-migration-down-63-0614" data-title="Migration from Turkey down 63%; validates Plevris crackdown">
-    <p class="bullet"><span class="lbl">Migration flows from Turkey down 63%</span> (8,082 → 3,029 arrivals YoY; incidents 330 → 118) — gives Plevris's "very tough" measures a number to point at.</p>
-    <p class="meta"><a href="https://en.rua.gr/2026/05/27/migration-flows-from-turkey-to-greece-fell-by-63" target="_blank" rel="noopener">Athens News</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card polrow" style="border-left-color:var(--blue);padding:11px 14px" data-id="gp-migration-down-63-0614" data-title="Migration flows from Turkey down 63% — validates Plevris crackdown">
+    <b>Migration from Turkey down 63%</b> on the Eastern Aegean islands route (8,082→3,029, Jan–May) — validating Plevris's crackdown and the 10 Jun bill (fast-track deportations, "return hubs"). <span class="meta">So what: removes a political wedge heading into the election cycle.</span>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item" data-id="gp-turkey-maritime-bill-pending-0614" data-title="Turkey Aegean maritime bill still pending post-May 31">
-    <p class="bullet"><span class="lbl">Turkey's Aegean maritime bill still pending</span> — would codify claims in domestic law while keeping 6nm territorial waters; a slow-burn risk for island operators to watch.</p>
-    <p class="meta"><a href="https://turkishminute.com/2026/05/13/turkey-details-draft-maritime-law-to-codify-claims-in-aegean-eastern-mediterranean/" target="_blank" rel="noopener">Turkish Minute</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card polrow" style="border-left-color:var(--blue);padding:11px 14px" data-id="gp-turkey-maritime-bill-pending-0614" data-title="Turkey Aegean maritime bill still pending post-May 31">
+    <b>Turkey's Aegean maritime bill still pending</b> after the 31 May window — latest leaks show softer "Blue Homeland" language. <span class="meta">So what: tail risk for island operators stays low for now.</span>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item" data-id="gp-tourism-at-the-limit-0614" data-title="Record season but SMBs at capacity limit on labour and costs">
-    <p class="bullet"><span class="lbl">Record season, strained SMBs:</span> tourism at €32.4B but small operators report hitting the wall on labour, costs and regulation — the political fault line of a "good" summer.</p>
-    <p class="meta"><a href="https://pappaspost.com/greek-tourisms-record-revenues-mask-regional-disparities-and-changing-traveller-habits/" target="_blank" rel="noopener">Pappas Post</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card polrow" style="border-left-color:var(--blue);padding:11px 14px" data-id="gp-tourism-at-the-limit-0614" data-title="Record season but SMBs at capacity limit on labour and costs">
+    <b>Record tourist season, but SMBs are at the limit</b> on labour availability and input costs — the binding constraint is operational, not demand. <span class="meta">So what: directly why the shift-coverage idea above has buyers.</span>
+    <div class="toggles"></div>
   </div>
 </section>
 
-<!-- SECTION 4: INTERNATIONAL POLITICS -->
-<section class="s4">
-  <h2>🌍 International Politics</h2>
-  <p class="lead">Your cleanest-signal section — leading today.</p>
+<!-- SECTION 4: INTERNATIONAL -->
+<section>
+  <div class="sec-head"><span class="bar" style="background:var(--amber)"></span><h2>🌍 International Politics</h2><span class="sub">very brief</span></div>
 
-  <div class="item" data-id="ip-euus-turnberry-vote-june16-0614" data-title="EU-US Turnberry plenary vote June 16; sunset 2029, suspend clause">
-    <p class="bullet"><span class="lbl">EU-US Turnberry deal → plenary vote June 16</span> (committee passed 31-6-3). Sunset clause end-2029; Commission can suspend if the US doesn't lift steel/aluminium tariffs by end-2026.</p>
-    <p class="meta"><a href="https://www.lexisnexis.com/en-gb/legal/news/eu-parliament-trade-committee-approves-eu-us-trade-deal" target="_blank" rel="noopener">LexisNexis</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card polrow" style="border-left-color:var(--amber);padding:11px 14px" data-id="ip-euus-turnberry-vote-june16-0614" data-title="EU-US Turnberry plenary vote June 16; 15% cap, sunset 2029">
+    <b>EU-US Turnberry deal → final EU Parliament plenary vote 16 Jun.</b> The trade committee already approved; it caps most US tariffs on EU goods at <b>15%</b>, sunset 2029, racing the <b>4 July</b> deadline. <span class="meta">So what: clarity for any EU→US SaaS / export pricing within days.</span>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item" data-id="ip-iran-draft-peace-text-0614" data-title="Iran draft peace text agreed June 12; Hormuz + sanctions, nuclear separate">
-    <p class="bullet"><span class="lbl">Iran: draft peace text agreed June 12</span> (Pakistan-mediated) — Hormuz reopening + sanctions relief on the table; nuclear track kept separate; 60-day ceasefire holding but shaky.</p>
-    <p class="meta"><a href="https://commonslibrary.parliament.uk/research-briefings/cbp-10637/" target="_blank" rel="noopener">UK Commons Library</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card polrow" style="border-left-color:var(--amber);padding:11px 14px" data-id="ip-iran-draft-peace-text-0614" data-title="Iran draft peace text agreed June 12; Hormuz + sanctions, nuclear separate">
+    <b>Iran: draft peace text agreed 12 Jun</b> — it covers Hormuz reopening plus sanctions, with the nuclear track handled separately; <b>60-day ceasefire holding (shaky)</b>. <span class="meta">So what: an open Hormuz caps energy / freight costs — a quiet tailwind for Greek shipping and food-input prices.</span>
+    <div class="toggles"></div>
   </div>
 
-  <div class="item" data-id="ip-ukraine-eu-membership-summit-0614" data-title="EU opens Ukraine membership talks; summit June 18-19 weighs peace role">
-    <p class="bullet"><span class="lbl">Ukraine: EU opens membership talks this week</span>; the June 18–19 summit weighs a hands-on EU role in peace talks — but insists on a Russian ceasefire first. Putin has declined a Zelensky meeting.</p>
-    <p class="meta"><a href="https://www.euronews.com/my-europe/2026/06/02/eu-ready-to-step-up-in-ukraine-russia-talks-but-ceasefire-must-come-first-summit-draft-sho" target="_blank" rel="noopener">Euronews</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card polrow" style="border-left-color:var(--amber);padding:11px 14px" data-id="ip-ukraine-eu-membership-summit-0614" data-title="EU opens Ukraine membership talks; summit June 18-19">
+    <b>EU opens Ukraine membership talks</b>; the leaders' summit <b>18–19 Jun</b> weighs Europe's role in a peace deal after Putin declined a Zelensky meeting. <span class="meta">So what: low direct read-through for you; watch only for an energy-price move.</span>
+    <div class="toggles"></div>
   </div>
 </section>
 
 <!-- SECTION 5: WILDCARD -->
-<section class="s5">
-  <h2>🎲 Today's Wildcard</h2>
-  <p class="lead">One stretch pick, out of the usual lanes.</p>
+<section>
+  <div class="sec-head"><span class="bar" style="background:var(--indigo)"></span><h2>🎲 Today's Wildcard</h2><span class="sub">out of scope, on purpose</span></div>
 
-  <div class="item" data-id="wildcard-2026-06-14-bouillon-paris" data-title="The Paris Bouillon — the original fast-casual (1855), now reviving">
-    <h3>The Paris <em>Bouillon</em> — the original fast-casual, invented in 1855, having a 2020s revival</h3>
-    <p>Before Chipotle and CAVA, Pierre-Louis Duval's Paris <em>bouillons</em> cracked the same problem: feed working people fast, cheap and consistent, at scale. Bouillon Chartier (1896) still seats ~320 and turns tables in 45 minutes on slim margins — and a wave of new bouillons is packing Paris again on the affordability backlash.</p>
-    <p><span class="lbl">Why this for you today:</span> it sits exactly on your Athens-↔-Paris, restaurant-economics axis — a 170-year-old proof that the fast-casual unit economics you obsess over are an old French invention, not a 2010s American one.</p>
-    <p class="meta"><span class="lbl">Read:</span> <a href="https://en.wikipedia.org/wiki/Bouillon_(restaurant)" target="_blank" rel="noopener">Bouillon (restaurant) — history & revival</a></p>
-    <div class="toggles" data-item></div>
+  <div class="card" style="border-left-color:var(--indigo)" data-id="wildcard-2026-06-14-bouillon-paris" data-title="The Paris Bouillon — the original fast-casual (1855), now reviving">
+    <h3>The Paris Bouillon — the original fast-casual (est. 1855), and it's reviving</h3>
+    <p>Before CAVA, before Chipotle, Paris had the <i>bouillon</i>: cavernous worker canteens serving a hot, cheap, fast meal at scale from the 1850s. A handful — Bouillon Chartier, Bouillon Pigalle — still run lines out the door today, on the same play CAVA just earned a $90 price target for, 170 years earlier.</p>
+    <p class="meta">A reminder that "good food, fast, cheap, at volume" is a centuries-old format, not a 2010s invention.</p>
+    <p class="sowhat" style="background:#efeafc;color:#3b2c6b"><b>Why this for you today:</b> it sits exactly where two of your worlds cross — Paris (you're there fortnightly) and fast-casual economics (your day job) — but it's history, not a to-do.</p>
+    <div class="toggles"></div>
   </div>
 </section>
 
 <!-- PICKS PANEL -->
 <div class="picks">
-  <h2>📋 My Picks &amp; Training</h2>
-  <p style="font-size:13.5px;color:var(--muted);margin:4px 0">How the loop works:</p>
-  <ol>
-    <li><b>Read</b> the brief.</li>
-    <li><b>Click</b> 👍 / 👎 / ⭐ on items (saved automatically in this browser).</li>
-    <li><b>Copy</b> your picks below.</li>
-    <li><b>Paste</b> into Cowork as <code>train brief: &lt;your picks&gt;</code> — tomorrow's 7 AM brief adapts.</li>
-  </ol>
-  <div class="btns">
-    <button class="pbtn" id="showBtn">Show my picks</button>
-    <button class="cbtn" id="copyBtn">Copy</button>
-    <button class="cbtn" id="clearBtn">Clear all picks</button>
+  <div class="top">
+    <h2>📋 My Picks &amp; Training</h2>
+    <span class="count" id="count">0 marked</span>
   </div>
-  <textarea id="picksArea" class="hidden" readonly></textarea>
+  <p style="font-size:13px;color:#b9c7dd;margin:4px 0 0;">The brief learns from you in 4 steps:</p>
+  <ol>
+    <li><b>Read</b> — skim top to bottom.</li>
+    <li><b>React</b> — tap 👍 / 👎 / ⭐ on items (saved to this browser; survives reload).</li>
+    <li><b>Train</b> — hit <b>Show my picks</b>, Copy, then paste into Cowork prefixed with <code>train brief:</code></li>
+    <li><b>Adapt</b> — tomorrow's 7 AM brief is reshaped by what you marked.</li>
+  </ol>
+  <div class="btnrow">
+    <button class="btn" onclick="showPicks()">Show my picks</button>
+    <button class="btn alt" onclick="copyPicks(event)">Copy</button>
+    <button class="btn alt" onclick="clearPicks()">Clear all picks</button>
+  </div>
+  <textarea id="picks" readonly></textarea>
 </div>
 
-<footer>Morning Brief · generated 2026-06-14 (Athens) · self-contained · your picks live only in this browser.</footer>
+<footer>Morning Brief · generated 2026-06-14 · self-contained · your picks stay in this browser until you paste them.</footer>
 </div>
 
 <script>
 (function(){
-  var DAY = "2026-06-14";
-  var KEY = function(id){ return "mb-" + DAY + "-" + id; };
-
-  function render(container){
-    var item = container.closest("[data-id]");
-    var id = item.getAttribute("data-id");
-    var state = localStorage.getItem(KEY(id)) || "";
-    container.innerHTML = "";
-    [["up","👍 Interesting"],["down","👎 Skip"],["star","⭐ Save"]].forEach(function(pair){
-      var b = document.createElement("button");
-      b.textContent = pair[1];
-      b.setAttribute("data-act", pair[0]);
-      if(state === pair[0]) b.className = "on-" + pair[0];
-      b.addEventListener("click", function(){
-        var cur = localStorage.getItem(KEY(id)) || "";
-        if(cur === pair[0]){ localStorage.removeItem(KEY(id)); }
-        else { localStorage.setItem(KEY(id), pair[0]); }
-        render(container);
-      });
-      container.appendChild(b);
+  var DAY="2026-06-14";
+  var LABELS={up:"👍 Interesting",down:"👎 Skip",save:"⭐ Save"};
+  function key(id){return "mb-"+DAY+"-"+id;}
+  var cards=document.querySelectorAll(".card[data-id]");
+  cards.forEach(function(card){
+    var id=card.getAttribute("data-id");
+    var box=card.querySelector(".toggles");
+    if(!box) return;
+    ["up","down","save"].forEach(function(kind){
+      var b=document.createElement("span");
+      b.className="tg "+kind;
+      b.textContent=LABELS[kind];
+      b.onclick=function(){toggle(id,kind,card);};
+      box.appendChild(b);
+    });
+    render(id,card);
+  });
+  function state(id){return localStorage.getItem(key(id))||"";}
+  function toggle(id,kind,card){
+    var cur=state(id);
+    if(cur===kind){localStorage.removeItem(key(id));}
+    else{localStorage.setItem(key(id),kind);}
+    render(id,card);updateCount();
+  }
+  function render(id,card){
+    var cur=state(id);
+    card.querySelectorAll(".tg").forEach(function(b){
+      var on=b.classList.contains(cur);
+      b.classList.toggle("on",on);
     });
   }
-  document.querySelectorAll("[data-item]").forEach(render);
-
-  function summary(){
-    var up=[], down=[], star=[];
-    document.querySelectorAll("[data-id]").forEach(function(it){
-      var id = it.getAttribute("data-id");
-      var title = it.getAttribute("data-title") || id;
-      var st = localStorage.getItem(KEY(id));
-      if(st === "up") up.push(title);
-      else if(st === "down") down.push(title);
-      else if(st === "star") star.push(title);
+  function all(){
+    var out={up:[],down:[],save:[]};
+    cards.forEach(function(c){
+      var s=state(c.getAttribute("data-id"));
+      if(out[s]) out[s].push(c.getAttribute("data-title"));
     });
-    var L = ["My picks from Morning Brief — " + DAY, ""];
-    L.push("👍 INTERESTING:"); up.forEach(function(t){L.push("- "+t);}); if(!up.length) L.push("- (none)"); L.push("");
-    L.push("⭐ SAVE FOR LATER:"); star.forEach(function(t){L.push("- "+t);}); if(!star.length) L.push("- (none)"); L.push("");
-    L.push("👎 SKIP:"); down.forEach(function(t){L.push("- "+t);}); if(!down.length) L.push("- (none)");
-    return L.join("\n");
+    return out;
   }
-  var area = document.getElementById("picksArea");
-  document.getElementById("showBtn").addEventListener("click", function(){
-    area.value = summary(); area.classList.remove("hidden");
-  });
-  document.getElementById("copyBtn").addEventListener("click", function(){
-    area.value = summary(); area.classList.remove("hidden"); area.select();
-    try{ navigator.clipboard.writeText(area.value); }catch(e){ document.execCommand("copy"); }
-    this.textContent = "Copied ✓"; var b=this; setTimeout(function(){b.textContent="Copy";},1500);
-  });
-  document.getElementById("clearBtn").addEventListener("click", function(){
-    if(!confirm("Clear all your picks for "+DAY+"?")) return;
-    document.querySelectorAll("[data-id]").forEach(function(it){
-      localStorage.removeItem(KEY(it.getAttribute("data-id")));
-    });
-    document.querySelectorAll("[data-item]").forEach(render);
-    area.value = ""; area.classList.add("hidden");
-  });
+  function updateCount(){
+    var a=all();var n=a.up.length+a.down.length+a.save.length;
+    document.getElementById("count").textContent=n+" marked";
+  }
+  window.showPicks=function(){
+    var a=all();
+    var t="My picks from Morning Brief — "+DAY+"\n\n";
+    t+="👍 INTERESTING:\n"+(a.up.length?a.up.map(function(x){return "- "+x;}).join("\n"):"- (none)")+"\n\n";
+    t+="⭐ SAVE FOR LATER:\n"+(a.save.length?a.save.map(function(x){return "- "+x;}).join("\n"):"- (none)")+"\n\n";
+    t+="👎 SKIP:\n"+(a.down.length?a.down.map(function(x){return "- "+x;}).join("\n"):"- (none)")+"\n";
+    var ta=document.getElementById("picks");ta.value=t;ta.style.display="block";
+    return ta;
+  };
+  window.copyPicks=function(ev){
+    var ta=window.showPicks();
+    ta.select();
+    try{navigator.clipboard.writeText(ta.value);}catch(e){try{document.execCommand("copy");}catch(e2){}}
+    if(ev&&ev.target){var b=ev.target;var o=b.textContent;b.textContent="Copied ✓";
+      setTimeout(function(){b.textContent=o;},1400);}
+  };
+  window.clearPicks=function(){
+    cards.forEach(function(c){localStorage.removeItem(key(c.getAttribute("data-id")));render(c.getAttribute("data-id"),c);});
+    var ta=document.getElementById("picks");ta.value="";ta.style.display="none";updateCount();
+  };
+  updateCount();
 })();
 </script>
 </body>
