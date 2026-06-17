@@ -3,352 +3,339 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Morning Brief — 2026-06-14</title>
+<title>Morning Brief — 2026-06-17</title>
 <style>
-  :root{
-    --navy:#0f1d3a; --gold:#d4a017; --violet:#7d3c98; --teal:#16a085;
-    --blue:#1f4e79; --amber:#d68910; --indigo:#4b3a8b;
-    --ink:#1a1a1a; --muted:#5d6b7a; --line:#e6e9ee; --bg:#ffffff;
-  }
+  :root{ --navy:#0f1d3a; --gold:#d4a017; --violet:#7d3c98; --teal:#16a085;
+         --blue:#1f4e79; --amber:#d68910; --indigo:#4b3a8b; --ink:#1c2330; --mut:#5b6675; }
   *{box-sizing:border-box}
-  body{margin:0;background:#f3f5f8;color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.5;font-size:16px;}
-  .wrap{max-width:860px;margin:0 auto;background:var(--bg);min-height:100vh;
-    box-shadow:0 0 30px rgba(0,0,0,.05);}
-  header{background:var(--navy);color:#fff;padding:22px 22px 18px;}
-  header h1{margin:0;font-size:21px;letter-spacing:.2px;}
-  header .date{margin-top:4px;font-size:13px;color:#aebfd6;}
-  header .tagline{margin-top:10px;font-size:13px;color:#cdd9ea;line-height:1.45;}
-  section{padding:18px 20px;border-bottom:1px solid var(--line);}
-  .sec-head{display:flex;align-items:center;gap:9px;margin:0 0 12px;}
-  .sec-head .bar{width:5px;height:22px;border-radius:3px;}
-  .sec-head h2{margin:0;font-size:17px;}
-  .sec-head .sub{margin-left:auto;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;}
-  .card{border:1px solid var(--line);border-left-width:4px;border-radius:8px;
-    padding:12px 14px;margin-bottom:11px;background:#fff;}
-  .card h3{margin:0 0 5px;font-size:15px;line-height:1.35;}
-  .card p{margin:4px 0;font-size:14px;color:#2b3440;}
-  .card .meta{font-size:12.5px;color:var(--muted);}
-  .card .meta b{color:#3a4654;}
-  .card a{color:var(--blue);text-decoration:none;}
-  .card a:hover{text-decoration:underline;}
-  .pulse h3{font-size:14.5px;}
-  .pulse ul{margin:6px 0 4px;padding-left:18px;}
-  .pulse li{font-size:13.5px;margin:2px 0;}
-  .sowhat{font-size:13px;color:#155;background:#eafaf4;border-radius:6px;
-    padding:6px 9px;margin-top:7px;}
-  .polrow{font-size:14px;margin:7px 0;padding-left:2px;}
-  .polrow b{color:#1f3a5a;}
-  .nofresh{font-size:13px;color:var(--muted);font-style:italic;}
-  /* toggles */
-  .toggles{display:flex;gap:7px;margin-top:9px;}
-  .tg{border:1px solid var(--line);background:#fafbfc;border-radius:20px;
-    padding:3px 11px;font-size:12.5px;cursor:pointer;user-select:none;
-    transition:.12s;color:#44505e;}
-  .tg:hover{border-color:#bcc6d2;}
-  .tg.up.on{background:#e6f4ea;border-color:#56b06a;color:#1f7a37;}
-  .tg.down.on{background:#fdecea;border-color:#e06a5c;color:#b23022;}
-  .tg.save.on{background:#fcf3da;border-color:var(--gold);color:#8a6708;}
-  /* picks panel */
-  .picks{padding:20px;background:#0f1d3a;color:#dde6f3;}
-  .picks h2{margin:0 0 6px;font-size:16px;color:#fff;}
-  .picks ol{margin:8px 0 12px;padding-left:20px;font-size:13px;color:#b9c7dd;}
-  .picks li{margin:3px 0;}
-  .picks code{background:#1d2f52;padding:1px 6px;border-radius:4px;color:#ffd98a;font-size:12.5px;}
-  .btnrow{display:flex;gap:9px;flex-wrap:wrap;margin:10px 0;}
-  .btn{background:var(--gold);color:#1a1200;border:none;border-radius:7px;
-    padding:9px 15px;font-size:13.5px;font-weight:600;cursor:pointer;}
-  .btn.alt{background:#27406b;color:#dde6f3;}
-  .btn:active{transform:translateY(1px);}
-  textarea{width:100%;height:180px;margin-top:10px;border-radius:8px;border:none;
-    padding:11px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;
-    background:#0a1426;color:#cfe0f5;display:none;}
-  .count{font-size:12px;color:#8fa3c2;margin-left:auto;}
-  .picks .top{display:flex;align-items:center;gap:10px;}
-  footer{padding:16px 20px;font-size:11.5px;color:var(--muted);text-align:center;}
+  body{margin:0;background:#fff;color:var(--ink);
+       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       line-height:1.5;-webkit-text-size-adjust:100%}
+  .wrap{max-width:860px;margin:0 auto;padding:0 16px 64px}
+  header{background:var(--navy);color:#fff;padding:22px 16px;margin-bottom:8px}
+  header .inner{max-width:860px;margin:0 auto}
+  header h1{margin:0;font-size:21px;letter-spacing:.2px}
+  header p{margin:6px 0 0;color:#b9c4d8;font-size:13px}
+  section{margin-top:26px}
+  .sec-h{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:700;
+         padding:8px 12px;border-radius:8px;color:#fff}
+  .s0 .sec-h{background:var(--gold)} .s1 .sec-h{background:var(--violet)}
+  .s2 .sec-h{background:var(--teal)} .s3 .sec-h{background:var(--blue)}
+  .s4 .sec-h{background:var(--amber)} .s5 .sec-h{background:var(--indigo)}
+  .sub{font-weight:700;font-size:14px;color:var(--mut);margin:16px 2px 4px;text-transform:uppercase;letter-spacing:.5px}
+  .card{border:1px solid #e6e9ef;border-left-width:4px;border-radius:9px;padding:13px 15px;margin:11px 0;background:#fff}
+  .s0 .card{border-left-color:var(--gold)} .s1 .card{border-left-color:var(--violet)}
+  .s2 .card{border-left-color:var(--teal)} .s3 .card{border-left-color:var(--blue)}
+  .s4 .card{border-left-color:var(--amber)} .s5 .card{border-left-color:var(--indigo)}
+  .card h3{margin:0 0 6px;font-size:15.5px}
+  .card p{margin:5px 0;font-size:14px}
+  .meta{font-size:12.5px;color:var(--mut)}
+  .meta b{color:var(--ink)}
+  a{color:var(--violet);text-decoration:none} a:hover{text-decoration:underline}
+  .bul{margin:9px 0;padding:10px 13px;border:1px solid #e6e9ef;border-left-width:4px;border-radius:8px;font-size:14px}
+  .s3 .bul{border-left-color:var(--blue)} .s4 .bul{border-left-color:var(--amber)}
+  .bul b{color:var(--ink)}
+  .so{font-size:13px;color:var(--teal);font-weight:600;margin-top:6px}
+  .s1 .so{color:var(--violet)}
+  .why{font-size:13px;color:var(--indigo);font-weight:600;margin-top:8px}
+  .nofresh{color:var(--mut);font-style:italic;font-size:13.5px}
+  .toggles{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+  .tg{border:1px solid #cfd5df;background:#f7f8fa;border-radius:999px;padding:4px 11px;
+      font-size:12.5px;cursor:pointer;user-select:none;transition:.12s}
+  .tg:hover{background:#eef0f4}
+  .tg.up.on{background:#e7f7ec;border-color:#37b24d;color:#1f7a32}
+  .tg.down.on{background:#fdeaea;border-color:#e03131;color:#a02525}
+  .tg.save.on{background:#fff6e0;border-color:var(--gold);color:#8a6a0d}
+  .picks{margin-top:38px;border:2px dashed #cfd5df;border-radius:12px;padding:16px;background:#fafbfc}
+  .picks h2{margin:0 0 8px;font-size:16px}
+  .picks ol{margin:8px 0 8px 18px;padding:0;font-size:13.5px;color:#34404f}
+  .picks li{margin:3px 0}
+  .btn{display:inline-block;border:0;border-radius:8px;padding:9px 15px;font-size:13.5px;
+       font-weight:600;cursor:pointer;margin:5px 6px 0 0}
+  .btn.primary{background:var(--navy);color:#fff} .btn.ghost{background:#e9ecf1;color:var(--ink)}
+  textarea{width:100%;min-height:190px;margin-top:12px;border:1px solid #cfd5df;border-radius:8px;
+           padding:10px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px}
+  .hide{display:none}
+  .foot{margin-top:26px;font-size:12px;color:var(--mut);text-align:center}
+  code{background:#eef0f4;padding:1px 5px;border-radius:4px;font-size:12.5px}
 </style>
 </head>
 <body>
+<header><div class="inner">
+  <h1>☀️ Morning Brief — Wednesday, 17 June 2026</h1>
+  <p>For Stylianos · under 5 min · Intl politics leads today (Iran war ends, Turnberry ratified). Tap 👍/👎/⭐ as you read.</p>
+</div></header>
+
 <div class="wrap">
-<header>
-  <h1>☕ Morning Brief</h1>
-  <div class="date">Sunday, 14 June 2026 · Athens</div>
-  <div class="tagline">Side hustles → industry money → Greek politics → world → one wildcard. Under 5 minutes. Tap 👍 / 👎 / ⭐ as you read; train at the bottom.</div>
-</header>
 
-<!-- SECTION 0: SAVED -->
-<section>
-  <div class="sec-head"><span class="bar" style="background:var(--gold)"></span><h2>⭐ Your Saved Items</h2><span class="sub">pinned</span></div>
+<!-- SECTION 0 — SAVED -->
+<section class="s0">
+  <div class="sec-h">⭐ Your Saved Items</div>
 
-  <div class="card" style="border-left-color:var(--gold)" data-id="idea-gr-ama-compliance-tracker" data-title="AMA compliance tracker for Greek short-term rental hosts">
+  <div class="card" data-id="idea-gr-ama-compliance-tracker" data-title="AMA compliance tracker for Greek short-term rental hosts">
     <h3>AMA compliance tracker for Greek short-term rental hosts</h3>
-    <p>Tool that keeps Greek short-term-rental hosts inside the AMA / short-let registration rules and flags filing deadlines. You saved this on 04 May — still live as the 2026 STR rules tighten.</p>
-    <p class="meta"><a href="https://getproofsnap.com/posts/greece-short-term-rental-airbnb-regulations-2026.html" target="_blank" rel="noopener">2026 Greek STR regulation overview →</a></p>
-    <div class="toggles"></div>
+    <p>Your pinned idea. <b>More relevant this week:</b> Q1 2026 Greek short-term-rental demand is up <b>9.3% YoY</b> and average high-season nightly rates hit <b>€174</b> (vs €113 low season) — more hosts, higher stakes, same AMA registration mess.</p>
+    <p class="meta">Saved 2026-05-04 · <a href="https://greektriplanner.me/insights/greece-tourism-economy-2026" target="_blank" rel="noopener">tourism economy data ↗</a></p>
+    <div class="toggles" data-tg></div>
   </div>
 
-  <div class="card" style="border-left-color:var(--gold)" data-id="idea-fr-paris-agentic-agency" data-title="Paris Agentic Agency — non-technical boutique serving the AMI ecosystem">
+  <div class="card" data-id="idea-fr-paris-agentic-agency" data-title="Paris Agentic Agency — non-technical boutique serving the AMI ecosystem">
     <h3>Paris Agentic Agency — non-technical boutique for the AMI ecosystem</h3>
-    <p>A boutique that ships agentic builds for Paris firms riding the sovereign-AI wave. With Mistral now raising €3B at a €20B valuation (12 Jun) and VivaTech next week, this thesis is hotter than when you saved it.</p>
-    <p class="meta"><a href="https://www.bloomberg.com/news/articles/2026-06-12/france-s-mistral-in-funding-talks-at-about-20-billion-valuation" target="_blank" rel="noopener">Mistral €20B round →</a></p>
-    <div class="toggles"></div>
+    <p>Your pinned idea. <b>Tailwind this week:</b> Anthropic filed confidentially for IPO (1 June, ~$965B) — "build your back-office on an IPO-track platform" is now an easier sell to Paris SMBs than 6 weeks ago.</p>
+    <p class="meta">Saved 2026-05-09</p>
+    <div class="toggles" data-tg></div>
   </div>
 </section>
 
-<!-- SECTION 1: IDEAS -->
-<section>
-  <div class="sec-head"><span class="bar" style="background:var(--violet)"></span><h2>💡 Side Hustle Ideas</h2><span class="sub">main</span></div>
+<!-- SECTION 1 — IDEAS -->
+<section class="s1">
+  <div class="sec-h">💡 Side Hustle Ideas</div>
 
-  <p class="meta" style="margin:-4px 0 10px;color:var(--muted)"><b>🇬🇷 Greece</b> — operational, STIQ-dogfood-able</p>
+  <div class="sub">🇬🇷 Greece</div>
 
-  <div class="card" style="border-left-color:var(--violet)" data-id="idea-gr-chipotle-accuracy-audit-0614" data-title="Order-Accuracy Audit for STIQ venues — the Chipotle lesson">
-    <h3>Order-Accuracy Audit for STIQ venues — the Chipotle lesson</h3>
-    <p><b>What:</b> An agent that samples POS tickets vs. what actually left the pass, scoring accuracy and lost margin per venue per shift.</p>
-    <p><b>Why now:</b> Chipotle's softening transactions this quarter trace partly to throughput-vs-accuracy strain — the cheapest lever a Mediterranean operator can pull is getting the bowl right the first time.</p>
-    <p class="meta"><b>Scope:</b> 1–2 days on existing STIQ ticket data · <b>Money:</b> dogfood first at Dina's / Protein Garden, then sell as a €99/venue/mo add-on.</p>
-    <div class="toggles"></div>
+  <div class="card" data-id="idea-gr-cava-q1-protein-merch-benchmark-0617" data-title="CAVA Q1 traffic-driver teardown → Protein Garden / Dina's summer merch">
+    <h3>The CAVA traffic-driver teardown for Dina's &amp; Protein Garden</h3>
+    <p><b>What:</b> A one-page Claude-built teardown of <i>why</i> CAVA grew traffic +6.8% while every peer fought for flat — protein-forward menu merchandising, limited-time builds, throughput — translated into 5 changes you test at Dina's this summer.</p>
+    <p><b>Why now:</b> CAVA's Q1 just landed: revenue <b>$438.3M (+32.1%)</b>, same-store sales <b>+9.7%</b>, adj. EBITDA <b>$61.7M (+37.6%)</b>, outlook raised. The "bowl market is over" — except for the Mediterranean-protein format you already run.</p>
+    <p class="meta"><b>Scope:</b> a weekend dogfood. <b>Money:</b> STIQ internal first, then license the playbook to Greek F&amp;B chains at €300–600/mo. · <a href="https://stockstory.org/us/stocks/nyse/cava/news/earnings/cava-nysecava-surprises-with-strong-q1-cy2026-stock-soars" target="_blank" rel="noopener">CAVA Q1 ↗</a></p>
+    <div class="toggles" data-tg></div>
   </div>
 
-  <div class="card" style="border-left-color:var(--violet)" data-id="idea-gr-returning-guest-recognition-0614" data-title="Returning-guest recognition experiment for Greek F&B">
-    <h3>Returning-guest recognition experiment</h3>
-    <p><b>What:</b> Lightweight recognition layer (phone / loyalty match) that flags a returning guest to staff with their last order plus a non-discount perk.</p>
-    <p><b>Why now:</b> CAVA's whole +9.7% same-store story is frequency, not discounting — recognition drives repeat visits without giving up margin, exactly the summer test for a tourist-heavy season.</p>
-    <p class="meta"><b>Scope:</b> 2–3 days on one Protein Garden location · <b>Money:</b> internal lift first; package later for Greek QSR chains.</p>
-    <div class="toggles"></div>
+  <div class="card" data-id="idea-gr-tourism-revenue-surge-upsell-0617" data-title="High-spend foreign-guest upsell pack for Greek F&B (tourism +64%)">
+    <h3>The high-spend foreign-guest upsell pack</h3>
+    <p><b>What:</b> A summer menu + upsell engine tuned for the American / British / German guest who is spending <i>more</i> per head — Claude generates the upsell prompts, bundles, and EN/DE menu framing per location.</p>
+    <p><b>Why now:</b> Q1 2026 Greek international-tourism revenue jumped <b>+64.3% YoY to €1.68B</b>, and the explicit headline is foreigners <i>spending more</i>. The high-spend cohort is arriving now, not in August.</p>
+    <p class="meta"><b>Scope:</b> 1–2 days. <b>Money:</b> dogfood at your sites, then €250/mo per restaurant for the seasonal pack. · <a href="https://greektriplanner.me/insights/greece-tourism-q1-2026" target="_blank" rel="noopener">tourism Q1 ↗</a></p>
+    <div class="toggles" data-tg></div>
   </div>
 
-  <div class="card" style="border-left-color:var(--violet)" data-id="idea-gr-summer-shift-coverage-0614" data-title="Summer shift-coverage copilot for peak-season Greek F&B">
-    <h3>Summer shift-coverage copilot</h3>
-    <p><b>What:</b> Agent that watches the rota plus forecast covers, surfaces understaffed shifts a week out, and drafts the swap messages.</p>
-    <p><b>Why now:</b> Greek tourism is at a capacity limit on labour and costs — peak-season no-shows are the operational pain right now, not demand.</p>
-    <p class="meta"><b>Scope:</b> 2 days wired to your scheduling sheet · <b>Money:</b> dogfood; then €79/venue/mo for independents.</p>
-    <div class="toggles"></div>
+  <div class="card" data-id="idea-gr-hormuz-cost-relief-tracker-0617" data-title="Input-cost relief tracker for Greek restaurants after Hormuz reopens">
+    <h3>The "input cost just dropped" renegotiation tracker</h3>
+    <p><b>What:</b> A tiny tool that watches fuel + freight + key-commodity prices and tells a Greek operator <i>exactly how much</i> their delivered food and energy cost should fall — with a ready-to-send line for the supplier renegotiation.</p>
+    <p><b>Why now:</b> The 15 June US–Iran deal reopens the Strait of Hormuz and lifts the naval blockade; <b>oil fell &gt;$4/barrel</b> within hours. Freight and energy relief is coming — most SMBs won't claw it back without a nudge.</p>
+    <p class="meta"><b>Scope:</b> a weekend. <b>Money:</b> €15–25/mo SaaS for restaurants/importers, or a free lead-gen wedge for STIQ. · <a href="https://www.pbs.org/newshour/world/iran-and-u-s-reach-an-initial-deal-to-extend-the-ceasefire-and-open-the-strait-of-hormuz-but-challenges-remain" target="_blank" rel="noopener">Hormuz deal ↗</a></p>
+    <div class="toggles" data-tg></div>
   </div>
 
-  <p class="meta" style="margin:6px 0 10px;color:var(--muted)"><b>🇫🇷 Paris / France</b></p>
+  <div class="sub">🇫🇷 Paris / France</div>
 
-  <div class="card" style="border-left-color:var(--violet)" data-id="idea-fr-vivatech-door-opener-0614" data-title="VivaTech-week door-opener for the Paris Agentic Agency">
-    <h3>VivaTech-week door-opener for the agency</h3>
-    <p><b>What:</b> A one-page "ship one agent before VivaTech ends" offer — book a 90-minute build slot, leave with a working workflow.</p>
-    <p><b>Why now:</b> VivaTech runs <b>17–20 June</b> at Porte de Versailles (10th-anniversary edition) — the highest concentration of warm, AI-curious Paris buyers all year, and you're there roughly every two weeks anyway.</p>
-    <p class="meta"><a href="https://vivatech.com/" target="_blank" rel="noopener">VivaTech 2026 →</a> · <b>Money:</b> €1.5–3k per pilot build; 3–5 slots = a paid trip.</p>
-    <div class="toggles"></div>
+  <div class="card" data-id="idea-fr-turnberry-final-contract-diff-0617" data-title="Turnberry-is-now-law contract diff generator for Paris SMBs">
+    <h3>"It's law now" — the Turnberry contract-diff one-pager</h3>
+    <p><b>What:</b> Feed in a French SMB's EU↔US supply or SaaS contract; Claude returns a plain-French one-pager: what the ratified deal actually changes (duties gone on US industrial goods), what the <b>2029 sunset clause</b> means for renewals, and the suspension safeguards.</p>
+    <p><b>Why now:</b> This stops being hypothetical. The European Parliament <b>ratified the Turnberry deal yesterday, 16 June, 440–151–50</b>. Every prior "will it pass?" version is obsolete — the "it's final, here's your diff" version is new.</p>
+    <p class="meta"><b>Scope:</b> 1 day. <b>Money:</b> €90 per report or a €400 batch for an accountant's client book. · <a href="https://www.globalbankingandfinance.com/european-parliament-votes-approve-eu-us-trade-deal/" target="_blank" rel="noopener">EP vote ↗</a></p>
+    <div class="toggles" data-tg></div>
   </div>
 
-  <div class="card" style="border-left-color:var(--violet)" data-id="idea-fr-sovereign-reality-check-0614" data-title="'Is your AI actually sovereign?' positioning piece for the agency">
-    <h3>"Is your AI actually sovereign?" positioning piece</h3>
-    <p><b>What:</b> A short, sharp checklist that lets a French SMB test whether its "sovereign AI" stack truly keeps data in-EU — published as the agency's calling card.</p>
-    <p><b>Why now:</b> The Mistral €20B narrative makes "sovereign" the word every Paris vendor is slapping on; a credible reality-check is contrarian and shareable the week of VivaTech.</p>
-    <p class="meta"><a href="https://techcrunch.com/2026/06/12/mistral-is-rumored-to-be-raising-e3b-at-e20-valuation/" target="_blank" rel="noopener">Mistral €3B / €20B →</a> · <b>Money:</b> lead magnet → agency pilots.</p>
-    <div class="toggles"></div>
+  <div class="card" data-id="idea-fr-paris-mediterranean-fastcasual-thesis-0617" data-title="CAVA-as-proof Mediterranean fast-casual thesis deck for a Paris site">
+    <h3>The CAVA-as-proof Mediterranean thesis, pointed at Paris</h3>
+    <p><b>What:</b> A short, investor-ready thesis deck Claude assembles: CAVA's numbers as the proof-point that a protein-forward Mediterranean fast-casual format wins <i>while bowls collapse</i> — sized for a single Paris pilot site on your fortnightly trips.</p>
+    <p><b>Why now:</b> CAVA +32% revenue / +9.7% SSS landed the same week Chipotle and Sweetgreen disappointed. The format divergence is freshly quantified — and Paris has no CAVA-grade Mediterranean fast-casual anchor.</p>
+    <p class="meta"><b>Scope:</b> half a day to draft. <b>Money:</b> your own optionality + sellable as a concept deck (€500–1.5k) to F&amp;B operators. · <a href="https://www.thestreet.com/markets/the-bowl-market-is-over-after-cava-sweetgreen-and-chipotles-disappointing-earnings" target="_blank" rel="noopener">format divergence ↗</a></p>
+    <div class="toggles" data-tg></div>
   </div>
 </section>
 
-<!-- SECTION 2: INDUSTRY PULSE -->
-<section>
-  <div class="sec-head"><span class="bar" style="background:var(--teal)"></span><h2>📊 Industry Pulse</h2><span class="sub">follow the money</span></div>
+<!-- SECTION 2 — INDUSTRY PULSE -->
+<section class="s2">
+  <div class="sec-h">📊 Industry Pulse</div>
 
-  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-ai-coding-agents-0614" data-title="AI coding agents — Mistral €3B/€20B; Anthropic unchanged since IPO filing">
+  <div class="card" data-id="pulse-ai-coding-agents-0617" data-title="AI coding agents: Anthropic on IPO track at $965B, ~$45B ARR">
     <h3>🤖 AI coding agents</h3>
-    <ul>
-      <li><b>Mistral</b> in talks to raise <b>€3B at ~€20B</b> valuation (12 Jun) — nearly double September's €11.7B; early-stage, terms may move up.</li>
-      <li><b>Anthropic</b> unchanged since the IPO filing — <b>~$47B ARR</b>, <b>~$965B</b> valuation track, Claude Code ~$2.5B ARR.</li>
-    </ul>
-    <div class="sowhat">So what: the EU-sovereign trade is the live one this week — it's the wind behind your Paris agency, not US-lab hype.</div>
-    <div class="toggles"></div>
+    <p>Anthropic <b>confidentially filed for IPO on 1 June</b> at a <b>$965B</b> valuation, after closing a <b>$65B Series H</b> (~$125B raised total). ARR is ~<b>$45B</b> (vs OpenAI ~$33B run-rate).</p>
+    <p class="so">So what: Claude Code is now an IPO-track platform, not a startup bet. The "is it safe to build my business on this?" objection from prospects just got much weaker.</p>
+    <p class="meta"><a href="https://fortune.com/2026/06/01/anthropic-confidentially-files-ipo-965-billion-valuation/" target="_blank" rel="noopener">Fortune ↗</a></p>
+    <div class="toggles" data-tg></div>
   </div>
 
-  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-marketing-automation-0614" data-title="Marketing automation — no fresh financial signal">
-    <h3>📈 Marketing automation</h3>
-    <p class="nofresh">No fresh financial signal — nothing materially new since HubSpot AEO / Klaviyo K:AI.</p>
-    <div class="toggles"></div>
-  </div>
-
-  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-greek-startups-0614" data-title="Greek startups — quiet; tourism €32.4B/13% GDP, receipts up sharply">
-    <h3>🇬🇷 Greek startups</h3>
-    <ul>
-      <li>Quiet round week; ecosystem anchor stays <b>€732.2M raised in 2025 (+35%)</b>.</li>
-      <li>Macro tailwind: tourism <b>€32.4B (~13% of GDP)</b>; Jan–Feb receipts <b>+70.7%</b> y/y.</li>
-    </ul>
-    <div class="sowhat">So what: the fundraising story for a Greek consumer / F&B play is "ride a 13%-of-GDP tourism boom," not "Greek tech is hot."</div>
-    <div class="toggles"></div>
-  </div>
-
-  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-fast-casual-0614" data-title="Fast-casual — UBS upgrades CAVA to Buy PT $90; +45.8% YTD">
+  <div class="card" data-id="pulse-fast-casual-0617" data-title="Fast-casual: CAVA Q1 blowout, bowl market over for everyone else">
     <h3>🍔 Fast-casual</h3>
-    <ul>
-      <li><b>UBS upgraded CAVA to Buy</b>, PT <b>$90</b> (from $85); stock <b>+8% on the day, +23% in a week, +45.8% YTD</b> — "rare growth story."</li>
-      <li>CAVA guiding <b>75+ new restaurants</b> and <b>2,500+ hires</b> in 2026; FY26 EBITDA $181–191M.</li>
-      <li><b>Chipotle</b> transactions soft — the affordability gap vs. CAVA is widening.</li>
-    </ul>
-    <div class="sowhat">So what: the public market just re-rated the exact Mediterranean-frequency model you operate — your strongest comp for a Protein Garden capital story.</div>
-    <div class="toggles"></div>
+    <p>CAVA Q1: revenue <b>$438.3M (+32.1%)</b>, same-store sales <b>+9.7%</b> (traffic <b>+6.8%</b>), adj. EBITDA <b>$61.7M (+37.6%)</b>, 459 stores, <b>full-year outlook raised</b>, stock soared. Chipotle and Sweetgreen both disappointed — press is calling the "bowl market" over.</p>
+    <p class="so">So what: the only fast-casual format still compounding is protein-forward Mediterranean — i.e. exactly Protein Garden / Dina's. This is your single strongest read-through this week.</p>
+    <p class="meta"><a href="https://finance.yahoo.com/news/chipotle-cava-and-sweetgreen-results-reveal-a-challenging-summer-for-americas-favorite-office-lunch-spots-090017432.html" target="_blank" rel="noopener">Yahoo Finance ↗</a></p>
+    <div class="toggles" data-tg></div>
   </div>
 
-  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-food-trends-0614" data-title="Food trends — GLP-1 $44B 2026 estimate stands">
+  <div class="card" data-id="pulse-greek-macro-0617" data-title="Greek macro: tourism +64% Q1, Moody's full investment grade">
+    <h3>🇬🇷 Greek economy &amp; startups</h3>
+    <p>No fresh funding round this cycle — but the macro backdrop hardened: Q1 international-tourism revenue <b>+64.3% YoY to €1.68B</b>; tourism now ~<b>13% of GDP direct</b> (closer to a third all-in); Greece is <b>investment-grade across all three agencies</b> (Moody's Baa3) for the first time since 2010. GDP growth moderating to <b>1.8%</b> in 2026.</p>
+    <p class="so">So what: cheaper capital + a spending-rich summer = the best window in years to raise or self-fund a Greek F&amp;B-adjacent tool.</p>
+    <p class="meta"><a href="https://greektriplanner.me/insights/greece-tourism-economy-2026" target="_blank" rel="noopener">tourism economy ↗</a></p>
+    <div class="toggles" data-tg></div>
+  </div>
+
+  <div class="card" data-id="pulse-indie-claude-code-0617" data-title="Indie / Claude Code: solo founders, $0→$62k MRR, $200 'first employee'">
+    <h3>🚀 Indie / Claude Code success</h3>
+    <p>Solo-founder momentum holding: documented <b>$0 → $62k MRR in three months</b> cases circulating, and the framing of Claude Code's <b>$200/mo plan as "your first employee"</b> is now standard in 2026 micro-SaaS playbooks.</p>
+    <p class="so">So what: the side-hustle thesis isn't speculative anymore — the distribution + monetization path is well-trodden. Your edge is domain (Greek F&amp;B, Paris SMB), not code.</p>
+    <p class="meta"><a href="https://www.indiehackers.com/post/tech/from-0-to-62k-mrr-in-three-months-mUPVSYOlJAC2iogGK7d4" target="_blank" rel="noopener">Indie Hackers ↗</a></p>
+    <div class="toggles" data-tg></div>
+  </div>
+
+  <div class="card" data-id="pulse-marketing-automation-0617" data-title="Marketing automation: no fresh signal">
+    <h3>📈 Marketing automation</h3>
+    <p class="nofresh">No fresh financial signal — nothing materially new since the Q1 Klaviyo / HubSpot prints already covered.</p>
+    <div class="toggles" data-tg></div>
+  </div>
+
+  <div class="card" data-id="pulse-food-trends-0617" data-title="Food trends: no fresh signal">
     <h3>🥬 Food trends</h3>
-    <p class="nofresh">No materially new signal — the <b>$44B 2026 GLP-1 CPG impact</b> estimate (~12M users) stands; Mediterranean = the natural GLP-1 plate.</p>
-    <div class="toggles"></div>
+    <p class="nofresh">No fresh financial signal — GLP-1 / Mediterranean-as-natural-GLP-1 narrative continues, no new figure worth a line today.</p>
+    <div class="toggles" data-tg></div>
   </div>
 
-  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-restaurant-tech-0614" data-title="Restaurant tech — no fresh M&A since Yoco/Dyner">
+  <div class="card" data-id="pulse-restaurant-tech-0617" data-title="Restaurant tech: no fresh signal">
     <h3>🛠️ Restaurant tech</h3>
-    <p class="nofresh">No fresh M&A since <b>Yoco acquired Dyner</b> (8 Jun); SOUS €4M round still the last funding mark.</p>
-    <div class="toggles"></div>
-  </div>
-
-  <div class="card pulse" style="border-left-color:var(--teal)" data-id="pulse-indie-claude-code-0614" data-title="Indie / Claude Code — no materially new; Claude Code ~$2.5B ARR">
-    <h3>🚀 Indie / Claude Code</h3>
-    <p class="nofresh">No materially new this 24h — <b>Claude Code ~$2.5B ARR</b>; the sobering solo-distribution reality (a great build ≠ great distribution) from this week is still the takeaway.</p>
-    <div class="toggles"></div>
+    <p class="nofresh">No fresh financial signal — no new M&amp;A or funding of note this cycle.</p>
+    <div class="toggles" data-tg></div>
   </div>
 </section>
 
-<!-- SECTION 3: GREEK POLITICS -->
-<section>
-  <div class="sec-head"><span class="bar" style="background:var(--blue)"></span><h2>🏛️ Greek Politics</h2><span class="sub">brief</span></div>
+<!-- SECTION 3 — GREEK POLITICS -->
+<section class="s3">
+  <div class="sec-h">🏛️ Greek Politics</div>
 
-  <div class="card polrow" style="border-left-color:var(--blue);padding:11px 14px" data-id="gp-migration-down-63-0614" data-title="Migration flows from Turkey down 63% — validates Plevris crackdown">
-    <b>Migration from Turkey down 63%</b> on the Eastern Aegean islands route (8,082→3,029, Jan–May) — validating Plevris's crackdown and the 10 Jun bill (fast-track deportations, "return hubs"). <span class="meta">So what: removes a political wedge heading into the election cycle.</span>
-    <div class="toggles"></div>
+  <div class="bul" data-id="gp-alco-poll-nd-233-0617" data-title="ALCO poll: ND down to 23.3%, Tsipras ELAS 13.2% lead opposition">
+    <b>New ALCO/Alpha TV poll:</b> ND first but down to <b>23.3%</b>; Tsipras's <b>ELAS at 13.2%</b> now the main opposition; PASOK 10.3%; Karystianou's "Elpida" 8.1% (taking ~6% of 2023 ND voters). → ND's lead survives only because the opposition is split four ways.
+    <div class="toggles" data-tg></div>
   </div>
 
-  <div class="card polrow" style="border-left-color:var(--blue);padding:11px 14px" data-id="gp-turkey-maritime-bill-pending-0614" data-title="Turkey Aegean maritime bill still pending post-May 31">
-    <b>Turkey's Aegean maritime bill still pending</b> after the 31 May window — latest leaks show softer "Blue Homeland" language. <span class="meta">So what: tail risk for island operators stays low for now.</span>
-    <div class="toggles"></div>
+  <div class="bul" data-id="gp-samaras-new-party-rumors-0617" data-title="Samaras new-party preparation rattling ND's right flank">
+    <b>Samaras factor:</b> reports of Antonis Samaras preparing a new political project are causing visible nervousness inside ND — he'd hit the patriotic/traditional-right voters where ND is most exposed. → the real downside risk to Mitsotakis is a flank breakaway, not the left.
+    <div class="toggles" data-tg></div>
   </div>
 
-  <div class="card polrow" style="border-left-color:var(--blue);padding:11px 14px" data-id="gp-tourism-at-the-limit-0614" data-title="Record season but SMBs at capacity limit on labour and costs">
-    <b>Record tourist season, but SMBs are at the limit</b> on labour availability and input costs — the binding constraint is operational, not demand. <span class="meta">So what: directly why the shift-coverage idea above has buyers.</span>
-    <div class="toggles"></div>
-  </div>
-</section>
-
-<!-- SECTION 4: INTERNATIONAL -->
-<section>
-  <div class="sec-head"><span class="bar" style="background:var(--amber)"></span><h2>🌍 International Politics</h2><span class="sub">very brief</span></div>
-
-  <div class="card polrow" style="border-left-color:var(--amber);padding:11px 14px" data-id="ip-euus-turnberry-vote-june16-0614" data-title="EU-US Turnberry plenary vote June 16; 15% cap, sunset 2029">
-    <b>EU-US Turnberry deal → final EU Parliament plenary vote 16 Jun.</b> The trade committee already approved; it caps most US tariffs on EU goods at <b>15%</b>, sunset 2029, racing the <b>4 July</b> deadline. <span class="meta">So what: clarity for any EU→US SaaS / export pricing within days.</span>
-    <div class="toggles"></div>
-  </div>
-
-  <div class="card polrow" style="border-left-color:var(--amber);padding:11px 14px" data-id="ip-iran-draft-peace-text-0614" data-title="Iran draft peace text agreed June 12; Hormuz + sanctions, nuclear separate">
-    <b>Iran: draft peace text agreed 12 Jun</b> — it covers Hormuz reopening plus sanctions, with the nuclear track handled separately; <b>60-day ceasefire holding (shaky)</b>. <span class="meta">So what: an open Hormuz caps energy / freight costs — a quiet tailwind for Greek shipping and food-input prices.</span>
-    <div class="toggles"></div>
-  </div>
-
-  <div class="card polrow" style="border-left-color:var(--amber);padding:11px 14px" data-id="ip-ukraine-eu-membership-summit-0614" data-title="EU opens Ukraine membership talks; summit June 18-19">
-    <b>EU opens Ukraine membership talks</b>; the leaders' summit <b>18–19 Jun</b> weighs Europe's role in a peace deal after Putin declined a Zelensky meeting. <span class="meta">So what: low direct read-through for you; watch only for an energy-price move.</span>
-    <div class="toggles"></div>
+  <div class="bul" data-id="gp-macro-shield-0617" data-title="Macro shield: tourism +64%, investment-grade across all agencies">
+    <b>Economic shield:</b> Q1 tourism revenue <b>+64.3%</b> and full investment-grade status (all three agencies) give the government a strong economic story to run on even as poll numbers erode. → expect "stability vs. fragmentation" framing into any late-2026/2027 vote.
+    <div class="toggles" data-tg></div>
   </div>
 </section>
 
-<!-- SECTION 5: WILDCARD -->
-<section>
-  <div class="sec-head"><span class="bar" style="background:var(--indigo)"></span><h2>🎲 Today's Wildcard</h2><span class="sub">out of scope, on purpose</span></div>
+<!-- SECTION 4 — INTERNATIONAL POLITICS -->
+<section class="s4">
+  <div class="sec-h">🌍 International Politics</div>
 
-  <div class="card" style="border-left-color:var(--indigo)" data-id="wildcard-2026-06-14-bouillon-paris" data-title="The Paris Bouillon — the original fast-casual (1855), now reviving">
-    <h3>The Paris Bouillon — the original fast-casual (est. 1855), and it's reviving</h3>
-    <p>Before CAVA, before Chipotle, Paris had the <i>bouillon</i>: cavernous worker canteens serving a hot, cheap, fast meal at scale from the 1850s. A handful — Bouillon Chartier, Bouillon Pigalle — still run lines out the door today, on the same play CAVA just earned a $90 price target for, 170 years earlier.</p>
-    <p class="meta">A reminder that "good food, fast, cheap, at volume" is a centuries-old format, not a 2010s invention.</p>
-    <p class="sowhat" style="background:#efeafc;color:#3b2c6b"><b>Why this for you today:</b> it sits exactly where two of your worlds cross — Paris (you're there fortnightly) and fast-casual economics (your day job) — but it's history, not a to-do.</p>
-    <div class="toggles"></div>
+  <div class="bul" data-id="ip-iran-hormuz-deal-0617" data-title="US-Iran initial deal: war ends, Hormuz reopens, 60-day ceasefire">
+    <b>US–Iran deal (15 June):</b> an initial agreement ends the war, reopens the Strait of Hormuz, lifts the US naval blockade and sets a <b>60-day ceasefire</b> for nuclear/sanctions talks; signing set for Friday in Switzerland (Pakistan mediating). <b>Oil fell &gt;$4/bbl, markets soared.</b> → direct relief on shipping, fuel and freight — watch your input costs.
+    <div class="toggles" data-tg></div>
+  </div>
+
+  <div class="bul" data-id="ip-euus-turnberry-ratified-0617" data-title="European Parliament ratifies Turnberry EU-US trade deal 440-151-50">
+    <b>Turnberry ratified (16 June):</b> European Parliament approved the EU–US deal <b>440–151–50</b>, eliminating most EU duties on US industrial goods and granting US farm/seafood access; now needs sign-off from all 27 member states. <b>Sunset end-2029</b> with suspension safeguards. → the transatlantic tariff cliff is averted, for now.
+    <div class="toggles" data-tg></div>
+  </div>
+
+  <div class="bul" data-id="ip-ukraine-deadlock-0617" data-title="Ukraine: Zelenskyy summit push rejected by Moscow, Donetsk deadlock">
+    <b>Ukraine stalled:</b> Zelenskyy's June push for leader-level talks (backed by UK/France/Germany) was rejected by Moscow as premature; the deadlock remains <b>Donetsk</b> — Russia wants a withdrawal Kyiv refuses. → no near-term ceasefire; the contrast with the Iran breakthrough is stark.
+    <div class="toggles" data-tg></div>
+  </div>
+</section>
+
+<!-- SECTION 5 — WILDCARD -->
+<section class="s5">
+  <div class="sec-h">🎲 Today's Wildcard</div>
+
+  <div class="card" data-id="wildcard-2026-06-17-greek-marseille-merchants" data-title="The Greek merchant houses that ran the 19th-century Mediterranean from Marseille">
+    <h3>The Greek merchant houses that quietly ran the 19th-century Mediterranean — from Marseille</h3>
+    <p>Long before "remote-first," a diaspora network of Greek trading families (the Chiot houses — Rodocanachi, Ralli, Argenti and others) ran the Mediterranean and Black Sea grain trade as a federation of small, trust-based offices spread across Marseille, Trieste, Odessa, London and Alexandria. No HQ, partner-operators in every port, information as the moat, family/credit ties as the protocol — an analog precursor to the distributed solo-operator economy.</p>
+    <p class="why">Why this for you today: it sits exactly on your Athens↔Paris axis and your love of food/trade history — a French port run by a Greek diaspora network is the 1840s version of the two-city operator life you already live. A genuine stretch, not a side-hustle.</p>
+    <p class="meta">Search: "Chiot network" / "Ralli Brothers" / "négociants grecs Marseille" — a rich rabbit hole.</p>
+    <div class="toggles" data-tg></div>
   </div>
 </section>
 
 <!-- PICKS PANEL -->
 <div class="picks">
-  <div class="top">
-    <h2>📋 My Picks &amp; Training</h2>
-    <span class="count" id="count">0 marked</span>
-  </div>
-  <p style="font-size:13px;color:#b9c7dd;margin:4px 0 0;">The brief learns from you in 4 steps:</p>
+  <h2>📋 My Picks &amp; Training</h2>
+  <p style="font-size:13.5px;color:#34404f;margin:0">The 4-step loop that tunes tomorrow's brief:</p>
   <ol>
-    <li><b>Read</b> — skim top to bottom.</li>
-    <li><b>React</b> — tap 👍 / 👎 / ⭐ on items (saved to this browser; survives reload).</li>
-    <li><b>Train</b> — hit <b>Show my picks</b>, Copy, then paste into Cowork prefixed with <code>train brief:</code></li>
-    <li><b>Adapt</b> — tomorrow's 7 AM brief is reshaped by what you marked.</li>
+    <li><b>Read</b> — skim the brief above.</li>
+    <li><b>React</b> — tap 👍 / 👎 / ⭐ on items. State saves in your browser automatically.</li>
+    <li><b>Train</b> — hit <i>Show my picks</i>, <b>Copy</b>, then paste into Cowork prefixed with <code>train brief:</code></li>
+    <li><b>Adapt</b> — tomorrow's 7 AM run reads your updated preferences and reshapes the brief.</li>
   </ol>
-  <div class="btnrow">
-    <button class="btn" onclick="showPicks()">Show my picks</button>
-    <button class="btn alt" onclick="copyPicks(event)">Copy</button>
-    <button class="btn alt" onclick="clearPicks()">Clear all picks</button>
-  </div>
-  <textarea id="picks" readonly></textarea>
+  <button class="btn primary" onclick="showPicks()">Show my picks</button>
+  <button class="btn ghost" onclick="copyPicks()">Copy</button>
+  <button class="btn ghost" onclick="clearPicks()">Clear all picks</button>
+  <textarea id="picksOut" class="hide" readonly></textarea>
 </div>
 
-<footer>Morning Brief · generated 2026-06-14 · self-contained · your picks stay in this browser until you paste them.</footer>
+<div class="foot">Morning Brief v5 · generated 2026-06-17 · 8 web searches · self-contained</div>
 </div>
 
 <script>
-(function(){
-  var DAY="2026-06-14";
-  var LABELS={up:"👍 Interesting",down:"👎 Skip",save:"⭐ Save"};
-  function key(id){return "mb-"+DAY+"-"+id;}
-  var cards=document.querySelectorAll(".card[data-id]");
-  cards.forEach(function(card){
-    var id=card.getAttribute("data-id");
-    var box=card.querySelector(".toggles");
-    if(!box) return;
-    ["up","down","save"].forEach(function(kind){
-      var b=document.createElement("span");
-      b.className="tg "+kind;
-      b.textContent=LABELS[kind];
-      b.onclick=function(){toggle(id,kind,card);};
-      box.appendChild(b);
-    });
-    render(id,card);
-  });
-  function state(id){return localStorage.getItem(key(id))||"";}
-  function toggle(id,kind,card){
-    var cur=state(id);
-    if(cur===kind){localStorage.removeItem(key(id));}
-    else{localStorage.setItem(key(id),kind);}
-    render(id,card);updateCount();
-  }
-  function render(id,card){
-    var cur=state(id);
-    card.querySelectorAll(".tg").forEach(function(b){
-      var on=b.classList.contains(cur);
-      b.classList.toggle("on",on);
+  var DAY = "2026-06-17";
+  function keyFor(id){ return "mb-" + DAY + "-" + id; }
+
+  function buildToggles(){
+    var cards = document.querySelectorAll('[data-id]');
+    cards.forEach(function(card){
+      var id = card.getAttribute('data-id');
+      var holder = card.querySelector('[data-tg]');
+      if(!holder) return;
+      var defs = [['up','👍 Interesting'],['down','👎 Skip'],['save','⭐ Save']];
+      defs.forEach(function(d){
+        var b = document.createElement('span');
+        b.className = 'tg ' + d[0];
+        b.textContent = d[1];
+        b.onclick = function(){ setState(id, d[0], card); };
+        holder.appendChild(b);
+      });
+      var saved = localStorage.getItem(keyFor(id));
+      if(saved) paint(card, saved);
     });
   }
-  function all(){
-    var out={up:[],down:[],save:[]};
-    cards.forEach(function(c){
-      var s=state(c.getAttribute("data-id"));
-      if(out[s]) out[s].push(c.getAttribute("data-title"));
+  function setState(id, state, card){
+    var cur = localStorage.getItem(keyFor(id));
+    if(cur === state){ localStorage.removeItem(keyFor(id)); paint(card, null); }
+    else { localStorage.setItem(keyFor(id), state); paint(card, state); }
+  }
+  function paint(card, state){
+    ['up','down','save'].forEach(function(c){
+      var el = card.querySelector('.tg.'+c);
+      if(el) el.classList.toggle('on', c===state);
+    });
+  }
+  function collect(){
+    var out = {up:[],down:[],save:[]};
+    document.querySelectorAll('[data-id]').forEach(function(card){
+      var id = card.getAttribute('data-id');
+      var s = localStorage.getItem(keyFor(id));
+      if(s) out[s].push(card.getAttribute('data-title') || id);
     });
     return out;
   }
-  function updateCount(){
-    var a=all();var n=a.up.length+a.down.length+a.save.length;
-    document.getElementById("count").textContent=n+" marked";
+  function summary(){
+    var p = collect();
+    var t = "My picks from Morning Brief — " + DAY + "\n\n";
+    t += "👍 INTERESTING:\n" + (p.up.length ? p.up.map(function(x){return "- "+x;}).join("\n") : "- (none)") + "\n\n";
+    t += "⭐ SAVE FOR LATER:\n" + (p.save.length ? p.save.map(function(x){return "- "+x;}).join("\n") : "- (none)") + "\n\n";
+    t += "👎 SKIP:\n" + (p.down.length ? p.down.map(function(x){return "- "+x;}).join("\n") : "- (none)") + "\n";
+    return t;
   }
-  window.showPicks=function(){
-    var a=all();
-    var t="My picks from Morning Brief — "+DAY+"\n\n";
-    t+="👍 INTERESTING:\n"+(a.up.length?a.up.map(function(x){return "- "+x;}).join("\n"):"- (none)")+"\n\n";
-    t+="⭐ SAVE FOR LATER:\n"+(a.save.length?a.save.map(function(x){return "- "+x;}).join("\n"):"- (none)")+"\n\n";
-    t+="👎 SKIP:\n"+(a.down.length?a.down.map(function(x){return "- "+x;}).join("\n"):"- (none)")+"\n";
-    var ta=document.getElementById("picks");ta.value=t;ta.style.display="block";
-    return ta;
-  };
-  window.copyPicks=function(ev){
-    var ta=window.showPicks();
+  function showPicks(){
+    var ta = document.getElementById('picksOut');
+    ta.classList.remove('hide');
+    ta.value = summary();
+    ta.focus(); ta.select();
+  }
+  function copyPicks(){
+    var ta = document.getElementById('picksOut');
+    ta.classList.remove('hide');
+    ta.value = summary();
     ta.select();
-    try{navigator.clipboard.writeText(ta.value);}catch(e){try{document.execCommand("copy");}catch(e2){}}
-    if(ev&&ev.target){var b=ev.target;var o=b.textContent;b.textContent="Copied ✓";
-      setTimeout(function(){b.textContent=o;},1400);}
-  };
-  window.clearPicks=function(){
-    cards.forEach(function(c){localStorage.removeItem(key(c.getAttribute("data-id")));render(c.getAttribute("data-id"),c);});
-    var ta=document.getElementById("picks");ta.value="";ta.style.display="none";updateCount();
-  };
-  updateCount();
-})();
+    try{ document.execCommand('copy'); }catch(e){}
+    if(navigator.clipboard){ navigator.clipboard.writeText(ta.value).catch(function(){}); }
+  }
+  function clearPicks(){
+    if(!confirm('Clear all 👍/👎/⭐ picks for today?')) return;
+    document.querySelectorAll('[data-id]').forEach(function(card){
+      localStorage.removeItem(keyFor(card.getAttribute('data-id')));
+      paint(card, null);
+    });
+    var ta = document.getElementById('picksOut'); ta.value=''; ta.classList.add('hide');
+  }
+  buildToggles();
 </script>
 </body>
 </html>
