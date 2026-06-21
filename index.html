@@ -3,338 +3,323 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Morning Brief — 2026-06-20</title>
+<title>Morning Brief — 2026-06-21</title>
 <style>
-  :root{ --navy:#0f1d3a; --gold:#d4a017; --violet:#7d3c98; --teal:#16a085;
-         --blue:#1f4e79; --amber:#d68910; --indigo:#4b3a8b; --ink:#1c2330; --mut:#5b6675; }
+  :root{
+    --navy:#0f1d3a; --gold:#d4a017; --violet:#7d3c98; --teal:#16a085;
+    --blue:#1f4e79; --amber:#d68910; --indigo:#4b3a8b; --ink:#1c2128; --muted:#5b6573;
+  }
   *{box-sizing:border-box}
   body{margin:0;background:#fff;color:var(--ink);
-       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-       line-height:1.5;-webkit-text-size-adjust:100%}
-  .wrap{max-width:860px;margin:0 auto;padding:0 16px 64px}
-  header{background:var(--navy);color:#fff;padding:22px 16px;margin-bottom:8px}
-  header .inner{max-width:860px;margin:0 auto}
-  header h1{margin:0;font-size:21px;letter-spacing:.2px}
-  header p{margin:6px 0 0;color:#b9c4d8;font-size:13px}
-  section{margin-top:26px}
-  .sec-h{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:700;
-         padding:8px 12px;border-radius:8px;color:#fff}
-  .s0 .sec-h{background:var(--gold)} .s1 .sec-h{background:var(--violet)}
-  .s2 .sec-h{background:var(--teal)} .s3 .sec-h{background:var(--blue)}
-  .s4 .sec-h{background:var(--amber)} .s5 .sec-h{background:var(--indigo)}
-  .sub{font-weight:700;font-size:14px;color:var(--mut);margin:16px 2px 4px;text-transform:uppercase;letter-spacing:.5px}
-  .card{border:1px solid #e6e9ef;border-left-width:4px;border-radius:9px;padding:13px 15px;margin:11px 0;background:#fff}
-  .s0 .card{border-left-color:var(--gold)} .s1 .card{border-left-color:var(--violet)}
-  .s2 .card{border-left-color:var(--teal)} .s3 .card{border-left-color:var(--blue)}
-  .s4 .card{border-left-color:var(--amber)} .s5 .card{border-left-color:var(--indigo)}
-  .card h3{margin:0 0 6px;font-size:15.5px}
-  .card p{margin:5px 0;font-size:14px}
-  .meta{font-size:12.5px;color:var(--mut)}
-  .meta b{color:var(--ink)}
-  a{color:var(--violet);text-decoration:none} a:hover{text-decoration:underline}
-  .bul{margin:9px 0;padding:10px 13px;border:1px solid #e6e9ef;border-left-width:4px;border-radius:8px;font-size:14px}
-  .s3 .bul{border-left-color:var(--blue)} .s4 .bul{border-left-color:var(--amber)}
-  .bul b{color:var(--ink)}
-  .so{font-size:13px;color:var(--teal);font-weight:600;margin-top:6px}
-  .s1 .so{color:var(--violet)}
-  .why{font-size:13px;color:var(--indigo);font-weight:600;margin-top:8px}
-  .nofresh{color:var(--mut);font-style:italic;font-size:13.5px}
-  .toggles{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
-  .tg{border:1px solid #cfd5df;background:#f7f8fa;border-radius:999px;padding:4px 11px;
-      font-size:12.5px;cursor:pointer;user-select:none;transition:.12s}
-  .tg:hover{background:#eef0f4}
-  .tg.up.on{background:#e7f7ec;border-color:#37b24d;color:#1f7a32}
-  .tg.down.on{background:#fdeaea;border-color:#e03131;color:#a02525}
-  .tg.save.on{background:#fff6e0;border-color:var(--gold);color:#8a6a0d}
-  .picks{margin-top:38px;border:2px dashed #cfd5df;border-radius:12px;padding:16px;background:#fafbfc}
-  .picks h2{margin:0 0 8px;font-size:16px}
-  .picks ol{margin:8px 0 8px 18px;padding:0;font-size:13.5px;color:#34404f}
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;font-size:16px}
+  .wrap{max-width:860px;margin:0 auto;padding:0 16px 60px}
+  header{background:var(--navy);color:#fff;padding:22px 16px}
+  header .wrap{padding-bottom:0;padding-top:0}
+  h1{margin:0;font-size:22px;letter-spacing:.2px}
+  .sub{color:#b9c4d6;font-size:13px;margin-top:4px}
+  h2{font-size:18px;margin:30px 0 4px;padding-bottom:6px;border-bottom:3px solid #eee}
+  .s-ideas h2{color:var(--violet);border-color:var(--violet)}
+  .s-industry h2{color:var(--teal);border-color:var(--teal)}
+  .s-gr h2{color:var(--blue);border-color:var(--blue)}
+  .s-int h2{color:var(--amber);border-color:var(--amber)}
+  .s-wild h2{color:var(--indigo);border-color:var(--indigo)}
+  .lead{color:var(--muted);font-size:13px;margin:6px 0 10px}
+  .subhead{font-weight:700;font-size:14px;margin:16px 0 6px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+  .item{border:1px solid #e6e8ec;border-radius:10px;padding:12px 14px;margin:10px 0;background:#fff}
+  .s-ideas .item{border-left:4px solid var(--violet)}
+  .s-industry .item{border-left:4px solid var(--teal)}
+  .s-gr .item{border-left:4px solid var(--blue)}
+  .s-int .item{border-left:4px solid var(--amber)}
+  .s-wild .item{border-left:4px solid var(--indigo);background:#f7f5fc}
+  .item h3{margin:0 0 6px;font-size:16px}
+  .item p{margin:5px 0;font-size:14px}
+  .item .meta{font-size:13px;color:var(--muted)}
+  .item .meta b{color:var(--ink)}
+  a{color:var(--blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .btns{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+  .btns button{border:1px solid #cfd4db;background:#fff;border-radius:20px;
+    padding:5px 12px;font-size:13px;cursor:pointer;transition:all .12s}
+  .btns button:hover{background:#f1f3f6}
+  .btns button.on-up{background:#e3f5e9;border-color:#34a853;color:#1e7e34}
+  .btns button.on-down{background:#fdecec;border-color:#d93025;color:#b3261e}
+  .btns button.on-save{background:#fff6e0;border-color:var(--gold);color:#9a7400}
+  .picks{margin-top:36px;border:1px solid #e6e8ec;border-radius:12px;padding:16px;background:#fafbfc}
+  .picks h2{color:var(--navy);border-color:var(--navy)}
+  .picks ol{margin:8px 0 14px;padding-left:20px;font-size:14px}
   .picks li{margin:3px 0}
-  .btn{display:inline-block;border:0;border-radius:8px;padding:9px 15px;font-size:13.5px;
-       font-weight:600;cursor:pointer;margin:5px 6px 0 0}
-  .btn.primary{background:var(--navy);color:#fff} .btn.ghost{background:#e9ecf1;color:var(--ink)}
-  textarea{width:100%;min-height:190px;margin-top:12px;border:1px solid #cfd5df;border-radius:8px;
-           padding:10px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px}
-  .hide{display:none}
-  .foot{margin-top:26px;font-size:12px;color:var(--mut);text-align:center}
-  code{background:#eef0f4;padding:1px 5px;border-radius:4px;font-size:12.5px}
+  .picks textarea{width:100%;min-height:180px;margin-top:10px;font-family:ui-monospace,Menlo,Consolas,monospace;
+    font-size:12.5px;padding:10px;border:1px solid #cfd4db;border-radius:8px}
+  .pbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .pbtns button{border:1px solid #cfd4db;background:#fff;border-radius:8px;padding:8px 14px;font-size:14px;cursor:pointer}
+  .pbtns button.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .hidden{display:none}
+  .foot{color:var(--muted);font-size:12px;margin-top:24px;text-align:center}
+  .nf{color:var(--muted);font-style:italic;font-size:14px}
 </style>
 </head>
 <body>
-<header><div class="inner">
-  <h1>☀️ Morning Brief — Saturday, 20 June 2026</h1>
-  <p>For Stylianos · under 5 min · Iran framework signed electronically (Geneva ceremony scrapped), EU summit wrapped, Anthropic on the IPO clock. Tap 👍/👎/⭐ as you read.</p>
+<header><div class="wrap">
+  <h1>☕ Morning Brief</h1>
+  <div class="sub">Sunday, 21 June 2026 · for Stylianos · read time ~4 min</div>
 </div></header>
 
 <div class="wrap">
 
-<!-- SECTION 0 — SAVED -->
-<section class="s0">
-  <div class="sec-h">⭐ Your Saved Items</div>
+<!-- SECTION 1: IDEAS -->
+<section class="s-ideas">
+  <h2>1 · Side Hustle Ideas</h2>
+  <div class="lead">Kept tight today — your feedback says you read this as a news digest, not an idea generator. Three Greek, two Paris, only where a signal is genuinely fresh this week.</div>
 
-  <div class="card" data-id="idea-gr-ama-compliance-tracker" data-title="AMA compliance tracker for Greek short-term rental hosts">
-    <h3>AMA compliance tracker for Greek short-term rental hosts</h3>
-    <p>Your pinned idea. <b>Still loaded this week:</b> the overtourism package (port arrival fees, tiered up on Santorini/Mykonos) is now stacked on the short-term-rental rules — and tourism receipts are running <b>+64.3% in Q1</b> with per-trip spend <b>+19.9%</b>. More rules on more lucrative hosts = the tracker keeps getting more reasons to exist.</p>
-    <p class="meta">Saved 2026-05-04 · <a href="https://news.gtp.gr/2026/05/26/greek-tourism-revenue-up-64-3-in-q1-2026-as-visitor-spending-rises/" target="_blank" rel="noopener">Q1 receipts +64.3% ↗</a></p>
-    <div class="toggles" data-tg></div>
+  <div class="subhead">🇬🇷 Greece</div>
+
+  <div class="item" data-id="idea-gr-fastcasual-repricing-deck-0621" data-title="Fast-casual repricing read → Protein Garden investor deck">
+    <h3>The fast-casual repricing read for your Protein Garden deck</h3>
+    <p>CMG and CAVA are down ~50% from highs, Sweetgreen down 80% — yet CAVA is still the only one growing traffic. Package that one-chart contrast ("category de-rated, Mediterranean traffic intact") as the opening slide of any Protein Garden / Dina's raise.</p>
+    <p class="meta"><b>Why now:</b> CAVA's annual shareholder meeting is <b>tomorrow, June 22</b>, and a fresh Motley Fool/Globe&amp;Mail comparison just put numbers on the drawdown. <a href="https://www.theglobeandmail.com/investing/markets/markets-news/motley/2109955/the-best-stocks-to-buy-right-now-chipotle-vs-sweetgreen-vs-cava-group/" target="_blank" rel="noopener">source</a></p>
+    <p class="meta"><b>Scope:</b> half a day — one chart + 3 talking points. <b>Money:</b> not a product; it's positioning leverage for your own fundraise.</p>
+    <div class="btns" data-for="idea-gr-fastcasual-repricing-deck-0621"></div>
   </div>
 
-  <div class="card" data-id="idea-fr-paris-agentic-agency" data-title="Paris Agentic Agency — non-technical boutique serving the AMI ecosystem">
-    <h3>Paris Agentic Agency — non-technical boutique for the AMI ecosystem</h3>
-    <p>Your pinned idea. <b>Tailwind held into the weekend:</b> VivaTech just closed in Paris, and Mistral confirmed it is raising <b>~€3B at a ~€20B valuation</b> (double its €11.7B Series C), running its own data centres in France &amp; Sweden. "Non-technical boutique on top of EU-sovereign AI" has a fresh, fundable anchor client narrative to point at.</p>
-    <p class="meta">Saved 2026-05-09 · <a href="https://www.bloomberg.com/news/articles/2026-06-12/france-s-mistral-in-funding-talks-at-about-20-billion-valuation" target="_blank" rel="noopener">Mistral ~€20B ↗</a></p>
-    <div class="toggles" data-tg></div>
-  </div>
-</section>
-
-<!-- SECTION 1 — IDEAS -->
-<section class="s1">
-  <div class="sec-h">💡 Side Hustle Ideas</div>
-
-  <div class="sub">🇬🇷 Greece</div>
-
-  <div class="card" data-id="idea-gr-cava-multiple-growth-deck-0620" data-title="CAVA-multiple teardown → Dina's/Protein Garden growth-story deck">
-    <h3>The CAVA-multiple growth-story deck</h3>
-    <p><b>What:</b> Not a tool — a <i>positioning artefact</i>. Pull the metrics the market actually pays CAVA for, then build a one-pager mapping which of those levers Dina's / Protein Garden already pull (or could), framed for your next investor / partner conversation.</p>
-    <p><b>Why now:</b> Fresh comps make the premium explicit — CAVA trades at <b>7.4x sales</b> vs Chipotle's <b>3.6x</b> and Sweetgreen's <b>1.6x</b>, on 13 Buys / 3 Outperforms. The market isn't paying for bowls; it's paying for <i>traffic growth</i>. That's a story you can borrow, not a product you have to build.</p>
-    <p class="meta"><b>Scope:</b> an afternoon. <b>Money:</b> fundraise / partner positioning — indirect but high-leverage. · <a href="https://www.fool.com/investing/2026/05/24/best-stocks-now-chipotle-vs-sweetgreen-vs-cava/" target="_blank" rel="noopener">CAVA vs peers multiples ↗</a></p>
-    <div class="toggles" data-tg></div>
+  <div class="item" data-id="idea-gr-early-repayment-capex-window-0621" data-title="Greece early bailout repayment → capex-timing note for F&B">
+    <h3>Cheap-credit capex window note for Greek F&amp;B operators</h3>
+    <p>Greece just repaid €6.9B of its first bailout <i>ahead of schedule</i> and is now investment-grade across all three agencies. Translate that into a plain-language "is now the moment to finance the next venue?" memo — rate environment, what changes for an SMB loan, the catch (3.7% inflation eating into it).</p>
+    <p class="meta"><b>Why now:</b> the early repayment landed this month. <a href="https://www.theedgesingapore.com/news/global-economy/greece-raised-investment-grade-moodys-resilience" target="_blank" rel="noopener">source</a></p>
+    <p class="meta"><b>Scope:</b> 1-page memo, dogfood for your own STIQ capex calls. <b>Money:</b> low — relationship/credibility piece for operator network.</p>
+    <div class="btns" data-for="idea-gr-early-repayment-capex-window-0621"></div>
   </div>
 
-  <div class="card" data-id="idea-gr-glp1-protein-resegmentation-0620" data-title="GLP-1 protein-forward menu re-segmentation for Protein Garden">
-    <h3>The "is our menu GLP-1-ready?" re-segmentation</h3>
-    <p><b>What:</b> A reassessment pass, not a rebuild: feed Protein Garden's menu in, get back which items over-index for the GLP-1 guest (high-protein, lighter portions) and which to retag, reprice, or shrink. Protein Garden is <i>named</i> for exactly this shift — the question is whether the menu is positioned to capture it.</p>
-    <p><b>Why now:</b> The data hardened this week — JPMorgan projects a <b>$30–55B annual F&amp;B revenue hit by 2030–34</b> from GLP-1s; users eat <b>~21% fewer calories</b> and spend ~⅓ less on food, and protein-forward / "lighter portions" sections now over-index (Olive Garden, P.F. Chang's, Cheesecake all added them).</p>
-    <p class="meta"><b>Scope:</b> a weekend. <b>Money:</b> internal margin first; a "GLP-1 menu audit" is a clean €200–400 service for Greek F&amp;B later. · <a href="https://www.cnbc.com/2026/03/21/glp-1-diets-restaurants-protein-fiber-weight-loss-drugs.html" target="_blank" rel="noopener">restaurants add protein/fiber ↗</a></p>
-    <div class="toggles" data-tg></div>
+  <div class="item" data-id="idea-gr-glp1-half-portion-ab-0621" data-title="GLP-1 half-portion A/B test for Protein Garden / Dina's">
+    <h3>The "half-portion, pay-more" A/B for your own venues</h3>
+    <p>New survey data: 76% of GLP-1 users will <b>pay more</b> for tailored options and 90% want them. Run a 2-week test of an explicit "lighter / high-protein" half-portion line at one Dina's location — price it at ~70% of full, not 50%, and measure margin per cover.</p>
+    <p class="meta"><b>Why now:</b> the willingness-to-pay number is from this month's menu-trend reporting. <a href="https://www.foodingredientsfirst.com/news/glp-1-friendly-menus-food-dining-2026.html" target="_blank" rel="noopener">source</a></p>
+    <p class="meta"><b>Scope:</b> menu + POS tag + a spreadsheet. <b>Money:</b> direct margin test on existing covers.</p>
+    <div class="btns" data-for="idea-gr-glp1-half-portion-ab-0621"></div>
   </div>
 
-  <div class="card" data-id="idea-gr-protein-garden-glp1-cpg-0620" data-title="Protein Garden GLP-1 packaged / retail line thesis">
-    <h3>Protein Garden → a GLP-1 packaged-line thesis</h3>
-    <p><b>What:</b> A market memo, not code: should Protein Garden extend the brand into a small packaged protein/satiety SKU (grab-and-go, retail, or delivery-only) aimed at the GLP-1 shopper? Claude sizes the wedge, the price point, and the 3 nearest analog launches so you can decide in an afternoon, not a quarter.</p>
-    <p><b>Why now:</b> The big food houses are moving — the <b>GLP-1 drug market is ~$76B (2025) heading to ~$162B by 2031</b>, and Nestlé launched its first new brand in ~30 years built for GLP-1 users, with General Mills &amp; Danone marketing on satiety. A protein-native brand has natural permission here.</p>
-    <p class="meta"><b>Scope:</b> half a day to a thesis. <b>Money:</b> potential new revenue line for the brand you already own. · <a href="https://www.fox5dc.com/news/why-everything-has-protein-now-glp-1-drugs-reshape-what-america-wants-eat" target="_blank" rel="noopener">"everything has protein now" ↗</a></p>
-    <div class="toggles" data-tg></div>
+  <div class="subhead">🇫🇷 Paris / France</div>
+
+  <div class="item" data-id="idea-fr-mistral-20b-sovereign-window-0621" data-title="Mistral €20B round → EU-hosted inference pitch for Paris agency">
+    <h3>Ride the Mistral €20B headline into EU-hosted-inference deals</h3>
+    <p>Mistral is raising ~€3B at a ~€20B valuation, with its first Paris data centre going live this month. That's free air cover for the "your AI can run on European infra" pitch to French SMBs nervous about US models — lead gen, not a product.</p>
+    <p class="meta"><b>Why now:</b> round + datacentre both crossed the wire in June. <a href="https://mlq.ai/news/mistral-ai-seeks-3-billion-in-new-funding-at-20-billion-valuation/" target="_blank" rel="noopener">source</a></p>
+    <p class="meta"><b>Scope:</b> a one-pager + cold outreach list. <b>Money:</b> agency retainers, €2–5k/mo.</p>
+    <div class="btns" data-for="idea-fr-mistral-20b-sovereign-window-0621"></div>
   </div>
 
-  <div class="sub">🇫🇷 Paris / France</div>
-
-  <div class="card" data-id="idea-fr-model-agnostic-agency-0620" data-title="Model-agnostic positioning for the Paris Agentic Agency (Mistral vs Anthropic IPO)">
-    <h3>The "model-agnostic" agency one-pager</h3>
-    <p><b>What:</b> A sales-conversation asset for the Paris agency: a single page that says "we use Claude where it's sharpest, Mistral where data has to stay in the EU." Turns the sovereignty debate from a client objection into your differentiator — without making it a regulatory/compliance pitch.</p>
-    <p><b>Why now:</b> The two poles are both in the news this week — <b>Anthropic filed for an October IPO at a ~$965B valuation</b> (~$47B run-rate, disputed by OpenAI) while <b>Mistral is raising ~€3B at ~€20B</b> on a sovereign-infrastructure story. French SMBs are hearing both; "we're fluent in both" is a rare, concrete edge.</p>
-    <p class="meta"><b>Scope:</b> 2–3 hours. <b>Money:</b> conversion lift on agency deals — qualitative but real. · <a href="https://fortune.com/2026/06/01/anthropic-confidentially-files-ipo-965-billion-valuation/" target="_blank" rel="noopener">Anthropic S-1 ↗</a></p>
-    <div class="toggles" data-tg></div>
-  </div>
-
-  <div class="card" data-id="idea-fr-paris-lighter-portions-glp1-0620" data-title="GLP-1 'lighter portions' menu section for a Paris fast-casual client">
-    <h3>The Paris "lighter portions" menu play (lag arbitrage)</h3>
-    <p><b>What:</b> Package the US GLP-1 menu move as a service for one Paris F&amp;B operator: a "lighter portions / high-protein" section, the guest-facing copy, and the per-cover math on whether it adds traffic. Europe is running behind the US rollout — that lag is the opening.</p>
-    <p><b>Why now:</b> US chains added these sections <i>this season</i> (Olive Garden, Clinton Hall "mini meals", Cheesecake), and the GLP-1 food data is fresh (JPM $30–55B hit; ~21% fewer calories). Paris menus largely haven't reacted — first mover gets the narrative.</p>
-    <p class="meta"><b>Scope:</b> 1 day per venue. <b>Money:</b> €300–600 menu-design engagement, repeatable across Paris sites. · <a href="https://www.aol.com/articles/glp-1-reshaping-restaurant-menus-123000909.html" target="_blank" rel="noopener">GLP-1 reshaping menus ↗</a></p>
-    <div class="toggles" data-tg></div>
+  <div class="item" data-id="idea-fr-loop-engineering-audit-0621" data-title="Loop-engineering audit service for French SMB AI deployments">
+    <h3>"Loop engineering" audits before French SMBs over-build</h3>
+    <p>The new vocabulary (prompt → context → harness → loop engineering) gives you a sharp framing: most SMB AI pilots fail at the <i>loop</i>, not the model. Offer a fixed-fee audit of a client's broken agent workflow and a fixed redesign of its loop.</p>
+    <p class="meta"><b>Why now:</b> Steinberger + Osmani named "loop engineering" this month — the term is fresh enough to own locally. <a href="https://www.langchain.com/blog/agentic-engineering-redefining-software-engineering" target="_blank" rel="noopener">source</a></p>
+    <p class="meta"><b>Scope:</b> productized 1-week audit. <b>Money:</b> €1.5–3k per audit, upsell to build.</p>
+    <div class="btns" data-for="idea-fr-loop-engineering-audit-0621"></div>
   </div>
 </section>
 
-<!-- SECTION 2 — INDUSTRY PULSE -->
-<section class="s2">
-  <div class="sec-h">📊 Industry Pulse</div>
+<!-- SECTION 2: INDUSTRY PULSE -->
+<section class="s-industry">
+  <h2>2 · Industry Pulse</h2>
+  <div class="lead">Money flow across your watch list. Financial figures front and center.</div>
 
-  <div class="card" data-id="pulse-ai-coding-agents-0620" data-title="AI coding agents — Anthropic IPO clock, revenue accounting fight">
+  <div class="item" data-id="pulse-ai-coding-agents-0621" data-title="AI coding agents — Anthropic guiding >$50B run-rate by July; Oct IPO">
     <h3>🤖 AI coding agents</h3>
-    <p>Anthropic's confidential S-1 (filed <b>June 1</b>) targets an <b>October Nasdaq listing at ~$965B</b>, raising <b>$60B+</b> — disclosed <b>~$47B run-rate</b> (mid-May). OpenAI is publicly contesting it: net of cloud-partner payouts the real figure is closer to <b>~$22B</b>, so the <b>32x revenue</b> headline rests on which accounting you believe. Cursor reportedly passed <b>$2B annualized</b> (March).</p>
-    <p class="so">So what: the gross-vs-net fight is the exact ARR-quality question a STIQ raise will face — define your revenue accounting <i>before</i> a diligence call does it for you.</p>
-    <div class="toggles" data-tg></div>
+    <p>• Anthropic at <b>~$47B</b> annualized run-rate (May), now telling investors it will <b>pass $50B by end of July</b> — from $9B in January (5× in 5 months).</p>
+    <p>• S-1 filed confidentially <b>June 1</b>; target listing <b>October 2026</b> at the <b>$965B</b> Series H mark; first operating profit flagged for Q2.</p>
+    <p>• Claude Code remains a big share of new revenue; growth outpacing OpenAI at comparable stage.</p>
+    <p class="meta"><b>So what:</b> the comp keeps inflating — a $965B private AI lab is the cleanest "AI premium" anchor for STIQ's own raise narrative. <a href="https://fortune.com/2026/06/01/anthropic-confidentially-files-ipo-965-billion-valuation/" target="_blank" rel="noopener">source</a></p>
+    <div class="btns" data-for="pulse-ai-coding-agents-0621"></div>
   </div>
 
-  <div class="card" data-id="pulse-fast-casual-0620" data-title="Fast-casual — CAVA premium vs restaurant recession">
-    <h3>🍔 Fast-casual</h3>
-    <p>The "restaurant recession" framing is sticking: <b>Chipotle and CAVA are ~50% off highs, Sweetgreen ~80% off</b>. But the split is about traffic, not sentiment — CAVA still commands <b>7.4x sales</b> (vs Chipotle 3.6x, Sweetgreen 1.6x) because it's the only one still growing covers; Sweetgreen "may never generate a profit," per analysts.</p>
-    <p class="so">So what: the market is pricing traffic growth at a 2x sales-multiple premium — the single clearest external proof for prioritising covers over discounting at Dina's / Protein Garden.</p>
-    <div class="toggles" data-tg></div>
-  </div>
-
-  <div class="card" data-id="pulse-food-trends-0620" data-title="Food trends — GLP-1 quantified hit to F&B">
-    <h3>🥬 Food trends</h3>
-    <p>GLP-1 numbers got sharper: JPMorgan projects a <b>$30–55B/yr F&amp;B revenue hit by 2030–34</b>; users eat <b>~21% fewer calories</b> and spend ~⅓ less on food. The drug market itself runs <b>$76B (2025) → ~$162B (2031)</b>. Protein-forward and "lighter portions" sections now over-index across casual chains.</p>
-    <p class="so">So what: this is tailwind, not threat, for a brand literally called Protein Garden — and the strongest "why now" behind today's two GLP-1 ideas above.</p>
-    <div class="toggles" data-tg></div>
-  </div>
-
-  <div class="card" data-id="pulse-indie-claude-code-0620" data-title="Indie / Claude Code — solo-founder MRR proof points">
-    <h3>🚀 Indie / Claude Code</h3>
-    <p>Fresh solo-founder data points: documented runs of <b>$20k–$62k MRR</b> in the last 6 months, one <b>$0→$62k in ~90 days</b>; the operating thesis is "<b>under $500/month</b> until $20k MRR." Claude Code keeps pulling defectors from Cursor; Vercel is the de-facto default deploy target it recommends.</p>
-    <p class="so">So what: the cost-to-run number ($500/mo) is your real bar — a single €200–400/mo Greek-F&amp;B service line clears it fast.</p>
-    <div class="toggles" data-tg></div>
-  </div>
-
-  <div class="card" data-id="pulse-greek-startups-0620" data-title="Greek startups — no fresh round; ecosystem baseline">
-    <h3>🇬🇷 Greek startups</h3>
-    <p class="nofresh">No fresh round since Kos Biotechnology's €106M (June 18). Baseline holds: <b>€732M raised in 2025 (+35% YoY)</b>, 90+ startups across 143 investors; VentureFriends now 100+ portfolio cos.</p>
-    <p class="so">So what: late-stage is thickening but the mid-market is quiet — a clean, capital-efficient revenue story still differentiates a STIQ raise.</p>
-    <div class="toggles" data-tg></div>
-  </div>
-
-  <div class="card" data-id="pulse-restaurant-tech-0620" data-title="Restaurant tech — no fresh M&A; AI-agent POS thesis intact">
-    <h3>🛠️ Restaurant tech</h3>
-    <p class="nofresh">No fresh M&amp;A this week. Standing context: PAR &amp; Square shipped <b>AI agents</b> into POS; recent rounds Nory <b>$37M Series B</b> and Chowbus <b>$81M</b> (both March); AI integration claims up to <b>17% cost reduction</b>.</p>
-    <p class="so">So what: "AI agent inside the POS" is becoming table stakes — STIQ's edge has to be the agentic ops layer the incumbents bolt on, not the POS itself.</p>
-    <div class="toggles" data-tg></div>
-  </div>
-
-  <div class="card" data-id="pulse-marketing-automation-0620" data-title="Marketing automation — no fresh financial signal">
+  <div class="item" data-id="pulse-marketing-automation-0621" data-title="Marketing automation — no fresh financial signal">
     <h3>📈 Marketing automation</h3>
-    <p class="nofresh">No fresh financial signal — nothing materially new since last sweep (Klaviyo/HubSpot/Salesforce quiet).</p>
-    <div class="toggles" data-tg></div>
+    <p class="nf">No fresh financial signal — nothing materially new since HubSpot AEO / Klaviyo + Salesforce Agentforce updates.</p>
+    <div class="btns" data-for="pulse-marketing-automation-0621"></div>
+  </div>
+
+  <div class="item" data-id="pulse-greek-startups-0621" data-title="Greek startups — no fresh round; Greece repays €6.9B early, IG across all agencies">
+    <h3>🇬🇷 Greek startups</h3>
+    <p>• No fresh round since <b>Kos Biotechnology's €106M</b> (largest debut VC fund in Greek history); ecosystem baseline <b>€732.2M across 95 rounds in 2025 (+35% YoY)</b>.</p>
+    <p>• Macro tailwind: Greece repaid <b>€6.9B</b> of first-bailout debt early this month; investment-grade now across <b>all three</b> agencies (Moody's Baa3 in March).</p>
+    <p>• Capital concentration up — 75% of rounds are pre-seed/seed but only €117.5M of value; scale-ups taking €614M.</p>
+    <p class="meta"><b>So what:</b> sovereign de-risking + IG status = friendlier terms for a Greek-domiciled AI raise. <a href="https://www.goldenvisa-greece.com/greeces-startup-ecosystem-in-2026-maturity-momentum-and-a-new-era-of-incentives/" target="_blank" rel="noopener">source</a></p>
+    <div class="btns" data-for="pulse-greek-startups-0621"></div>
+  </div>
+
+  <div class="item" data-id="pulse-fast-casual-0621" data-title="Fast-casual — CMG/CAVA -50%, SG -80%; CAVA annual meeting June 22, only chain growing traffic">
+    <h3>🍔 Fast-casual</h3>
+    <p>• Sector re-rated hard: <b>Chipotle and CAVA both ~-50%</b> from highs, <b>Sweetgreen -80%+</b>; investors split between GLP-1 fears and a tapped-out consumer.</p>
+    <p>• CAVA still <b>the only one growing traffic</b> and closing CMG's margin gap; <b>annual shareholder meeting tomorrow (June 22, 11:30am)</b>.</p>
+    <p>• Sweetgreen sales declining; the "bowl wars" effectively over for everyone but CAVA.</p>
+    <p class="meta"><b>So what:</b> the whole category is cheap, but Mediterranean traffic is the one thing still working — exactly your Protein Garden thesis. <a href="https://www.theglobeandmail.com/investing/markets/markets-news/motley/2109955/the-best-stocks-to-buy-right-now-chipotle-vs-sweetgreen-vs-cava-group/" target="_blank" rel="noopener">source</a></p>
+    <div class="btns" data-for="pulse-fast-casual-0621"></div>
+  </div>
+
+  <div class="item" data-id="pulse-food-trends-0621" data-title="Food trends — GLP-1 menu cascade; 76% pay more, 90% want tailored options">
+    <h3>🥬 Food trends</h3>
+    <p>• GLP-1 menu cascade now mainstream: Shake Shack "Good Fit", Chipotle "Protein Cups", Subway "Protein Pockets", Olive Garden + Cheesecake Factory smaller-portion sections.</p>
+    <p>• Demand data: <b>76% of GLP-1 users will pay more</b> for tailored options; <b>90%</b> would order them — shift in habits, not lost demand.</p>
+    <p class="meta"><b>So what:</b> the willingness-to-pay number is the real signal — a high-protein half-portion can be margin-accretive, not a discount. <a href="https://www.foodingredientsfirst.com/news/glp-1-friendly-menus-food-dining-2026.html" target="_blank" rel="noopener">source</a></p>
+    <div class="btns" data-for="pulse-food-trends-0621"></div>
+  </div>
+
+  <div class="item" data-id="pulse-restaurant-tech-0621" data-title="Restaurant tech — no fresh M&A; consolidation thesis intact">
+    <h3>🛠️ Restaurant tech</h3>
+    <p class="nf">No fresh M&amp;A this week. Backdrop unchanged: Chowbus $81M, Owner.com $120M Series C, SpotOn $923M raised; 8 of top-10 POS players now AI-native. Consolidation thesis intact.</p>
+    <div class="btns" data-for="pulse-restaurant-tech-0621"></div>
+  </div>
+
+  <div class="item" data-id="pulse-indie-claude-code-0621" data-title="Indie / Claude Code — $2.5B ARR fastest dev tool; realistic solo MRR math">
+    <h3>🚀 Indie / Claude Code</h3>
+    <p>• Claude Code <b>$1B → $2.5B ARR in under 6 months</b> — fastest-growing dev tool in history.</p>
+    <p>• Sobering base rates: 50% of indie hackers make &lt;$1k/mo; only ~5% clear $100k+. Realistic top-10% path is $10–30k MRR in 12 months. A serious solo runs the whole company for &lt;$500/mo to $20k MRR.</p>
+    <p>• Reminder: <b>June 15</b> separate credit for Agent SDK / non-interactive Claude Code — watch automated-workflow costs.</p>
+    <p class="meta"><b>So what:</b> distribution, not build, is still the bottleneck — your edge is owning real venues to dogfood on. <a href="https://superframeworks.com/articles/claude-code-end-of-coding-era-for-founders" target="_blank" rel="noopener">source</a></p>
+    <div class="btns" data-for="pulse-indie-claude-code-0621"></div>
   </div>
 </section>
 
-<!-- SECTION 3 — GREEK POLITICS -->
-<section class="s3">
-  <div class="sec-h">🏛️ Greek Politics</div>
-
-  <div class="bul" data-id="gp-tsipras-elas-second-0620" data-title="Tsipras new party second at ~16%, ahead of PASOK">
-    <b>Tsipras' new left party holds 2nd at ~16%</b>, ahead of PASOK — the opposition field is now reorganising around him, not the old centre-left. <span class="so" style="color:var(--blue)">So what: a clearer two-pole race changes who STIQ's market is exposed to in 2027.</span>
-    <div class="toggles" data-tg></div>
+<!-- SECTION 3: GREEK POLITICS -->
+<section class="s-gr">
+  <h2>3 · Greek Politics</h2>
+  <div class="item" data-id="gp-interview-poll-8party-0621" data-title="Interview poll: ND 31.2%, ELAS 16%, PASOK 14.7%, eight-party parliament">
+    <h3>Eight-party parliament hardening</h3>
+    <p>Interview poll (June 9): <b>ND 31.2%</b>, Tsipras' <b>ELAS 16%</b> (2nd), <b>PASOK 14.7%</b>, then Hellenic Solution 8.2%, Hope for Democracy 8.1% — an eight-party split. <span class="meta">So what: a fragmented field makes any 2027 majority a coalition math problem for operators planning capex.</span> <a href="https://en.protothema.gr/2026/06/09/interview-poll-new-democracy-at-31-2-elas-second-with-16-pasok-third-with-14-7-and-an-eight-party-parliament/" target="_blank" rel="noopener">source</a></p>
+    <div class="btns" data-for="gp-interview-poll-8party-0621"></div>
   </div>
-
-  <div class="bul" data-id="gp-nd-erosion-29-0620" data-title="ND ~29%, down from 41% in 2023">
-    <b>ND steady but eroded at ~29%</b> (vs 41% won in 2023) — comfortable lead, shrinking cushion, with scandals + cost-of-living still the drag. <span class="so" style="color:var(--blue)">So what: a weaker incumbent leans harder on pro-business sweeteners — watch for SMB-friendly measures.</span>
-    <div class="toggles" data-tg></div>
+  <div class="item" data-id="gp-tsipras-not-a-walkover-0621" data-title="Tsipras in Nicosia: elections won't be a walkover, 'we're going to win'">
+    <h3>Tsipras sharpens the contest</h3>
+    <p>From Nicosia (June 17), Tsipras declared the next election "won't be a stroll" for Mitsotakis — "we're going to win." <span class="meta">So what: ELAS is consolidating the anti-ND vote faster than PASOK or SYRIZA (SYRIZA now ~2%).</span> <a href="https://athens-times.com/tsipras-in-nicosia-elections-wont-be-a-walkover-for-mitsotakis-were-going-to-win/" target="_blank" rel="noopener">source</a></p>
+    <div class="btns" data-for="gp-tsipras-not-a-walkover-0621"></div>
   </div>
-
-  <div class="bul" data-id="gp-tax-vs-inflation-0620" data-title="Tax cuts vs persistent inflation as the defining battle">
-    <b>Tax-cut package vs persistent prices</b> is now the defining fight — Mitsotakis leans on the <b>€1.2B</b> cuts while "fighting rising prices" stays the live political task. <span class="so" style="color:var(--blue)">So what: relief on the cost side is real but partial — model it, don't assume it lands on your P&amp;L.</span>
-    <div class="toggles" data-tg></div>
-  </div>
-</section>
-
-<!-- SECTION 4 — INTERNATIONAL POLITICS -->
-<section class="s4">
-  <div class="sec-h">🌍 International Politics</div>
-
-  <div class="bul" data-id="ip-iran-electronic-signing-hormuz-0620" data-title="Iran-US framework signed electronically; Geneva ceremony scrapped; Hormuz traffic up">
-    <b>Iran–US framework signed electronically</b> — the Geneva ceremony was scrapped and VP Vance postponed his Switzerland trip ("logistics"). Deal extends the <b>60-day ceasefire</b>, reopens Hormuz (commercial crossings hit <b>25 on June 18</b>, highest since mid-April), with nuclear talks to follow. <span class="so" style="color:var(--amber)">So what: the energy-cost relief channel is real and widening — feeds Greek input costs.</span>
-    <div class="toggles" data-tg></div>
-  </div>
-
-  <div class="bul" data-id="ip-eu-summit-conclusions-0620" data-title="EU summit conclusions: €90B loan first disbursement before end June, defence by 2030">
-    <b>EU summit (June 18–19) wrapped</b>: first disbursement of the <b>€90B 2026–27 Ukraine loan</b> due before end-June, defence readiness to be "decisively ramped by 2030," and reaffirmed support for Ukraine's borders. <span class="so" style="color:var(--amber)">So what: a defence-spend supercycle is now EU policy, not rhetoric — long-run budget gravity across the bloc.</span>
-    <div class="toggles" data-tg></div>
-  </div>
-
-  <div class="bul" data-id="ip-ukraine-fasttrack-blocked-0620" data-title="Hungary's Magyar/Orbán bloc strips Ukraine accession acceleration clause">
-    <b>Ukraine's EU fast-track was blocked at the summit</b> — the acceleration clause was removed from the deal (Hungary), even as the fundamentals accession cluster opened June 15. <span class="so" style="color:var(--amber)">So what: membership is advancing but on the slow, merit-based track — no quick shock to EU dynamics.</span>
-    <div class="toggles" data-tg></div>
+  <div class="item" data-id="gp-early-bailout-repayment-0621" data-title="Greece repays €6.9B of first bailout ahead of schedule">
+    <h3>Early debt repayment as fiscal flex</h3>
+    <p>Greece repaid a further <b>€6.9B</b> of first-bailout debt ahead of schedule this month — the government's headline proof point heading into a long pre-election year. <span class="meta">So what: fiscal credibility is the one card ND can play while polls erode from 41% (2023) toward ~30%.</span> <a href="https://en.wikipedia.org/wiki/Economy_of_Greece" target="_blank" rel="noopener">source</a></p>
+    <div class="btns" data-for="gp-early-bailout-repayment-0621"></div>
   </div>
 </section>
 
-<!-- SECTION 5 — WILDCARD -->
-<section class="s5">
-  <div class="sec-h">🎲 Today's Wildcard</div>
+<!-- SECTION 4: INTERNATIONAL POLITICS -->
+<section class="s-int">
+  <h2>4 · International Politics</h2>
+  <div class="item" data-id="ip-iran-mou-versailles-0621" data-title="Iran-US MOU signed June 17 at Versailles; 60-day ceasefire, Hormuz reopening">
+    <h3>Iran–US war-end MOU holding</h3>
+    <p>Trump and Pezeshkian signed an end-the-war MOU <b>June 17 at Versailles</b> (post-G7 dinner with Macron): a <b>60-day ceasefire</b> to negotiate final terms; Pakistan says Tehran reopens Hormuz "promptly" and the US port blockade ends. <span class="meta">So what: the Hormuz reopening is the energy-cost relief signal for shipping-heavy Greece.</span> <a href="https://www.pbs.org/newshour/world/iran-and-u-s-reach-an-initial-deal-to-extend-the-ceasefire-and-open-the-strait-of-hormuz-but-challenges-remain" target="_blank" rel="noopener">source</a></p>
+    <div class="btns" data-for="ip-iran-mou-versailles-0621"></div>
+  </div>
+  <div class="item" data-id="ip-ukraine-moscow-drone-tide-0621" data-title="Ukraine's largest drone strike on Moscow; G7 'tide is turning'; Canada +$200M">
+    <h3>Ukraine escalates as G7 signals momentum</h3>
+    <p>Ukraine launched its <b>largest drone offensive on Moscow</b> of the war — airports suspended, an oil refinery hit, 17 injured. At the G7, von der Leyen said "the tide is turning"; Canada pledged ~<b>$200M</b> in new NATO-channel aid. <span class="meta">So what: no ceasefire — the energy/insurance risk premium stays on.</span> <a href="https://www.cfr.org/global-conflict-tracker/conflict/conflict-ukraine" target="_blank" rel="noopener">source</a></p>
+    <div class="btns" data-for="ip-ukraine-moscow-drone-tide-0621"></div>
+  </div>
+  <div class="item" data-id="ip-euus-turnberry-implementing-0621" data-title="EU-US Turnberry trade deal ratified June 16-17, now implementing">
+    <h3>EU–US Turnberry deal in force</h3>
+    <p>The European Parliament ratified the Turnberry EU-US trade deal (June 16-17): <b>15% tariff cap</b>, sunset 2029. Now in implementation ahead of the July 4 deadline. <span class="meta">So what: pricing certainty for any EU→US export angle (Paris luxury, Greek food exports).</span> <a href="https://www.euronews.com/my-europe/2026/05/20/eu-approves-trade-deal-with-the-us-despite-uncertainty-in-transatlantic-relations" target="_blank" rel="noopener">source</a></p>
+    <div class="btns" data-for="ip-euus-turnberry-implementing-0621"></div>
+  </div>
+</section>
 
-  <div class="card" data-id="wildcard-2026-06-20-simon-willison" data-title="Simon Willison — the chronicler of agentic engineering worth following">
-    <h3>Follow the one person narrating your exact craft: Simon Willison</h3>
-    <p>Not a side hustle, not a market story — a <b>person worth knowing</b>. Simon Willison (co-creator of Django, builder of the <code>llm</code> CLI) writes the sharpest running log anywhere on what it's actually like to ship software <i>with</i> AI agents — including the uncomfortable parts. His June essay, "Vibe coding and agentic engineering are getting closer than I'd like," is a clean 15-minute read on where the line between the two is dissolving.</p>
-    <p class="meta"><a href="https://simonwillison.net/2026/May/6/vibe-coding-and-agentic-engineering/" target="_blank" rel="noopener">simonwillison.net — vibe coding vs agentic engineering ↗</a></p>
-    <p class="why">Why this for you today: you're a non-technical builder shipping real front-ends with Claude Code — Simon is the most reliable, jargon-free narrator of exactly that practice. One bookmark that compounds, vs another headline that expires.</p>
-    <div class="toggles" data-tg></div>
+<!-- SECTION 5: WILDCARD -->
+<section class="s-wild">
+  <h2>5 · 🎲 Today's Wildcard</h2>
+  <div class="item" data-id="wildcard-2026-06-21-open-food-facts" data-title="Open Food Facts — the free, open 'Wikipedia of food' with 3M+ products and an API">
+    <h3>Open Food Facts — the free, crowd-built "Wikipedia of food"</h3>
+    <p>A non-profit, open database of <b>3M+ food products</b> worldwide — ingredients, allergens, Nutri-Score, full macro breakdowns — with a free, no-key API and bulk data dumps. Built by volunteers, Creative-Commons licensed, used by dozens of apps you've probably touched without knowing.</p>
+    <p class="meta"><b>Why this for you today:</b> you keep circling GLP-1 / protein / macro-labeling ideas for Protein Garden and Dina's — Open Food Facts is the free nutrition data layer that kills the "we'd need a vendor" objection. A weekend Claude Code script could auto-generate macro labels and high-protein tags for your whole menu from it.</p>
+    <p class="meta"><a href="https://world.openfoodfacts.org/" target="_blank" rel="noopener">world.openfoodfacts.org</a></p>
+    <div class="btns" data-for="wildcard-2026-06-21-open-food-facts"></div>
   </div>
 </section>
 
 <!-- PICKS PANEL -->
-<div class="picks">
+<section class="picks">
   <h2>📋 My Picks &amp; Training</h2>
-  <p style="font-size:13.5px;color:#34404f;margin:0">This brief learns from you. The loop has four steps:</p>
+  <p style="font-size:14px;margin:4px 0 0">This brief gets sharper every day through a 4-step loop:</p>
   <ol>
-    <li><b>Read</b> — skim the brief.</li>
-    <li><b>React</b> — tap 👍 / 👎 / ⭐ on items. Your taps save in this browser automatically (they survive reload).</li>
-    <li><b>Train</b> — hit <b>Show my picks</b>, <b>Copy</b>, then paste into Cowork prefixed with <code>train brief:</code></li>
-    <li><b>Adapt</b> — tomorrow's 7 AM brief reads your updated preferences: more of what you 👍, less of what you 👎, your ⭐ pinned at the top.</li>
+    <li><b>Read</b> the brief.</li>
+    <li><b>Click</b> 👍 / 👎 / ⭐ on items (saved to your browser automatically).</li>
+    <li><b>Copy</b> your picks below.</li>
+    <li><b>Paste</b> into Cowork with the prefix <code>train brief:</code> — I update your training file.</li>
   </ol>
-  <button class="btn primary" onclick="showPicks()">Show my picks</button>
-  <button class="btn ghost" onclick="copyPicks()">Copy</button>
-  <button class="btn ghost" onclick="clearPicks()">Clear all picks</button>
-  <textarea id="picksOut" class="hide" readonly></textarea>
-</div>
-
-<div class="foot">Morning Brief · 2026-06-20 · generated for Stylianos · all figures sourced from links above</div>
+  <div class="pbtns">
+    <button class="primary" onclick="showPicks()">Show my picks</button>
+    <button onclick="copyPicks()">Copy</button>
+    <button onclick="clearPicks()">Clear all picks</button>
+  </div>
+  <textarea id="picksOut" class="hidden" readonly></textarea>
+  <div class="foot">Morning Brief · 2026-06-21 · 👍 more like this · 👎 less · ⭐ pin to top tomorrow</div>
+</section>
 
 </div>
 
 <script>
-  var DAY = "2026-06-20";
-  function keyFor(id){ return "mb-" + DAY + "-" + id; }
+(function(){
+  var DATE="2026-06-21";
+  var KEY=function(id){return "mb-"+DATE+"-"+id;};
+  var STATES=["up","down","save"];
+  var LABEL={up:"👍 Interesting",down:"👎 Skip",save:"⭐ Save"};
+  var CLS={up:"on-up",down:"on-down",save:"on-save"};
 
-  function buildToggles(){
-    var cards = document.querySelectorAll('[data-id]');
-    cards.forEach(function(card){
-      var id = card.getAttribute('data-id');
-      var holder = card.querySelector('[data-tg]');
-      if(!holder) return;
-      var defs = [['up','👍 Interesting'],['down','👎 Skip'],['save','⭐ Save']];
-      defs.forEach(function(d){
-        var b = document.createElement('span');
-        b.className = 'tg ' + d[0];
-        b.textContent = d[1];
-        b.onclick = function(){ setState(id, d[0], card); };
-        holder.appendChild(b);
-      });
-      var saved = localStorage.getItem(keyFor(id));
-      if(saved) paint(card, saved);
+  function getState(id){try{return localStorage.getItem(KEY(id))||"";}catch(e){return "";}}
+  function setState(id,v){try{v?localStorage.setItem(KEY(id),v):localStorage.removeItem(KEY(id));}catch(e){}}
+
+  function render(box){
+    var id=box.getAttribute("data-for");
+    var cur=getState(id);
+    box.innerHTML="";
+    STATES.forEach(function(s){
+      var b=document.createElement("button");
+      b.textContent=LABEL[s];
+      if(cur===s)b.className=CLS[s];
+      b.onclick=function(){
+        var now=getState(id);
+        setState(id, now===s ? "" : s);
+        render(box);
+      };
+      box.appendChild(b);
     });
   }
-  function setState(id, state, card){
-    var cur = localStorage.getItem(keyFor(id));
-    if(cur === state){ localStorage.removeItem(keyFor(id)); paint(card, null); }
-    else { localStorage.setItem(keyFor(id), state); paint(card, state); }
-  }
-  function paint(card, state){
-    ['up','down','save'].forEach(function(c){
-      var el = card.querySelector('.tg.'+c);
-      if(el) el.classList.toggle('on', c===state);
-    });
-  }
+
+  document.querySelectorAll(".btns").forEach(render);
+
   function collect(){
-    var out = {up:[],down:[],save:[]};
-    document.querySelectorAll('[data-id]').forEach(function(card){
-      var id = card.getAttribute('data-id');
-      var s = localStorage.getItem(keyFor(id));
-      if(s) out[s].push(card.getAttribute('data-title') || id);
+    var out={up:[],down:[],save:[]};
+    document.querySelectorAll(".item").forEach(function(it){
+      var id=it.getAttribute("data-id");
+      var title=it.getAttribute("data-title")||id;
+      var s=getState(id);
+      if(s)out[s].push(title);
     });
     return out;
   }
-  function summary(){
-    var p = collect();
-    var t = "My picks from Morning Brief — " + DAY + "\n\n";
-    t += "👍 INTERESTING:\n" + (p.up.length ? p.up.map(function(x){return "- "+x;}).join("\n") : "- (none)") + "\n\n";
-    t += "⭐ SAVE FOR LATER:\n" + (p.save.length ? p.save.map(function(x){return "- "+x;}).join("\n") : "- (none)") + "\n\n";
-    t += "👎 SKIP:\n" + (p.down.length ? p.down.map(function(x){return "- "+x;}).join("\n") : "- (none)") + "\n";
+
+  function buildText(){
+    var p=collect();
+    var t="My picks from Morning Brief — "+DATE+"\n\n";
+    t+="👍 INTERESTING:\n"+(p.up.length?p.up.map(function(x){return "- "+x;}).join("\n"):"- (none)")+"\n\n";
+    t+="⭐ SAVE FOR LATER:\n"+(p.save.length?p.save.map(function(x){return "- "+x;}).join("\n"):"- (none)")+"\n\n";
+    t+="👎 SKIP:\n"+(p.down.length?p.down.map(function(x){return "- "+x;}).join("\n"):"- (none)")+"\n";
     return t;
   }
-  function showPicks(){
-    var ta = document.getElementById('picksOut');
-    ta.classList.remove('hide');
-    ta.value = summary();
-    ta.focus(); ta.select();
-  }
-  function copyPicks(){
-    var ta = document.getElementById('picksOut');
-    ta.classList.remove('hide');
-    ta.value = summary();
+
+  window.showPicks=function(){
+    var ta=document.getElementById("picksOut");
+    ta.value=buildText();
+    ta.classList.remove("hidden");
+  };
+  window.copyPicks=function(){
+    var ta=document.getElementById("picksOut");
+    ta.value=buildText();ta.classList.remove("hidden");
     ta.select();
-    try{ document.execCommand('copy'); }catch(e){}
-    if(navigator.clipboard){ navigator.clipboard.writeText(ta.value).catch(function(){}); }
-  }
-  function clearPicks(){
-    if(!confirm('Clear all 👍/👎/⭐ picks for today?')) return;
-    document.querySelectorAll('[data-id]').forEach(function(card){
-      localStorage.removeItem(keyFor(card.getAttribute('data-id')));
-      paint(card, null);
-    });
-    var ta = document.getElementById('picksOut'); ta.value=''; ta.classList.add('hide');
-  }
-  buildToggles();
+    try{document.execCommand("copy");}catch(e){}
+    try{navigator.clipboard&&navigator.clipboard.writeText(ta.value);}catch(e){}
+  };
+  window.clearPicks=function(){
+    document.querySelectorAll(".item").forEach(function(it){setState(it.getAttribute("data-id"),"");});
+    document.querySelectorAll(".btns").forEach(render);
+    var ta=document.getElementById("picksOut");ta.value="";ta.classList.add("hidden");
+  };
+})();
 </script>
 </body>
 </html>
